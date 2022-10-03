@@ -1,0 +1,141 @@
+;SPDX-License-Identifier: MIT
+
+(begin-tx)
+(load "../contracts/util-lists.pact")
+(load "../contracts/util-math.pact")
+(commit-tx)
+
+(begin-tx)
+(use util-math)
+
+(print (format "Testing util-math: Version:{}\n \
+                \                  Hash:{}" [VERSION, (at 'hash (describe-module 'util-math)) ]))
+
+(expect-that "Pi=3.14" (between 3.14 3.15) PI)
+(expect-that "E=2.71" (between 2.71 2.72) E)
+(expect-that "PHI=1.61" (between 1.61 1.62) GOLDEN-RATIO)
+
+;;; (min ...)
+(expect "(min 3.0 4.0) => 3.0" 3.0 (min 3.0 4.0))
+(expect "(min 4.0 3.0) => 3.0" 3.0 (min 4.0 3.0))
+
+;;; (min3 ...)
+(expect "(min3 1.0 3.0 4.0) => 1.0" 1.0 (min3 1.0 3.0 4.0))
+(expect "(min3 4.0 3.0 1.0) => 1.0" 1.0 (min3 4.0 3.0 1.0))
+(expect "(min3 4.0 1.0 3.0) => 1.0" 1.0 (min3 4.0 1.0 3.0))
+
+;;; (min4 ...)
+(expect "(min4 1.0 3.0 4.0 6.0) => 1.0" 1.0 (min4 1.0 3.0 4.0 6.0))
+(expect "(min4 4.0 3.0 1.0 6.0) => 1.0" 1.0 (min4 4.0 3.0 1.0 6.0))
+(expect "(min4 4.0 3.0 6.0 1.0) => 1.0" 1.0 (min4 4.0 3.0 6.0 1.0))
+
+;;; (min-list ...)
+(expect-failure "Empty list "(min-list []))
+(expect "(min-list [1.0]) =>1.0" 1.0 (min-list [1.0]))
+(expect "(min-list [1.0 2.0]) =>1.0" 1.0 (min-list [1.0 2.0]))
+(expect "(min-list [2.0 1.0]) =>1.0" 1.0 (min-list [2.0 1.0]))
+(expect "(min-list [2.0 1.0 3.0 4.0 26.0 -1.0]) =>-1.0" -1.0 (min-list [2.0 1.0 3.0 4.0 26.0 -1.0]) )
+
+
+;;; (amin ...)
+(expect-failure "Empty list "(amin []))
+(expect "(amin [1.0]) =>0" 0 (amin [1.0]))
+(expect "(amin [1.0 -1.0]) =>1" 1 (amin [1.0 -1.0]))
+(expect "(amin [3.0 1.0 4.0]) =>1" 1 (amin [3.0 1.0 4.0]))
+(expect "(amin [3.0 1.0 9.0 0.0 -2.0 -1.0]) =>4" 4 (amin [3.0 1.0 9.0 0.0 -2.0 -1.0]))
+
+;; (max ....)
+(expect "(max 3.0 4.0) => 3.0" 4.0 (max 3.0 4.0))
+(expect "(max 4.0 3.0) => 3.0" 4.0 (max 4.0 3.0))
+
+;;; (max3 ....)
+(expect "(max3 1.0 3.0 4.0) => 4.0" 4.0 (max3 1.0 3.0 4.0))
+(expect "(max3 4.0 3.0 1.0) => 4.0" 4.0 (max3 4.0 3.0 1.0))
+(expect "(max3 1.0 4.0 3.0) => 4.0" 4.0 (max3 1.0 4.0 3.0))
+
+;;; (max4 ....)
+(expect "(max4 1.0 3.0 4.0 6.0) => 6.0" 6.0 (max4 1.0 3.0 4.0 6.0))
+(expect "(max4 4.0 3.0 1.0 6.0) => 6.0" 6.0 (max4 4.0 3.0 1.0 6.0))
+(expect "(max4 4.0 3.0 6.0 1.0) => 6.0" 6.0 (max4 4.0 3.0 6.0 1.0))
+
+;;; (max-list ...)
+(expect-failure "Empty list "(max-list []))
+(expect "(max-list [1.0]) =>1.0" 1.0 (max-list [1.0]))
+(expect "(max-list [1.0 2.0]) =>2.0" 2.0 (max-list [1.0 2.0]))
+(expect "(max-list [2.0 1.0]) =>2.0" 2.0 (max-list [2.0 1.0]))
+(expect "(max-list [2.0 1.0 3.0 4.0 26.0 -1.0]) =>26.0" 26.0 (max-list [2.0 1.0 3.0 4.0 26.0 -1.0]) )
+
+
+;;; (amax ...)
+(expect-failure "Empty list "(amax []))
+(expect "(amax [1.0]) =>0" 0 (amax [1.0]))
+(expect "(amax [-1.0 1.0]) =>0" 1 (amax [-1.0 1.0]))
+(expect "(amax [3.0 1.0 4.0]) =>2" 2 (amax [3.0 1.0 4.0]))
+(expect "(amax [3.0 1.0 9.0 0.0 -2.0 -1.0]) =>2" 2 (amax [3.0 1.0 9.0 0.0 -2.0 -1.0]))
+
+;;; (sum3 ....)
+(expect "(sum3 3.0 4.0 5.0) => 12.0" 12.0 (sum3 3.0 4.0 5.0))
+
+;;;; (sum4 ...)
+(expect "(sum4 3.0 4.0 5.0 10.0) => 22.0" 22.0 (sum4 3.0 4.0 5.0 10.0))
+
+;;; (sum ....)
+(expect "(sum [3.0 4.0 5.0]) => 12.0" 12.0 (sum [3.0 4.0 5.0]))
+
+
+;;; (prod3 ....)
+(expect "(prod3 3.0 4.0 5.0) => 60.0" 60.0 (prod3 3.0 4.0 5.0))
+
+;;;; (prod4 ...)
+(expect "(prod4 3.0 4.0 5.0 10.0) => 600.0" 600.0 (prod4 3.0 4.0 5.0 10.0))
+
+;;; (prod ....)
+(expect "(prod [3.0 4.0 5.0]) => 60.0" 60.0 (prod [3.0 4.0 5.0]))
+
+;;; (square ....)
+(expect "(square 3.0) => 9.0" 9.0 (square 3.0))
+
+;;;; (safe-/ ....)
+(expect "(safe-/ 1.0 2.0 8.0) => 0.5" 0.5 (safe-/ 1.0 2.0 8.0))
+(expect "(safe-/ 1.0 0.0 8.0) => 8.0" 8.0 (safe-/ 1.0 0.0 8.0))
+
+;;; (avg ....)
+(expect-failure "Empty list "(avg []))
+(expect "(avg [3.0 4.0 8.0]) => 5.0" 5.0 (avg [3.0 4.0 8.0]))
+
+;;; (med ...)
+(expect-failure "Empty list "(med []))
+(expect "(med [4.0]) => 4.0" 4.0 (med [4.0]))
+(expect "(med [3.0 4.0 8.0]) => 4.0" 4.0 (med [3.0 4.0 8.0]))
+(expect "(med [9.0 3.0 4.0 8.0]) => 4.0" 4.0 (med [9.0 3.0 4.0 8.0]))
+(expect "(med [6.0 9.0 3.0 4.0 8.0]) => 6.0" 6.0 (med [6.0 9.0 3.0 4.0 8.0]))
+
+;;; (med* ...)
+(expect-failure "Empty list "(med []))
+(expect "(med* [4.0]) => 4.0" 4.0 (med* [4.0]))
+(expect "(med* [3.0 4.0 8.0]) => 4.0" 4.0 (med* [3.0 4.0 8.0]))
+(expect "(med* [9.0 3.0 4.0 5.0]) => 4.5" 4.5 (med* [9.0 3.0 4.0 5.0]))
+(expect "(med [6.0 9.0 3.0 4.0 8.0]) => 6.0" 6.0 (med* [6.0 9.0 3.0 4.0 8.0]))
+
+;;; (between ...)
+(expect "(between 1.0 2.0 1.5) => true)" true (between 1.0 2.0 1.5))
+(expect "(between 1.0 2.0 0.5) => true)" false (between 1.0 2.0 0.5))
+(expect "(between 1.0 2.0 2.5) => true)" false (between 1.0 2.0 2.5))
+
+;;; (sign...)
+(expect "(sign 3.0) => 1.0)" 1.0 (sign 3.0))
+(expect "(sign 0.0) => 0.0)" 0.0 (sign 0.0))
+(expect "(sign -3.0) => -1.0)" -1.0 (sign -3.0))
+
+;; (pow10 ...)
+(expect "(pow10 3) => 1000.0)" 1000.0 (pow10 3))
+(expect "(pow10 -3) => 0.001)" 0.001 (pow10 -3))
+(expect "(pow10 -12) => 0.000000000001)" 0.000000000001 (pow10 -12))
+
+;; (xEy ...)
+(expect "(xEy 1.0 3) => 1000.0)" 1000.0 (xEy 1.0 3))
+(expect "(xEy 2.5 -3) => 0.0025)" 0.0025 (xEy 2.5 -3))
+(expect "(xEy 2.5 -12) => 0.000000000002)" 0.000000000002 (xEy 2.5 -12))
+
+(print "Tests of util-math ended")
+(commit-tx)

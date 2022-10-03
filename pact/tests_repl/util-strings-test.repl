@@ -1,0 +1,135 @@
+;SPDX-License-Identifier: MIT
+
+(begin-tx)
+(load "../contracts/util-lists.pact")
+(load "../contracts/util-strings.pact")
+(commit-tx)
+
+(begin-tx)
+(use util-strings)
+(print (format "Testing util-strings: Version:{}\n \
+                \                     Hash:{}" [VERSION, (at 'hash (describe-module 'util-strings)) ]))
+
+; decode-ascii
+(expect-that "Hello world decoding" (= [72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100])
+                                    (decode-ascii "Hello world"))
+
+(expect-that "Special characters decoding" (= [34, 39, 36, 93])
+                                           (decode-ascii "\"\'$]"))
+
+;encode-ascii
+(expect-that "Hello world encoding" (= "Hello world")
+                                    (encode-ascii [72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]))
+
+(expect-that "Special characters encoding" (= "\"\'$]")
+                                    (encode-ascii [34, 39, 36, 93]))
+
+(expect-that "Unprintable and non ascii chars shoud be removed" (= "Hello world")
+                                                                (encode-ascii [1, 2, 72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100,3, 254]))
+
+
+; Upper
+(expect-that "Hello world to upper" (= "HELLO, WORLD!") (upper "Hello, World!"))
+(expect-that "azerty to upper" (= "AZERTY") (upper "azerty"))
+
+; Lower
+(expect-that "Hello world to lower" (= "hello, world!") (lower "Hello, World!"))
+(expect-that "AZERTY to lower" (= "azerty") (lower "AZERTY"))
+
+;is-digit
+(expect "12093 is digit" true (is-digit "12093"))
+(expect "12093a is not digit" false (is-digit "12093a"))
+(expect "12093_ is not digit" false (is-digit "12093_"))
+(expect "_12093 is not digit" false (is-digit "_12093"))
+
+;is-alpha
+(expect "Alpha is alpha" true (is-alpha "Alpha"))
+(expect "Alpha, is not alpha" false (is-alpha "Alpha,"))
+(expect "AlphazZ is alpha" true (is-alpha "AlphazZ"))
+(expect "1Alpha is not alpha" false (is-alpha "1Alpha"))
+
+;is-hex-digit
+(expect "A36 is hex" true (is-hex-digit "A36"))
+(expect "a36 is hex" true (is-hex-digit "a36"))
+(expect "f36 is hex" true (is-hex-digit "f36"))
+(expect "30F is hex" true (is-hex-digit "30F"))
+(expect "30G is not hex" false (is-hex-digit "30G"))
+(expect "30F, is not hex" false (is-hex-digit "30F,"))
+
+
+;replace-chars
+(expect-that "Replace b->X in baobab should result in XaoXaX" (= "XaoXaX")
+                                                              (replace-char "baobab" "b" "X"))
+
+(expect-that "Replace b->   in baobab should result in aoa" (= "aoa")
+                                                            (replace-char "baobab" "b" ""))
+
+(expect-that "Replace B->X in baobab should result in baoab (no replacement)" (= "baobab")
+                                                                              (replace-char "baobab" "B" "X"))
+
+; string-at
+(expect-that "String at 0 of baobab is b" (= "b")
+                                          (string-at 0 "baobab"))
+
+(expect-that "String at 2 of baobab is o" (= "o")
+                                          (string-at 2 "baobab"))
+
+(expect-that "String at 5 of baobab is b" (= "b")
+                                          (string-at 5 "baobab"))
+
+
+; join
+(expect-that "Join strings empty" (= "") (join "-" []))
+
+(expect-that "Join only string" (= "Hello") (join "-" ["Hello"]))
+
+(expect-that "Join 2 strings" (= "Hello/World") (join "/" ["Hello", "World"]))
+
+(expect-that "Join 3 strings" (= "Hello/Boys/Girls") (join "/" ["Hello", "Boys", "Girls"]))
+
+(expect-that "Join 4 strings" (= "Hello/Boys/Girls/Kids") (join "/" ["Hello", "Boys", "Girls", "Kids"]))
+
+(expect-that "Join 4 strings with an empty separator" (= "HelloBoysGirlsKids") (join "" ["Hello", "Boys", "Girls", "Kids"]))
+
+(expect-that "Join 4 strings with an 5chars separator separator" (= "Hello And Boys And Girls And Kids") (join " And " ["Hello", "Boys", "Girls", "Kids"]))
+
+;split
+(expect-that "Split ab/cd/ef" (= ["ab", "cd" , "ef"]) (split "/" "ab/cd/ef"))
+
+(expect-that "Split ab (one element)" (= ["ab"]) (split "/" "ab"))
+
+(expect-that "Split ab/ (last element empty)" (= ["ab", ""]) (split "/" "ab/"))
+
+(expect-that "Split Empty string" (= []) (split "/" ""))
+
+;starts-with
+(expect "Kadena is great starts with Kadena" true (starts-with "Kadena is great" "Kadena"))
+(expect "Kadena is great doesn't start with Solana" false (starts-with "Kadena is great" "Solana"))
+(expect "aKadena is great doesn't start with Kadena" false (starts-with "aKadena is great" "Kadena"))
+(expect "Kadena starts with Kadena" true (starts-with "Kadena" "Kadena"))
+(expect "Kade doesn't start with Kadena" false (starts-with "Kade" "Kadena"))
+
+;ends-with
+(expect "Kadena is great ends with great" true (ends-with "Kadena is great" "great"))
+(expect "Kadena is great doesn't end with bad" false (ends-with "Kadena is great" "bad"))
+(expect "Kadena is greater doesn't end with great" false (ends-with "Kadena is greater" "great"))
+(expect "adena doesn't end with Kadena" false (ends-with "adena" "Kadena"))
+(expect "Kadena ends with Kadena" true (ends-with "Kadena" "Kadena"))
+
+; left-strip
+(expect-that "Strip Hello world with leading spaces should remove them" (= "Hello world ") (left-strip " " "    Hello world "))
+(expect-that "Strip and empty string" (= "") (left-strip " " ""))
+(expect-that "Strip and empty string with whitespaces" (= "") (left-strip " " "                   "))
+
+; right-strip
+(expect-that "Strip Hello world with trailing spaces should remove them" (= " Hello world") (right-strip " " " Hello world    "))
+(expect-that "Strip and empty string" (= "") (right-strip " " ""))
+(expect-that "Strip and empty string with whitespaces" (= "") (right-strip " " "                   "))
+
+; strip
+(expect-that "Strip Hello world with leading and trailing spaces should remove them" (= "Hello world") (strip " " "    Hello world "))
+(expect-that "Strip and empty string" (= "") (strip " " ""))
+(expect-that "Strip and empty string with whitespaces" (= "") (strip " " "                   "))
+
+(print "Tests of util-strings ended")
+(commit-tx)

@@ -1,0 +1,90 @@
+;SPDX-License-Identifier: MIT
+
+(begin-tx)
+(load "../contracts/util-lists.pact")
+(load "../contracts/util-strings.pact")
+(load "../contracts/util-math.pact")
+(load "../contracts/util-random.pact")
+(create-table state-table)
+(util-random.reset-state)
+(commit-tx)
+
+(begin-tx)
+(use util-random)
+(use util-lists [count])
+(use util-strings [join is-hex-digit string-at])
+(use util-math [sum])
+
+;Check that the the generator cannot be reinitialized
+(expect-failure "Generator can be initialized onmy one time" (reset-state))
+
+(print (format "Testing util-random: Version:{}\n \
+                \                    Hash:{}" [VERSION, (at 'hash (describe-module 'util-random)) ]))
+
+;random-int
+(print "Ten examples of random int:")
+(print (+ "   "(join "\n   " (map (lambda (x) (int-to-str 10 (random-int))) (enumerate 0 9) ))))
+(print "")
+
+(let* ((random-total-count 1000)
+       (random-lst (map (lambda (x) (random-int)) (enumerate 1 random-total-count))))
+  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+)
+
+;random-int-range
+(print "Twenty examples of random int range 0-5:")
+(print (join " / " (map (lambda (x) (int-to-str 10 (random-int-range 0 5))) (enumerate 0 19) )))
+(print "")
+
+(let* ((random-total-count 1000)
+       (random-lst (map (lambda (x) (random-int-range 0 19)) (enumerate 1 random-total-count)))
+       (x-count (map (count random-lst) (enumerate 0 19)))
+       (x-ratio (map (lambda (x) (/ (* x 1.0) random-total-count)) x-count)))
+  (expect "All drawn numbers must be in range 0 19" 1.0 (sum x-ratio))
+  (map (lambda (x) (expect-that "Bucket % must be close to 0.05" (and? (<= 0.03) (>= 0.07)) x)) x-ratio)
+)
+
+
+;random-string
+(print "Ten examples of random strings (size 64):")
+(print (+ "   "(join "\n   " (map (lambda (x) (random-string 64)) (enumerate 0 9) ))))
+(print "")
+
+(expect "Length of generated string must be 1" 1 (length (random-string 1)))
+(expect "Length of generated string must be 10" 10 (length (random-string 10)))
+(expect "Length of generated string must be 42" 42 (length (random-string 42)))
+(expect "Length of generated string must be 43" 43 (length (random-string 43)))
+(expect "Length of generated string must be 128" 128 (length (random-string 128)))
+
+(let* ((random-total-count 1000)
+       (random-lst (map (lambda (x) (random-string 128)) (enumerate 1 random-total-count))))
+  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+)
+
+;gen-uuid-rfc-4122-v4
+(print "Ten examples of random uuid:")
+(print (+ "   "(join "\n   " (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 0 9) ))))
+(print "")
+
+(let ((uuid (gen-uuid-rfc-4122-v4)))
+  (expect "UUID Length must me 36" 36 (length uuid))
+  (expect "Position 8 must be -" "-" (string-at 8 uuid))
+  (expect "Position 13 must be -" "-" (string-at 13 uuid))
+  (expect "Position 18 must be -" "-" (string-at 18 uuid))
+  (expect "Position 23 must be -" "-" (string-at 23 uuid))
+
+  (expect "First part must be an hex" true (is-hex-digit (take 8 uuid)))
+  (expect "Second part must be an hex" true (is-hex-digit (take 4 (drop 9 uuid))))
+  (expect "Third part must be an hex" true (is-hex-digit (take 4 (drop 14 uuid))))
+  (expect "4th part must be an hex" true (is-hex-digit (take 4 (drop 19 uuid))))
+  (expect "5th part must be an hex" true (is-hex-digit (drop 24 uuid)))
+
+)
+
+(let* ((random-total-count 1000)
+       (random-lst (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 1 random-total-count))))
+  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+)
+
+(print "Tests of util-random ended")
+(commit-tx)

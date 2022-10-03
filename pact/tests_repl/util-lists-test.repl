@@ -1,0 +1,127 @@
+;SPDX-License-Identifier: MIT
+
+(begin-tx)
+(load "../contracts/util-lists.pact")
+(commit-tx)
+
+(begin-tx)
+
+(use util-lists)
+(print (format "Testing utils-list: Version:{}\n \
+                \                   Hash:{}" [VERSION, (at 'hash (describe-module 'util-lists)) ]))
+
+
+; chain
+(expect-that "Chained lists" (= ["a", "b", "c", "d"]) (chain [ ["a", "b"], ["c", "d"]]))
+(expect-that "Chained lists with empty first" (= ["c", "d"]) (chain [ [], ["c", "d"]]))
+(expect-that "Chained lists with empty last" (= ["a", "b"]) (chain [ ["a", "b"], []]))
+
+;enumerate-list
+(expect-that "Enumerated list" (= [{'i:0,'v:"a"}, {'i:1,'v:"b"},{'i:2,'v:"c"}]) (enumerate-list ["a" ,"b", "c"]))
+(expect-that "Enumerated single element list" (= [{'i:0,'v:"a"}]) (enumerate-list ["a"]))
+(expect-that "Enumerated empty list" (= []) (enumerate-list []))
+
+; first
+(expect-failure "Empty list must fail" (first []))
+(expect-that "First item is a " (= "a") (first ["a", "b", "c", "d"]))
+(expect-that "First item is a " (= "a") (first ["a"]))
+
+; last
+(expect-failure "Empty list must fail" (last []))
+(expect-that "Last item is d " (= "d") (last ["a", "b", "c", "d"]))
+(expect-that "Last item is a " (= "a") (last ["a"]))
+
+; search
+(expect-that "Search target position is 1" (= [1]) (search ["a", "target", "b", "c"] "target" ))
+(expect-that "Search target position is 1 and 2" (= [1,2]) (search ["a", "target", "target", "b", "c"] "target" ))
+(expect-that "Search target is not present" (= []) (search ["a", "b", "c"] "target" ))
+(expect-that "Search target is at first and last" (= [0,4]) (search ["target","a", "b", "c", "target"] "target" ))
+
+;count
+(expect-that "Count of d is 0"  (= 0) (count ["a","b","c","b","c","c"] "d"))
+(expect-that "Count of a is 1"  (= 1) (count ["a","b","c","b","c","c"] "a"))
+(expect-that "Count of b is 2"  (= 2) (count ["a","b","c","b","c","c"] "b"))
+(expect-that "Count of c is 3"  (= 3) (count ["a","b","c","b","c","c"] "c"))
+
+;Insert first
+(expect-that "Insert test in front"  (= ["test", "a", "b","c"]) (insert-first ["a","b","c"] "test"))
+(expect-that "Insert test in front of an empty list"  (= ["test"]) (insert-first [] "test"))
+
+;Append-last
+(expect-that "Append test in last"  (= ["a", "b","c", "test"]) (append-last ["a","b","c"] "test"))
+(expect-that "Append test in last of an empty list"  (= ["test"]) (append-last [] "test"))
+
+; Insert at
+(expect-failure "Negative index must fail" (replace-at ["a"] -1 "test"))
+(expect-failure "Out of bounds index must fail" (replace-at ["a"] 1 "test"))
+(expect-failure "Out of bounds index must fail" (replace-at ["a","b"] 3 "test"))
+
+(expect-that "Insert at position 0"  (= ["test", "a", "b", "c"])  (insert-at ["a","b","c"] 0 "test"))
+(expect-that "Insert at position 1"  (= ["a", "test", "b", "c"])  (insert-at ["a","b","c"] 1 "test"))
+(expect-that "Insert at position 2"  (= ["a", "b", "test", "c"])  (insert-at ["a","b","c"] 2 "test"))
+(expect-that "Insert at position 3"  (= ["a", "b", "c", "test"])  (insert-at ["a","b","c"] 3 "test"))
+
+;replace-first
+(expect-failure "Empty list must fail" (replace-first []))
+(expect-that "Replace test in front"  (= ["test", "b","c"]) (replace-first ["a","b","c"] "test"))
+(expect-that "Replace test in front of a single item list"  (= ["test"]) (replace-first ["a"] "test"))
+
+;replace-last
+(expect-failure "Empty list must fail" (replace-last []))
+(expect-that "Replace test in last"  (= ["a", "b", "test"]) (replace-last ["a","b","c"] "test"))
+(expect-that "Replace test in last of a single item list"  (= ["test"]) (replace-last ["a"] "test"))
+
+;replace-at
+(expect-failure "Empty list must fail" (replace-at [] 0 "test"))
+(expect-failure "Negative index must fail" (replace-at ["a"] -1 "test"))
+(expect-failure "Out of bounds index must fail" (replace-at ["a"] 1 "test"))
+(expect-failure "Out of bounds index must fail" (replace-at ["a","b"] 2 "test"))
+
+(expect-that "Replace at position 0"  (= ["test","b", "c"])  (replace-at ["a","b","c"] 0 "test"))
+(expect-that "Replace at position 1"  (= ["a","test", "c"])  (replace-at ["a","b","c"] 1 "test"))
+(expect-that "Replace at position 2"  (= ["a","b", "test"])  (replace-at ["a","b","c"] 2 "test"))
+(expect-that "Replace a single element list"  (= ["test"])  (replace-at ["a"] 0 "test"))
+
+;replace-item
+(expect-that "Replace a by test"  (= ["test", "b", "c"]) (replace-item ["a","b","c"] "a" "test"))
+(expect-that "Replace 2 times a by test"  (= ["test", "b", "c", "test"]) (replace-item ["a","b","c","a"] "a" "test"))
+(expect-that "Replace nothing"  (= ["a", "b", "c"]) (replace-item ["a","b","c"] "d" "test"))
+
+;replace-item*
+(expect-that "Replace a by test"  (= ["test", "b", "c"]) (replace-item* ["a","b","c"] "a" "test"))
+(expect-that "Replace 2 times a by test"  (= ["test", "b", "c", "test"]) (replace-item* ["a","b","c","a"] "a" "test"))
+(expect-failure "Replace nothing" (replace-item* ["a","b","c"] "d" "test"))
+
+;remove-first
+(expect-failure "Empty list must fail" (remove-first []))
+(expect-that "Remove item in front"  (= ["b","c"]) (remove-first ["a","b","c"]))
+(expect-that "Remove item in front of a single item list"  (= []) (remove-first ["a"]))
+
+;remove-last
+(expect-failure "Empty list must fail" (remove-last []))
+(expect-that "Remove item in last"  (= ["a", "b"]) (remove-last ["a","b","c"]))
+(expect-that "Remove item in last of a single item list"  (= []) (remove-last ["a"]))
+
+;remove-at
+(expect-failure "Empty list must fail" (remove-at [] 0))
+(expect-failure "Negative index must fail" (remove-at ["a"] -1))
+(expect-failure "Out of bounds index must fail" (remove-at ["a"] 1))
+(expect-failure "Out of bounds index must fail" (remove-at ["a","b"]))
+
+(expect-that "Remove at position 0"  (= ["b", "c"])  (remove-at ["a","b","c"] 0))
+(expect-that "Remove at position 1"  (= ["a", "c"])  (remove-at ["a","b","c"] 1))
+(expect-that "Remove at position 2"  (= ["a","b" ])  (remove-at ["a","b","c"] 2))
+(expect-that "Remove a single element list"  (= [])  (remove-at ["a"] 0))
+
+;remove-item
+(expect-that "Remove 1 item"  (= ["b", "c"]) (remove-item ["a","b","c"] "a"))
+(expect-that "Remove 2 items"  (= ["b", "c"]) (remove-item ["a","b","c","a"] "a"))
+(expect-that "Remove nothing"  (= ["a", "b", "c"]) (remove-item ["a","b","c"] "d"))
+
+;remove-item*
+(expect-that "Remove 1 item"  (= ["b", "c"]) (remove-item* ["a","b","c"] "a"))
+(expect-that "Remove 2 items"  (= ["b", "c"]) (remove-item* ["a","b","c","a"] "a"))
+(expect-failure "Remove nothing" (remove-item* ["a","b","c"] "d"))
+
+(print "Tests of util-lists ended")
+(commit-tx)
