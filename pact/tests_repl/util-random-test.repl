@@ -16,7 +16,7 @@
 (use util-math [sum])
 
 ;Check that the the generator cannot be reinitialized
-(expect-failure "Generator can be initialized onmy one time" (reset-state))
+(expect-failure "Generator can be initialized onmy one time" "already initialized" (reset-state))
 
 (print (format "Testing util-random: Version:{}\n \
                 \                    Hash:{}" [VERSION, (at 'hash (describe-module 'util-random)) ]))

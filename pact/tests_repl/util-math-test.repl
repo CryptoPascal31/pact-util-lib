@@ -100,18 +100,18 @@
 (expect "(safe-/ 1.0 0.0 8.0) => 8.0" 8.0 (safe-/ 1.0 0.0 8.0))
 
 ;;; (avg ....)
-(expect-failure "Empty list "(avg []))
+(expect-failure "Empty list" "empty" (avg []))
 (expect "(avg [3.0 4.0 8.0]) => 5.0" 5.0 (avg [3.0 4.0 8.0]))
 
 ;;; (med ...)
-(expect-failure "Empty list "(med []))
+(expect-failure "Empty list" "empty" (med []))
 (expect "(med [4.0]) => 4.0" 4.0 (med [4.0]))
 (expect "(med [3.0 4.0 8.0]) => 4.0" 4.0 (med [3.0 4.0 8.0]))
 (expect "(med [9.0 3.0 4.0 8.0]) => 4.0" 4.0 (med [9.0 3.0 4.0 8.0]))
 (expect "(med [6.0 9.0 3.0 4.0 8.0]) => 6.0" 6.0 (med [6.0 9.0 3.0 4.0 8.0]))
 
 ;;; (med* ...)
-(expect-failure "Empty list "(med []))
+(expect-failure "Empty list" "empty" (med []))
 (expect "(med* [4.0]) => 4.0" 4.0 (med* [4.0]))
 (expect "(med* [3.0 4.0 8.0]) => 4.0" 4.0 (med* [3.0 4.0 8.0]))
 (expect "(med* [9.0 3.0 4.0 5.0]) => 4.5" 4.5 (med* [9.0 3.0 4.0 5.0]))
