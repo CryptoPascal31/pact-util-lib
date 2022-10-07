@@ -1,11 +1,14 @@
 ;SPDX-License-Identifier: MIT
 
 ; This module provides some utilities to work with lists in Pact
-; Be aware that this module is only in Beta and has not been audited:
+; Be aware that this module is only in Beta and hasn't been audited:
 ;    --> BE CAREFUL if a security enforcement depends on one of these functions
 ;
 ; Remember that in Pact, all variables are immutable and no function can
 ; work in place. New lists are always returned.
+;
+; Feel free to reuse, comment, review, fork, propose PRs, submit bugs:
+; https://github.com/CryptoPascal31/pact-util-lib
 
 (module util-lists GOV
   "Module containing string utilities"

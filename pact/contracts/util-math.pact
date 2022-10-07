@@ -1,3 +1,14 @@
+;SPDX-License-Identifier: MIT
+
+; This modules provides some convenient math function for Pact.
+;
+; Be aware that this module is only in Beta and hasn't been audited:
+;    --> BE CAREFUL if a security enforcement depends on one of theses functions
+;
+;
+; Feel free to reuse, comment, review, fork, propose PRs, submit bugs:
+; https://github.com/CryptoPascal31/pact-util-lib
+
 (module util-math GOV
   "Module containing math utilities"
   (defconst VERSION:string "0.1")

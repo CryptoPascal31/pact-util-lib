@@ -1,7 +1,7 @@
 ;SPDX-License-Identifier: MIT
 
 ; This modules provides some utilities to work with string in Pact
-; Be aware that this module is only in Beta and has not be audited:
+; Be aware that this module is only in Beta and hasn't been audited:
 ;    --> BE CAREFUL if a security enforcement depends on one of theses functions
 ;
 ; Pact is not a word processor. And some functions can be gas expensive.
@@ -9,6 +9,9 @@
 ;
 ; Remember that in Pact, all variables are immutable and no function can
 ; work in place. New string are always returned
+;
+; Feel free to reuse, comment, review, fork, propose PRs, submit bugs:
+; https://github.com/CryptoPascal31/pact-util-lib
 
 (module util-strings GOV
   (defconst VERSION:string "0.1")

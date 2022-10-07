@@ -2,18 +2,21 @@
 
 ; This module provides random generation functions.
 ;
-; The random integers Xn are generated according to the following formula:;
-; Xn = HASH (Xn-1 + TxHash + HASH(block-time))
+; The random integers Xn are generated according to the following formula:
+; Xn = HASH(Xn-1 + TxHash + HASH(block-time))
 ; Xn is stored in database for the next iteration
 ;
-; The random string is derived from Xn with the following formula
-; S = HASH ( [Xn + 1] ) + HASH ( [Xn + 2] ) + HASH ( [Xn + 3] ) + ..........
+; The random string is derivated from Xn with the following formula
+; S = HASH( [Xn + 1] ) + HASH ( [Xn + 2] ) + HASH ( [Xn + 3] ) + ..........
 ;
 ; The result is hard (maybe impossible) to predict before mining since block-time includes microseconds.
 ;
 ; Several numbers can be generated in the same block or transaction. They will be all different, unpredictable and uncorrelated
 ;
 ; Be careful, the miner can control the generated numbers => Don't use for high stakes lottery or cryptography
+;
+; Feel free to reuse, comment, review, fork, propose PRs, submit bugs:
+; https://github.com/CryptoPascal31/pact-util-lib
 
 (module util-random GOV
   (defconst VERSION:string "0.1")
