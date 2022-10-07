@@ -161,8 +161,4 @@
     "Remove leadind and trailing characters"
     (right-strip to-remove (left-strip to-remove in))
   )
-
-
-
-
 )

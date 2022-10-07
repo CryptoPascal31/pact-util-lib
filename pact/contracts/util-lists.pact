@@ -127,15 +127,14 @@
     (+ (take idx in) (drop (+ 1 idx) in))
   )
 
-  (defun remove-item:list (in:list  item)
+  (defun remove-item:list (in:list item)
     "Remove an item from a list"
     (filter (!= item) in)
   )
 
-  (defun remove-item*:list (in:list  item)
+  (defun remove-item*:list (in:list item)
     "Remove and item from the list but raises an error if it does not exist"
     (enforce (contains item in) "The item is not present in the list")
     (remove-item in item)
   )
-
 )
