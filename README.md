@@ -2,7 +2,7 @@
 ## Introduction
 This library aims to provide some "high level" functions for writing Pact smart contracts.
 
-The library contains more than 70 functions split into 4 modules
+The library contains currently more than 70 convenience functions split into 4 modules
 
 ## Modules
 
