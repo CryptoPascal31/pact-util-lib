@@ -101,12 +101,12 @@
   )
 
   (defun replace-item:list (in:list old-item new-item)
-    "Replace each occurence of old-item by new-item"
+    "Replace each occurrence of old-item by new-item"
     (map (lambda (x) (if (= x old-item) new-item x)) in)
   )
 
   (defun replace-item*:list (in:list old-item new-item)
-    "Replace each occurence of old-item by new-item but raises an error if old-item does not exist"
+    "Replace each occurrence of old-item by new-item but raises an error if old-item does not exist"
     (enforce (contains old-item in) "The item is not present in the list")
     (replace-item in old-item new-item)
   )

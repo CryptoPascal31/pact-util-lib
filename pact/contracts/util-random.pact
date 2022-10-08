@@ -6,7 +6,7 @@
 ; Xn = HASH(Xn-1 + TxHash + HASH(block-time))
 ; Xn is stored in database for the next iteration
 ;
-; The random string is derivated from Xn with the following formula
+; The random string is derived from Xn with the following formula
 ; S = HASH( [Xn + 1] ) + HASH ( [Xn + 2] ) + HASH ( [Xn + 3] ) + ..........
 ;
 ; The result is hard (maybe impossible) to predict before mining since block-time includes microseconds.
@@ -40,7 +40,7 @@
   )
 
   (defun --random-hash:string ()
-    "Core private function which returns the 128 bits random number in base 64"
+    "Core private function which returns the 256 bits random number in base 64"
     (with-read state-table "" {"state":= old-state}
       (let* ((seed1 (tx-hash))
              (seed2 (hash (at 'block-time (chain-data))))
@@ -50,18 +50,18 @@
   )
 
   (defun random-int:integer ()
-    "Returns a 128 bit random integer"
+    "Returns a 256 bit random integer"
     (str-to-int 64 (--random-hash)))
 
   (defun random-int-range:integer (min_:integer max_:integer)
-    "Returns a 128 random integer in range [min - max]"
+    "Returns a random integer in range [min - max]"
     (enforce (and (>= min_ 0) (>= max_ 0)) "Min and Max must be positive")
     (enforce (> max_ min_) "Max must be > to min")
     (let ((remainder  (+ (- max_ min_) 1)))
       (+ (mod (random-int) remainder) min_))
   )
 
-  (defun random-string (len:integer)
+  (defun random-string:string (len:integer)
     "Returns a random string whose length is given by the argument"
     (let* ((cnt (+ (/ len 43) 1))
            (rnd (random-int))

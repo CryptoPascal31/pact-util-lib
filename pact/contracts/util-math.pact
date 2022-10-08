@@ -122,7 +122,7 @@
     (= 1 (mod x 2)))
 
   (defun med:decimal (x:[decimal])
-    "Returns the mediane of a list: if the length of the list is even return the (n/2 -1)th element"
+    "Returns the median of a list: if the length of the list is even return the (n/2 -1)th element"
     (enforce-not-empty x)
     (let* ((cnt (length x))
            (mid (/ cnt 2))
@@ -131,7 +131,7 @@
   )
 
   (defun med*:decimal (x:[decimal])
-    "Returns the mediane of a list: if the length of the list is even return the average of the\
+    "Returns the median of a list: if the length of the list is even return the average of the\
     \(n/2 -1)th and (n/2)th elements"
     (enforce-not-empty x)
     (let* ((cnt (length x))

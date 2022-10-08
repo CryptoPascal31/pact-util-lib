@@ -52,19 +52,19 @@
   )
 
   (defun is-digit:bool (in:string)
-    "Returns true si all characters are digits 0 to 9"
+    "Returns true if all characters are digits [0-9]"
     (fold (and) true (map (and? (<= 48) (>= 57)) (decode-ascii in)))
   )
 
   (defun is-alpha:bool (in:string)
-    "Returns true si all characters are digits [A-Z a-z]"
+    "Returns true if all characters are in alphas [A-Z a-z]"
     (fold (and) true (map (or? (and? (<= 65) (>= 90))
                                (and? (<= 97) (>= 122)))
                           (decode-ascii in)))
   )
 
   (defun is-hex-digit:bool (in:string)
-    "Returns true si all characters are digits are hexa [A-F a-F 0-9]"
+    "Returns true if all characters are hexa [A-F a-F 0-9]"
     (fold (and) true (map (or? (and? (<= 48) (>= 57))
                                (or? (and? (<= 65) (>= 70))
                                     (and? (<= 97) (>= 102))))
@@ -72,7 +72,7 @@
   )
 
   (defun replace-char:string (in:string old-char:string new-char:string)
-    "Replace all occurences of old-char to new-char"
+    "Replace all occurrences of old-char to new-char"
     (concat (replace-item (str-to-list in) old-char new-char))
   )
 
@@ -109,7 +109,7 @@
   )
 
   (defun split:[string] (separator:string in:string)
-    "Split a string using a sepator. Retun a list of substrings. Separator can only be a single char"
+    "Split a string using a separator. Returns a list of substrings. Separator can only be a single char"
     (if (= 0 (length in))
         [] ;If the string is empty return a zero length list
         (let ((process-char (lambda (current-list char)
@@ -155,13 +155,13 @@
   )
 
   (defun right-strip:string (to-remove:string in:string)
-    "Remove any leading characters"
+    "Remove any trailing characters"
     (let ((cnt (--count-to-strip to-remove (reverse (str-to-list in)))))
       (drop (- cnt) in))
   )
 
   (defun strip:string (to-remove:string in:string)
-    "Remove leadind and trailing characters"
+    "Remove both leading and trailing characters"
     (right-strip to-remove (left-strip to-remove in))
   )
 )
