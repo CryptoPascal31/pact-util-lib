@@ -156,10 +156,31 @@
             -1.0)))
 
   (defun pow10:decimal (x:integer)
-    "Returns 10^x, rounded to 12 decimals, especially when x is negative"
+    "Returns 10^x, rounded to 12 decimals (rounding is important when x is negative)"
     (round (^ 10.0 x) 12))
 
   (defun xEy (x:decimal y:integer)
     "Returns x.10^y, rounded to 12 decimals"
     (round (* x (pow10 y)) 12))
+
+  ;;; Log functions
+  (defun log10:decimal (x)
+    "Returns the log of x base 10, rounded to 12 decimals"
+    ; x can be decimal or an integer but the returned result is always a decimal
+    (round (* 1.0 (log 10 x)) 12))
+
+  (defun safe-log (x y default)
+    "Log of Y base X, but returns default when y <= 0"
+    (if (> (* 1.0 y) 0.0 ) (log x y) default))
+
+  (defun safe-ln (x:decimal default:decimal)
+    "Natural log of x, but returns default when x <= 0"
+    (if (> x 0.0 ) (ln x) default))
+
+  (defun safe-log10:decimal (x default:decimal)
+    "Returns the log of x base 10, rounded to 12 decimals but returns default when y <= 0"
+    ; x can be decimal or an integer but the returned result is always a decimal
+    ; btw default has to be a decimal
+    (if (> (* 1.0 x) 0.0 ) (log10 x) default))
+
 )

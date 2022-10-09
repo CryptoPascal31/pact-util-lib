@@ -63,7 +63,7 @@ Deployed as ```free.util-math```
 
 Contains some math utilities. This module depends on util-lists.
 
-This module only handles ```decimal``` type. ```integer``` are not supported.
+Most functions of this module only handle ```decimal``` type. ```integer```s are not supported.
 
 **Functions:**
 * ```(defconst PI:decimal``` : Pi
@@ -96,6 +96,11 @@ This module only handles ```decimal``` type. ```integer``` are not supported.
 * ```(defun sign:decimal (x:decimal)``` : Returns 1.0 if *x* is positive, 0.0 if *x* is null, and -1.0 if *x* is negative
 * ```(defun pow10:decimal (x:integer)``` : Returns 10^*x*, rounded to 12 decimals
 * ```(defun xEy (x:decimal y:integer)``` : Returns x.10^*y*, rounded to 12 decimals
+* ```(defun log10:decimal (x)``` : Returns the log of x base 10, rounded to 12 decimals
+* ```(defun safe-log (x y default)``` : Log of Y base X, but returns default when y <= 0
+* ```(defun safe-ln (x:decimal default:decimal)``` : Natural log of x, but returns default when x <= 0
+* ```(defun safe-log10:decimal (x default:decimal)``` : Returns the log of x base 10, rounded to 12 decimals but returns default when y <= 0
+
 
 ### util-random.pact
 Deployed as ```free.util-random```

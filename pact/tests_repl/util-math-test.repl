@@ -137,5 +137,41 @@
 (expect "(xEy 2.5 -3) => 0.0025)" 0.0025 (xEy 2.5 -3))
 (expect "(xEy 2.5 -12) => 0.000000000002)" 0.000000000002 (xEy 2.5 -12))
 
+;; (log10 ...)
+(expect "(log10 1.0) => 0.0" 0.0 (log10 1.0))
+(expect "(log10 10000.0) => 4.0" 4.0 (log10 10000.0))
+(expect "(log10 0.01) => -2.0" -2.0 (log10 0.01))
+(expect "(log10 0.00000001) => -8.0" -8.0 (log10 0.00000001))
+(expect-failure "Negative log should fail" (log10 -3.0))
+(expect "(log10 1) => 0.0" 0.0 (log10 1)) ;Should work with integers too
+(expect "(log10 100) => 2.0" 2.0 (log10 100)) ;Should work with integers too
+
+;; (safe-log ....)
+(expect "(safe-log 2 1.0 0.0) => 0.0" 0.0 (safe-log 2 1.0 0.0))
+(expect "(safe-log 2 8.0 0.0) => 3.0" 3.0 (safe-log 2 8.0 0.0))
+(expect "(safe-log 2 0.0 0.0) => 0.0" 0.0 (safe-log 2 0.0 0.0))
+(expect "(safe-log 2 -2.0 0.0) => 0.0" 0.0 (safe-log 2 -2.0 0.0))
+(expect "(safe-log 2 8 0) => 3" 3 (safe-log 2 8 0)) ;Should work with integers too
+(expect "(safe-log 2 -2 0.0) => 0.0" 0.0 (safe-log 2 -2 0.0))
+(expect "(safe-log 2 -2 3.0) => 3.0" 3.0 (safe-log 2 -2 3.0))
+
+;; (safe-ln ....)
+(expect "(safe-ln  1.0 0.0) => 0.0" 0.0 (safe-ln 1.0 0.0))
+(expect-that "(safe-ln E 0.0) => 1.0" (between 0.99 1.01) (safe-ln E 0.0))
+(expect "(safe-ln  0.0 0.0) => 0.0" 0.0 (safe-ln 0.0 0.0))
+(expect "(safe-ln  -2.0 0.0) => 0.0" 0.0 (safe-ln -2.0 0.0))
+(expect "(safe-ln  -2.0 3.0) => 3.0" 3.0 (safe-ln -2.0 3.0))
+
+;; (safe-log10 ...)
+(expect "(safe-log10 1.0 0.0) => 0.0" 0.0 (safe-log10 1.0 0.0))
+(expect "(safe-log10 10000.0 0.0) => 4.0" 4.0 (safe-log10 10000.0 0.0))
+(expect "(safe-log10 0.01 0.0) => -2.0" -2.0 (safe-log10 0.01 0.0))
+(expect "(safe-log10 0.00000001 0.0) => -8.0" -8.0 (safe-log10 0.00000001 0.0))
+(expect "(safe-log10 1 0.0) => 0.0" 0.0 (safe-log10 1 0.0)) ;Should work with integers too
+(expect "(safe-log10 100 0.0) => 2.0" 2.0 (safe-log10 100 0.0)) ;Should work with integers too
+(expect "(safe-log10 -2.0 0.0) => 0.0" 0.0 (safe-log10 -2.0 0.0))
+(expect "(safe-log10 -2.0 3.0) => 3.0" 3.0 (safe-log10 -2.0 3.0))
+
+
 (print "Tests of util-math ended")
 (commit-tx)
