@@ -12,8 +12,6 @@ Deployed as ```free.util-lists```
 Contains functions to handle Pact lists.
 
 **Functions:**
-* ```(defun enforce-not-empty:bool (x:list)``` : Verify and enforces that a list is not empty
-* ```(defun enforce-list-bounds:bool (x:list idx:integer)```: Verify and enforces that *idx* is in list bounds
 * ```(defun enforce-not-empty:bool (x:list)``` : Verify and enforce that a list is not empty
 * ```(defun enforce-list-bounds:bool (x:list idx:integer)``` : Verify and enforce that *idx* is in list bounds
 * ```(defun chain:list (in:list)``` : Chain list of lists
