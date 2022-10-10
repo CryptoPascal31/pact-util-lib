@@ -1,0 +1,17 @@
+;SPDX-License-Identifier: MIT
+
+(begin-tx)
+(load "contracts/util-lists.pact")
+(load "contracts/util-strings.pact")
+(load "contracts/util-math.pact")
+(load "contracts/util-random.pact")
+(commit-tx)
+
+(let* ((get-hash (lambda (x) (at 'hash (describe-module x))))
+       (format-hash (lambda (x) (format "{}: {}" [x, (get-hash x)])))
+       (mod-list ["util-lists",
+                  "util-strings",
+                  "util-math",
+                  "util-random"]))
+  (print (util-strings.join "\n" (map (format-hash) mod-list)))
+)
