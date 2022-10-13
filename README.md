@@ -39,8 +39,11 @@ Deployed as ```free.util-strings```
 Contains functions to handle Pact strings. This module depends on util-lists.
 
 **Functions:**
+* ```(defun to-string:string (x)```: Convert any pact type (object, list, decimal, ...) to its string representation
 * ```(defun decode-ascii:[integer] (in:string)``` : Convert a string to an ASCII codes list: All characters must be printable
+* ```(defun str-to-ascii-int:integer (in:string)```: Convert a string to its integer ASCII representation
 * ```(defun encode-ascii:string (in-list:[integer])``` : Convert an ASCII code list to a string: All characters must be printable
+* ```(defun ascii-int-to-str:string (in:integer)```: Convert an integer ASCII representation to a string
 * ```(defun is-digit:bool (in:string)``` : Returns true if all characters are digits [0-9]
 * ```(defun is-alpha:bool (in:string)``` : Returns true if all characters are in alphas [A-Z a-z]
 * ```(defun is-hex-digit:bool (in:string)``` : Returns true if all characters are hexa [A-F a-F 0-9]

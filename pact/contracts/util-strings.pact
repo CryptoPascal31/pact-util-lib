@@ -37,11 +37,21 @@
                                    (+ (str-to-list " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~")
                                       (make-list 128 ""))))
 
-;
+  (defun to-string:string (x)
+    "Convert any pact type (object, list, decimal, ...) to its string representation"
+    (format "{}" [x])
+  )
+
   (defun decode-ascii:[integer] (in:string)
     "Convert a string to an ASCII codes list: All characters must be printable"
     (map (lambda (x) (at x ASCII-TABLE))
          (str-to-list in))
+  )
+
+  (defun str-to-ascii-int:integer (in:string)
+    "Convert a string to its integer ASCII representation"
+    (let ((shift-add (lambda (x y) (+ (shift x 8) y))))
+      (fold (shift-add) 0 (decode-ascii in)))
   )
 
   (defun encode-ascii:string (in-list:[integer])
@@ -49,6 +59,16 @@
     (concat
       (map (lambda (x) (at x ASCII-TABLE-REVERSE))
            in-list))
+  )
+
+  (defun ascii-int-to-str:string (in:integer)
+    "Convert an integer ASCII representation to a string"
+    (enforce (>= in 0) "Negative integers not allowed")
+    (if (!= in 0)
+        (let ((len (ceiling (log 256.0 in)))
+              (extract-char-value (lambda (idx) (mod (shift in (* -8 idx)) 256))))
+          (encode-ascii (map (extract-char-value) (enumerate (- len 1) 0))))
+        "")
   )
 
   (defun is-digit:bool (in:string)

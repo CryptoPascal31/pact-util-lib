@@ -10,12 +10,25 @@
 (print (format "Testing util-strings: Version:{}\n \
                 \                     Hash:{}" [VERSION, (at 'hash (describe-module 'util-strings)) ]))
 
+;to-string
+(expect "Str -> Str" "Hello" (to-string "Hello"))
+(expect "Integer -> Str" "38" (to-string 38))
+(expect "Decimal -> Str" "22.34" (to-string 22.34))
+(expect "List of integer -> Str" "[1 2 3 4]" (to-string [1,2,3,4]))
+(expect "Object -> Str" "{\"a\": 3,\"b\": \"Abcd\",\"c\": 42.001}" (to-string {'a:3, 'b:"Abcd", 'c:42.001}))
+
+
 ; decode-ascii
 (expect-that "Hello world decoding" (= [72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100])
                                     (decode-ascii "Hello world"))
 
 (expect-that "Special characters decoding" (= [34, 39, 36, 93])
                                            (decode-ascii "\"\'$]"))
+
+; str-to-ascii-int
+(expect "Empty string must be 0" 0 (str-to-ascii-int ""))
+(expect "99 must be 0x3939" 14649 (str-to-ascii-int "99"))
+(expect "Hello Kadena must be 0x48656c6c6f204b6164656e61" 22405534230753915396277235297 (str-to-ascii-int "Hello Kadena"))
 
 ;encode-ascii
 (expect-that "Hello world encoding" (= "Hello world")
@@ -27,6 +40,12 @@
 (expect-that "Unprintable and non ascii chars shoud be removed" (= "Hello world")
                                                                 (encode-ascii [1, 2, 72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100,3, 254]))
 
+
+;ascii-int-to-str
+(expect-failure "Negative integers not allowed" "Negative integers not allowed" (ascii-int-to-str -1))
+(expect "0 must be empty string" "" (ascii-int-to-str 0))
+(expect "0x3939 must be 99 " "99" (ascii-int-to-str 14649))
+(expect "0x48656c6c6f204b6164656e61 must be Hello Kadena" "Hello Kadena" (ascii-int-to-str 22405534230753915396277235297))
 
 ; Upper
 (expect-that "Hello world to upper" (= "HELLO, WORLD!") (upper "Hello, World!"))
