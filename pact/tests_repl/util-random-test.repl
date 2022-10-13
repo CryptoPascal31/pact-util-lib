@@ -12,8 +12,8 @@
 (begin-tx)
 (use util-random)
 (use util-lists [count])
-(use util-strings [join is-hex-digit string-at])
-(use util-math [sum])
+(use util-strings [to-string join is-hex-digit string-at])
+(use util-math [sum between])
 
 ;Check that the the generator cannot be reinitialized
 (expect-failure "Generator can be initialized onmy one time" "already initialized" (reset-state))
@@ -41,7 +41,26 @@
        (x-count (map (count random-lst) (enumerate 0 19)))
        (x-ratio (map (lambda (x) (/ (* x 1.0) random-total-count)) x-count)))
   (expect "All drawn numbers must be in range 0 19" 1.0 (sum x-ratio))
-  (map (lambda (x) (expect-that "Bucket % must be close to 0.05" (and? (<= 0.03) (>= 0.07)) x)) x-ratio)
+  (map (lambda (x) (expect-that "Bucket % must be close to 0.05" (between 0.03 0.07) x)) x-ratio)
+)
+
+;random-decimal-range
+(print "Twenty examples of random decimal range -10.0 - 10.0 :")
+(print (join " / " (map (lambda (x) (to-string (random-decimal-range -10.0 10.0))) (enumerate 0 19) )))
+(print "")
+
+(let* ((random-total-count 1000)
+       (random-lst (map (lambda (x) (random-decimal-range -10.0 10.0)) (enumerate 1 random-total-count)))
+       (count-between (lambda (x y)  (/ (* 1.0 (length (filter (between 0.0 1.0) random-lst))) random-total-count))))
+  ; Check some properties
+   (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+   (expect "Nothing below -10.0" 0 (length (filter (> -10.0) random-lst)))
+   (expect "Nothing above 10.0" 0 (length (filter (< 10.0) random-lst)))
+
+   ; Check some buckets
+   (expect-that "5% between 0.0 and 1.0" (between 0.03 0.07) (count-between 0.0 1.0))
+   (expect-that "5% between -1.0 and 0.0" (between 0.03 0.07) (count-between -1.0 0.0))
+   (expect-that "5% between -10.0 and -9.0" (between 0.03 0.07) (count-between -10.0 -9.0))
 )
 
 

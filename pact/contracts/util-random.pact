@@ -24,6 +24,7 @@
     (enforce-keyset "free.util-lib"))
 
   (use util-strings [join])
+  (use util-math [pow10])
 
   (defschema state-schema
     state:string)
@@ -59,6 +60,14 @@
     (enforce (> max_ min_) "Max must be > to min")
     (let ((remainder  (+ (- max_ min_) 1)))
       (+ (mod (random-int) remainder) min_))
+  )
+
+  (defun random-decimal-range:decimal (min_:decimal max_:decimal)
+    "Returns a random decimal in range [min - max] with a precision of 12"
+    (enforce (> max_ min_) "Max must be > to min")
+    (let* ((to-int (lambda (x) (floor (* x (pow10 12)))))
+           (to-decimal (lambda (x) (floor (* x (pow10 -12)) 12))))
+      (+ min_ (to-decimal (random-int-range 0 (to-int (- max_ min_))))))
   )
 
   (defun random-string:string (len:integer)

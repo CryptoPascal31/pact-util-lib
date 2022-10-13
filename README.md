@@ -120,6 +120,7 @@ The module is mainly intended to be used for non critical applications or random
 **Functions:**
 * ```(defun random-int:integer ()``` : Returns a 256 bit random integer
 * ```(defun random-int-range:integer (min_:integer max_:integer)``` : Returns a random integer in range [min - max]
+* ```(defun random-decimal-range:decimal (min_:decimal max_:decimal)```: Returns a random (uniform distribution) decimal in range [min - max]
 * ```(defun random-string (len:integer)``` : Returns a random string whose length is given by the argument
 * ```(defun gen-uuid-rfc-4122-v4:string ()``` : Generate an UUID (Universal Unique ID) according to RFC 4122 v4
 
