@@ -59,7 +59,7 @@
         [])
   )
 
-  (defun count:[integer] (in:list item)
+  (defun count:integer (in:list item)
     "Returns the number of occurences of an item"
     (length (filter (= item) in))
   )
