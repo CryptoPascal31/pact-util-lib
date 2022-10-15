@@ -66,7 +66,7 @@
 
   ;; Insertion functions
   (defun insert-first:list (in:list item)
-    "Append an item at the left of the list"
+    "Insert an item at the left of the list"
     (+ [item] in))
 
   (defun append-last:list (in:list item)

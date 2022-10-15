@@ -23,7 +23,7 @@ Contains functions to handle Pact lists.
 * ```(defun last (in:list)``` : Returns the last item of the list
 * ```(defun search:[integer] (in:list item)``` : Search an item into the list and returns a list of index
 * ```(defun count:integer (in:list item)``` : Returns the number of occurrences of an item
-* ```(defun insert-first:list (in:list item)``` : Append an item at the left of the list
+* ```(defun insert-first:list (in:list item)``` : Insert an item at the left of the list
 * ```(defun append-last:list (in:list item)``` : Append an item at the end of the list
 * ```(defun insert-at:list (in:list idx:integer item)``` : Insert an item at position *idx*
 * ```(defun replace-first:list (in:list item)``` : Replace the first item of the list
