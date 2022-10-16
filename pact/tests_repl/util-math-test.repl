@@ -145,6 +145,7 @@
 (expect-failure "Negative log should fail" (log10 -3.0))
 (expect "(log10 1) => 0.0" 0.0 (log10 1)) ;Should work with integers too
 (expect "(log10 100) => 2.0" 2.0 (log10 100)) ;Should work with integers too
+(expect-that "(log10 20 0.0) => 1.3xxxx" (between 1.3 1.4) (log10 20)) ;Should work with integers too
 
 ;; (safe-log ....)
 (expect "(safe-log 2 1.0 0.0) => 0.0" 0.0 (safe-log 2 1.0 0.0))
@@ -169,6 +170,7 @@
 (expect "(safe-log10 0.00000001 0.0) => -8.0" -8.0 (safe-log10 0.00000001 0.0))
 (expect "(safe-log10 1 0.0) => 0.0" 0.0 (safe-log10 1 0.0)) ;Should work with integers too
 (expect "(safe-log10 100 0.0) => 2.0" 2.0 (safe-log10 100 0.0)) ;Should work with integers too
+(expect-that "(safe-log10 20 0.0) => 1.3xxxx" (between 1.3 1.4) (safe-log10 20 0.0)) ;Should work with integers too
 (expect "(safe-log10 -2.0 0.0) => 0.0" 0.0 (safe-log10 -2.0 0.0))
 (expect "(safe-log10 -2.0 3.0) => 3.0" 3.0 (safe-log10 -2.0 3.0))
 

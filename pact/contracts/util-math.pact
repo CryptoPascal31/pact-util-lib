@@ -167,7 +167,7 @@
   (defun log10:decimal (x)
     "Returns the log of x base 10, rounded to 12 decimals"
     ; x can be decimal or an integer but the returned result is always a decimal
-    (round (* 1.0 (log 10 x)) 12))
+    (round (log 10 (* 1.0 x)) 12))
 
   (defun safe-log (x y default)
     "Log of Y base X, but returns default when y <= 0"
