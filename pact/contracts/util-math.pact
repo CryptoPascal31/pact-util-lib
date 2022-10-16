@@ -178,7 +178,7 @@
     (if (> x 0.0 ) (ln x) default))
 
   (defun safe-log10:decimal (x default:decimal)
-    "Returns the log of x base 10, rounded to 12 decimals but returns default when y <= 0"
+    "Returns the log of x base 10, rounded to 12 decimals but returns default when x <= 0"
     ; x can be decimal or an integer but the returned result is always a decimal
     ; btw default has to be a decimal
     (if (> (* 1.0 x) 0.0 ) (log10 x) default))
