@@ -1,5 +1,5 @@
-Random functions
-==================
+Random generation (PRBS) functions
+=================================
 **Contract:**
   * free.util-random
 
