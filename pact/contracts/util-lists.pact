@@ -11,7 +11,10 @@
 ; https://github.com/CryptoPascal31/pact-util-lib
 
 (module util-lists GOV
-  "Module containing string utilities"
+  "This module provides some lists management utilities \
+   \ Documentation: https://pact-util-lib.readthedocs.io \
+   \ Github: https://github.com/CryptoPascal31/pact-util-lib "
+
   (defconst VERSION:string "0.1")
 
   (defcap GOV()

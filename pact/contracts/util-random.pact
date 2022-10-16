@@ -19,6 +19,9 @@
 ; https://github.com/CryptoPascal31/pact-util-lib
 
 (module util-random GOV
+  "This module provides pseudo-random numbers/string generation \
+   \ Documentation: https://pact-util-lib.readthedocs.io \
+   \ Github: https://github.com/CryptoPascal31/pact-util-lib "
   (defconst VERSION:string "0.1")
   (defcap GOV()
     (enforce-keyset "free.util-lib"))

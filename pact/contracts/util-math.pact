@@ -10,7 +10,10 @@
 ; https://github.com/CryptoPascal31/pact-util-lib
 
 (module util-math GOV
-  "Module containing math utilities"
+  "Module containing math utilities \
+   \ Documentation: https://pact-util-lib.readthedocs.io \
+   \ Github: https://github.com/CryptoPascal31/pact-util-lib "
+   
   (defconst VERSION:string "0.1")
 
   (defcap GOV()
