@@ -40,6 +40,32 @@ Return the character at position *idx*
   pact> (char-at 2 "Pact is Great !")
   "c"
 
+Conversion functions
+--------------------
+
+decimal-to-str
+~~~~~~~~~~~~~~
+*x* ``decimal`` *precision* ``integer`` *→* ``string``
+
+Convert a decimal to string with a fixed precision.
+
+.. code:: lisp
+
+  pact> (decimal-to-str 3.14 2)
+  "3.14"
+  pact> (decimal-to-str 3.14 12)
+  "3.140000000000"
+
+str-to-decimal
+~~~~~~~~~~~~~~
+*x* ``string`` *→* ``decimal``
+
+Convert a string to a decimal.
+
+.. code:: lisp
+
+  pact> (str-to-decimal "3.1415")
+  3.1415
 
 
 ASCII functions

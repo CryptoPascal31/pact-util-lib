@@ -61,6 +61,9 @@ Contains functions to handle Pact strings. This module depends on util-lists.
 * ```(defun left-strip:string (to-remove:string in:string)``` : Remove any leading characters
 * ```(defun right-strip:string (to-remove:string in:string)``` : Remove any trailing characters
 * ```(defun strip:string (to-remove:string in:string)``` : Remove both leading and trailing characters
+* ```(defun decimal-to-str (x:decimal precision:integer)```: Convert a decimal to string with a fixed precision
+* ```(defun str-to-decimal:decimal (in:string)```: Convert a string to a decimal
+
 
 ### util-math.pact
 Deployed as ```free.util-math```

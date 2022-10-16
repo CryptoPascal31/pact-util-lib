@@ -1,5 +1,4 @@
 ;SPDX-License-Identifier: MIT
-
 (begin-tx)
 (load "../contracts/util-lists.pact")
 (load "../contracts/util-strings.pact")
@@ -149,6 +148,23 @@
 (expect-that "Strip Hello world with leading and trailing spaces should remove them" (= "Hello world") (strip " " "    Hello world "))
 (expect-that "Strip and empty string" (= "") (strip " " ""))
 (expect-that "Strip and empty string with whitespaces" (= "") (strip " " "                   "))
+
+; deciimal-to-str
+(expect "Convert 3.14" "3.14" (decimal-to-str 3.14 2))
+(expect "Convert 3.14" "3.140000000000" (decimal-to-str 3.14 12))
+(expect "Convert 3.14" "3.1" (decimal-to-str 3.14 1))
+(expect "Convert 3.14" "-3.1" (decimal-to-str -3.14 1))
+(expect "Convert 0.0" "0.0" (decimal-to-str 0.0000 1))
+
+
+; str-to-decimal
+(expect "Convert 3.14" 3.14 (str-to-decimal "3.14"))
+(expect "Convert 0.14186" 0.14186 (str-to-decimal "0.14186"))
+(expect "Convert 100.0" 100.0 (str-to-decimal "100.0"))
+(expect "Convert 100" 100.0 (str-to-decimal "100"))
+(expect "Convert 0" 0.0 (str-to-decimal "0"))
+(expect "Convert -3.14" -3.14 (str-to-decimal "-3.14"))
+
 
 (print "Tests of util-strings ended")
 (commit-tx)

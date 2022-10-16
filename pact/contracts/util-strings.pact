@@ -184,4 +184,25 @@
     "Remove both leading and trailing characters"
     (right-strip to-remove (left-strip to-remove in))
   )
+
+  (defun decimal-to-str (x:decimal precision:integer)
+    "Convert a decimal to string with a fixed precision"
+    (to-string (round x precision))
+  )
+
+  (defun str-to-decimal:decimal (in:string)
+    "Convert a string to a decimal"
+    (let* ((is-negative (= "-" (take 1 in)))
+           (in (if is-negative (drop 1 in) in))
+           (parts (split "." in)))
+      (enforce (or? (= 1) (= 2) (length parts)) "Invalid format")
+      (let* ((int-part (at 0 parts))
+             (has-decimal (= 2 (length parts)))
+             (dec-part (if has-decimal (at 1 parts) "0"))
+             (precision (if has-decimal (length dec-part) 0))
+             (int-val (* 1.0 (str-to-int 10 int-part)))
+             (dec-val (* (^ 0.1 precision) (str-to-int 10 dec-part)))
+             (val (+ int-val dec-val)))
+        (round (if is-negative (- val) val) precision)))
+  )
 )
