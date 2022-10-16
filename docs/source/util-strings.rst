@@ -29,7 +29,7 @@ Convert any pact type (object, list, decimal, ...) to its string representation
   pact> (to-string {"a":1, "b":2, "c":3})
   "{"a": 1,"b": 2,"c": 3}"
 
-string-at
+char-at
 ~~~~~~~~~
 *idx* ``integer``  *in* ``string`` *→* ``string``
 
@@ -37,7 +37,7 @@ Return the character at position *idx*
 
 .. code:: lisp
 
-  pact> (string-at 2 "Pact is Great !")
+  pact> (char-at 2 "Pact is Great !")
   "c"
 
 

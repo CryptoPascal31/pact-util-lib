@@ -53,7 +53,7 @@ Contains functions to handle Pact strings. This module depends on util-lists.
 * ```(defun replace-char:string (in:string old-char:string new-char:string)``` : Replace all occurrences of old-char to new-char
 * ```(defun upper:string (in:string)``` : Transform a string to upper case
 * ```(defun lower:string (in:string)``` : Transform a string to lower case
-* ```(defun string-at:string (idx:integer in:string)``` : Returns the character at position *idx*
+* ```(defun char-at:string (idx:integer in:string)``` : Returns the character at position *idx*
 * ```(defun join:string (separator:string in:[string])``` : Join a list of string with a separator
 * ```(defun split:[string] (separator:string in:string)``` : Split a string using a separator. Returns a list of substrings. *separator* can only be a single char
 * ```(defun starts-with:bool (in:string to-match:string)``` : Returns true if the string starts with the string *to-match*

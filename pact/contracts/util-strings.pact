@@ -43,7 +43,7 @@
   )
 
   (defun decode-ascii:[integer] (in:string)
-    "Convert a string to an ASCII codes list: All characters must be printable"
+    "Convert a string to an A SCII codes list: All characters must be printable"
     (map (lambda (x) (at x ASCII-TABLE))
          (str-to-list in))
   )
@@ -114,7 +114,7 @@
       (encode-ascii (map (do-lower) (decode-ascii in))))
   )
 
-  (defun string-at:string (idx:integer in:string)
+  (defun char-at:string (idx:integer in:string)
     "Returns the character at position idx"
     (at idx (str-to-list in))
   )

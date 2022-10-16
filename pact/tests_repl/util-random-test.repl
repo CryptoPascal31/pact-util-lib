@@ -12,7 +12,7 @@
 (begin-tx)
 (use util-random)
 (use util-lists [count])
-(use util-strings [to-string join is-hex-digit string-at])
+(use util-strings [to-string join is-hex-digit char-at])
 (use util-math [sum between])
 
 ;Check that the the generator cannot be reinitialized
@@ -87,10 +87,10 @@
 
 (let ((uuid (gen-uuid-rfc-4122-v4)))
   (expect "UUID Length must me 36" 36 (length uuid))
-  (expect "Position 8 must be -" "-" (string-at 8 uuid))
-  (expect "Position 13 must be -" "-" (string-at 13 uuid))
-  (expect "Position 18 must be -" "-" (string-at 18 uuid))
-  (expect "Position 23 must be -" "-" (string-at 23 uuid))
+  (expect "Position 8 must be -" "-" (char-at 8 uuid))
+  (expect "Position 13 must be -" "-" (char-at 13 uuid))
+  (expect "Position 18 must be -" "-" (char-at 18 uuid))
+  (expect "Position 23 must be -" "-" (char-at 23 uuid))
 
   (expect "First part must be an hex" true (is-hex-digit (take 8 uuid)))
   (expect "Second part must be an hex" true (is-hex-digit (take 4 (drop 9 uuid))))

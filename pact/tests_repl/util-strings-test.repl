@@ -86,15 +86,15 @@
 (expect-that "Replace B->X in baobab should result in baoab (no replacement)" (= "baobab")
                                                                               (replace-char "baobab" "B" "X"))
 
-; string-at
+; char-at
 (expect-that "String at 0 of baobab is b" (= "b")
-                                          (string-at 0 "baobab"))
+                                          (char-at 0 "baobab"))
 
 (expect-that "String at 2 of baobab is o" (= "o")
-                                          (string-at 2 "baobab"))
+                                          (char-at 2 "baobab"))
 
 (expect-that "String at 5 of baobab is b" (= "b")
-                                          (string-at 5 "baobab"))
+                                          (char-at 5 "baobab"))
 
 
 ; join
