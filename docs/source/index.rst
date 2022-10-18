@@ -19,6 +19,7 @@ https://github.com/CryptoPascal31/pact-util-lib/
    :maxdepth: 2
    :caption: Contents:
 
+   how-to-use.rst
    util-lists.rst
    util-strings.rst
    util-math.rst
