@@ -95,6 +95,13 @@
                           (decode-ascii in)))
   )
 
+  (defun contains-chars:bool (values:string in:string)
+    "Returns true if in contains one of the characters in values"
+    (let ((values-lists (str-to-list values))
+          (contains-char (lambda (x) (contains x in))))
+      (fold (or) false (map (contains-char) values-lists)))
+  )
+
   (defun replace-char:string (in:string old-char:string new-char:string)
     "Replace all occurrences of old-char to new-char"
     (concat (replace-item (str-to-list in) old-char new-char))

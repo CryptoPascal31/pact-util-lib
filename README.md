@@ -50,6 +50,7 @@ Contains functions to handle Pact strings. This module depends on util-lists.
 * ```(defun is-digit:bool (in:string)``` : Returns true if all characters are digits [0-9]
 * ```(defun is-alpha:bool (in:string)``` : Returns true if all characters are in alphas [A-Z a-z]
 * ```(defun is-hex-digit:bool (in:string)``` : Returns true if all characters are hexa [A-F a-F 0-9]
+* ```(defun contains-chars:bool (values:string in:string)``` Returns true if in contains one of the characters in values
 * ```(defun replace-char:string (in:string old-char:string new-char:string)``` : Replace all occurrences of old-char to new-char
 * ```(defun upper:string (in:string)``` : Transform a string to upper case
 * ```(defun lower:string (in:string)``` : Transform a string to lower case

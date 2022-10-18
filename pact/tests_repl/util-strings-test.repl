@@ -74,6 +74,15 @@
 (expect "30G is not hex" false (is-hex-digit "30G"))
 (expect "30F, is not hex" false (is-hex-digit "30F,"))
 
+;;contains-chars
+(expect "`Pact contains a" true (contains-chars "a" "Pact"))
+(expect "`Pact contains tX" true (contains-chars "tX" "Pact"))
+(expect "`Pact does not contain p or A" false (contains-chars "pA" "Pact"))
+(expect "`Pact contains a|b" true (contains-chars "ab" "Pact"))
+(expect "`Pact contains a|c" true (contains-chars "ac" "Pact"))
+(expect "`Pact does not contains xy" false (contains-chars "xy" "Pact"))
+(expect "`Pact does not contains $" false (contains-chars "$" "Pact"))
+(expect "`Pact does not contains [empty]" false (contains-chars "" "Pact"))
 
 ;replace-chars
 (expect-that "Replace b->X in baobab should result in XaoXaX" (= "XaoXaX")

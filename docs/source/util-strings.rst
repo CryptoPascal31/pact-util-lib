@@ -196,6 +196,32 @@ Return true if the string ends with the string to-match
   pact> (ends-with "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9" "0471")
   false
 
+contains-chars
+~~~~~~~~~~~~~~
+*values* ``string`` *in* ``string`` *→* ``bool``
+
+Return true if in contains one of the characters in values. Can be useful to check that an account name, or a string
+does not contain forbidden values.
+
+This function can be seen as an ORed extension of the native ``(contains)``.
+
+.. code:: lisp
+
+  pact> (contains-chars "lp" "Hello World")
+  true
+
+  pact> (contains-chars "xp" "Hello World")
+  false
+
+  pact> (let ((FORBIDDEN_CHARS "$![]"))
+  ....>   (enforce (not (contains-chars FORBIDDEN_CHARS "Hello")) "Forbidden chars"))
+  true
+
+  pact> (let ((FORBIDDEN_CHARS "$![]"))
+  ....>   (enforce (not (contains-chars FORBIDDEN_CHARS "Hello!")) "Forbidden chars"))
+  <interactive>:2:2: Forbidden chars
+
+
 
 Characters replacement functions
 --------------------------------
