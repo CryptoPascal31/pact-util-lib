@@ -7,7 +7,7 @@ The library contains currently more than 70 convenience functions split into 4 m
 
 After using and experimenting Pact since several months, I found out that:
  * Some functions were missing: (eg ``(str-to-decimal)``, ...)
- * Some high level functions where needed to makes devellopment easier (eg ``(insert-at)``, instead of using ``(take)``, ``(drop)`` )
+ * Some high level functions were needed to makes development easier (eg ``(insert-at)``, instead of using ``(take)``, ``(drop)`` )
  * Some processing often used in smart-contracts were a little though to do in Pact, and some new users were disappointed. (eg ``(amin)``)
  * There was no simple way to generate Pseudo-Random strings and numbers in Pact.
 
