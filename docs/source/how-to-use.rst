@@ -32,7 +32,7 @@ If you want to use the random module, it musu be initialized just after loading:
   (create-table state-table)
 
   (env-hash (hash "This is my seed"))
-  (util-random.reset-state)
+  (reset-state)
 
 The command ``(env-hash ...)`` is not mandatory. But it let you choose a specific seed
 (here: "This is my seed") to init the random generator.
