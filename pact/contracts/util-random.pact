@@ -86,6 +86,7 @@
   )
 
   (defun random-choice (choices-list:list)
+    "Returns a random element from the non-empty list"
     (enforce-not-empty choices-list)
     (let* ((max-idx (- (length choices-list) 1 ))
            (idx (random-int-range 0 max-idx)))
