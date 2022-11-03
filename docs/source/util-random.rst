@@ -98,6 +98,28 @@ random-choice
   pact> (random-choice ["Cat", "Dog", "Horse", "Rabbit"])
   "Dog"
 
+shuffle
+~~~~~~~
+*in* ``[<a>]`` *→* ``[<a>]``
+
+Shuffles a list using a sort method with random indexes
+
+.. code:: lisp
+
+  pact> (+ "My preference pets order list is:" (to-string (shuffle ["Cat", "Dog", "Horse", "Rabbit", "Snake", "Ferret", "Rat", "Goldfish"])))
+  "My preference pets order list is:["Dog" "Horse" "Rat" "Snake" "Ferret" "Rabbit" "Cat" "Goldfish"]"
+
+  pact> (+ "My preference pets order list is:" (to-string (shuffle ["Cat", "Dog", "Horse", "Rabbit", "Snake", "Ferret", "Rat", "Goldfish"])))
+  "My preference pets order list is:["Rat" "Snake" "Dog" "Cat" "Horse" "Ferret" "Rabbit" "Goldfish"]"
+
+  pact> (+ "My preference pets order list is:" (to-string (shuffle ["Cat", "Dog", "Horse", "Rabbit", "Snake", "Ferret", "Rat", "Goldfish"])))
+  "My preference pets order list is:["Ferret" "Goldfish" "Horse" "Cat" "Rat" "Dog" "Snake" "Rabbit"]"
+
+  pact> (+ "My preference pets order list is:" (to-string (shuffle ["Cat", "Dog", "Horse", "Rabbit", "Snake", "Ferret", "Rat", "Goldfish"])))
+  "My preference pets order list is:["Cat" "Rat" "Goldfish" "Rabbit" "Ferret" "Snake" "Dog" "Horse"]"
+
+  pact> (+ "My preference pets order list is:" (to-string (shuffle ["Cat", "Dog", "Horse", "Rabbit", "Snake", "Ferret", "Rat", "Goldfish"])))
+  "My preference pets order list is:["Goldfish" "Rat" "Snake" "Cat" "Ferret" "Horse" "Rabbit" "Dog"]"
 
 
 

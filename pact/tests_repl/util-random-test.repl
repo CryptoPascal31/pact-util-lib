@@ -93,6 +93,22 @@
 )
 
 
+;; shuffle
+(print "Ten examples of random shuffle:")
+(let ((in-list  ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"]))
+  (print (+ "   "(join "\n   " (map (to-string) (map (lambda (x)  (shuffle in-list)) (enumerate 0 9) )))))
+)
+
+ ; check that it works with an empty list too
+(expect "Empty list should result en aempty list" [] (shuffle []))
+(let* ((in-list  ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"])
+       (random-total-count 1000)
+       (random-lst (map (lambda (x) (shuffle in-list)) (enumerate 1 random-total-count))))
+  (map (lambda (x) (expect "Output list must have the same size as input list" (length in-list) (length x))) random-lst)
+  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+)
+
+
 ;gen-uuid-rfc-4122-v4
 (print "Ten examples of random uuid:")
 (print (+ "   "(join "\n   " (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 0 9) ))))
