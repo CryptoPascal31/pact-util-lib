@@ -80,6 +80,19 @@
   (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
 )
 
+;; rabndom-choice
+(expect-failure "Choice list must not be empty" "cannot be empty" (random-choice []))
+
+(let* ((random-total-count 1000)
+       (random-lst (map (lambda (x) (random-choice ["A", "B", "C", "D"])) (enumerate 1 random-total-count)))
+       (x-count (map (count random-lst) ["A", "B", "C", "D"]))
+       (x-ratio (map (lambda (x) (/ (* x 1.0) random-total-count)) x-count)))
+  (print (+ "Choices ratios:" (to-string x-ratio)))
+  (expect "All drawn strings must be in range A, B C or D" 1.0 (sum x-ratio))
+  (map (lambda (x) (expect-that "Bucket % must be close to 0.25" (between 0.23 0.27) x)) x-ratio)
+)
+
+
 ;gen-uuid-rfc-4122-v4
 (print "Ten examples of random uuid:")
 (print (+ "   "(join "\n   " (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 0 9) ))))

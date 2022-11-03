@@ -76,6 +76,29 @@ Returns a random decimal in range [min - max]
   pact> (random-decimal-range -1.0 1.0)
   0.376521587006
 
+Lists
+------
+random-choice
+~~~~~~~~~~~~~~~~
+*choices-list* ``[<a>]`` *→* ``<a>``
+
+ Returns a random element from the non-empty list
+
+.. code:: lisp
+
+  pact> (random-choice ["Cat", "Dog", "Horse", "Rabbit"])
+  "Rabbit"
+
+  pact> (random-choice ["Cat", "Dog", "Horse", "Rabbit"])
+  "Cat"
+
+  pact> (random-choice ["Cat", "Dog", "Horse", "Rabbit"])
+  "Cat"
+
+  pact> (random-choice ["Cat", "Dog", "Horse", "Rabbit"])
+  "Dog"
+
+
 
 
 Strings
@@ -94,6 +117,7 @@ Returns a random string of length *len*
 
   pact> (random-string 129)
   "uNeV0pWbdBtGA6eIOZ34iLlE62QtkPrpwXurESXfjjEbls5ViT6Hs3wISs4WMMlEUS2hGl9tAd1vjy3HREdgdwed8pgJkBbPxj5Q7eiTkvoEgnE4cwFNWqM1qvjOFmNb0"
+
 
 gen-uuid-rfc-4122-v4
 ~~~~~~~~~~~~~~~~~~~~

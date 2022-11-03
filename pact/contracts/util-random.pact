@@ -29,6 +29,7 @@
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
 
+  (use util-lists [enforce-not-empty])
   (use util-strings [join])
   (use util-math [pow10])
 
@@ -82,6 +83,13 @@
            (rnd (random-int))
            (substrings (map (lambda (x) (hash (+ rnd x))) (enumerate 1 cnt))))
       (take len (concat substrings)))
+  )
+
+  (defun random-choice (choices-list:list)
+    (enforce-not-empty choices-list)
+    (let* ((max-idx (- (length choices-list) 1 ))
+           (idx (random-int-range 0 max-idx)))
+      (at idx choices-list))
   )
 
   (defun gen-uuid-rfc-4122-v4:string ()
