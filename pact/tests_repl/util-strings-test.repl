@@ -104,6 +104,17 @@
 (expect-that "String at 5 of baobab is b" (= "b")
                                           (char-at 5 "baobab"))
 
+;Slice
+(expect-failure "Test with negative indexes" "must be positive" (slice -2 6 "Kadena"))
+(expect-failure "Test with negative indexes" "must be positive" (slice -6 -2 "Kadena"))
+(expect-failure "Test with inversed indexes" "Low index must be <" (slice 6 2 "Kadena"))
+
+(expect "Slice 'Kadena' from 0 to 6" "Kadena" (slice 0 6 "Kadena"))
+(expect "Slice 'Kadena' from 1 to 6" "adena" (slice 1 6 "Kadena"))
+(expect "Slice 'Kadena' from 0 to 5" "Kaden" (slice 0 5 "Kadena"))
+(expect "Slice 'Kadena' from 1 to 5" "aden" (slice 1 5 "Kadena"))
+(expect "Slice 'Kadena' from 3 to 4" "e" (slice 3 4 "Kadena"))
+
 
 ; join
 (expect-that "Join strings empty" (= "") (join "-" []))

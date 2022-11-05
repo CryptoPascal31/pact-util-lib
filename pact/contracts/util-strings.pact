@@ -130,6 +130,15 @@
     (at idx (str-to-list in))
   )
 
+  (defun slice(low-idx:integer high-idx:integer in:string)
+    "Returns the substring between the two indexes, high-idx char is non included"
+    (enforce (< low-idx high-idx) "Low index must be < to High index")
+    (enforce (>= low-idx 0) "Indexes must be positive")
+    (enforce (<= high-idx (length in)) "High index must be <= to string length")
+    (let ((out-len (- high-idx low-idx)))
+      (take out-len (drop low-idx in)))
+  )
+
   (defun join:string (separator:string in:[string])
     "Join a list of string with a separator"
     (if (= 0 (length in))

@@ -40,6 +40,26 @@ Return the character at position *idx*
   pact> (char-at 2 "Pact is Great !")
   "c"
 
+slice
+~~~~~
+*low-idx* ``integer`` *high-idx* ``integer`` *in* ``string`` *→* ``string``
+
+Return the substring between the two indexes:
+  * *low-idx* is the start index
+  * *high-idx* is the end index but the corresponding char is not included
+
+.. code:: lisp
+
+  pact> (slice 0 6 "Kadena")
+  "Kadena"
+
+  pact> (slice 1 5 "Kadena")
+  "aden"
+
+  pact> (slice 3 4 "Kadena")
+  "e"
+
+
 Conversion functions
 --------------------
 
