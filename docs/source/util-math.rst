@@ -44,7 +44,36 @@ Golden Ratio (Phi)
 
 General functions
 -----------------
+between
+~~~~~~~
+*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
+Return true is a <= x <= b"
 
+.. code:: lisp
+
+  pact> (between -1.0 1.0 0.2)
+  true
+
+  pact> (between -1.0 1.0 1.2)
+  false
+
+sign
+~~~~
+ *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (sign 2.0)
+  1.0
+
+  pact> (sign -2.0)
+  -1.0
+
+  pact> (sign 0.0)
+  0.0
+
+Integers functions
+------------------
 is-even
 ~~~~~~~
 *y* ``integer`` *→* ``bool``
@@ -73,33 +102,54 @@ Return true if x is odd
   pact> (is-odd 5)
   true
 
-between
-~~~~~~~
-*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
-Return true is a <= x <= b"
+gcd
+~~~
+*a* ``integer`` *b* ``integer`` *→* ``integer``
+
+Return the greatest common divisor of *a* and *b*.
+
+Zeros are allowed for *a* or *b* or both. (gcd 0 0) returns 0.
+
+Negative numbers are allowed.
 
 .. code:: lisp
 
-  pact> (between -1.0 1.0 0.2)
-  true
+  pact> (gcd 8 0)
+  8
 
-  pact> (between -1.0 1.0 1.2)
-  false
+  pact> (gcd 0 0)
+  0
 
-sign
-~~~~
- *x* ``decimal`` *→* ``decimal``
+  pact> (gcd 21 9)
+  3
+
+  pact> (gcd -9 21)
+  3
+
+lcm
+~~~
+*a* ``integer`` *b* ``integer`` *→* ``integer``
+
+Return the least common multiple of *a* and *b*.
+
+Zeros are not allowed for any of the arguments.
+
+Negative numbers are allowed.
+
 
 .. code:: lisp
 
-  pact> (sign 2.0)
-  1.0
+  pact> (lcm 6 16)
+  48
 
-  pact> (sign -2.0)
-  -1.0
+  pact> (lcm 16 -6)
+  48
 
-  pact> (sign 0.0)
-  0.0
+  pact> (lcm 3 5)
+  15
+
+  pact> (lcm 3 0)
+  util-math.pact:185:4: Arguments can't be 0
 
 
 Min/Max functions
