@@ -25,7 +25,7 @@ Modules must be loaded in a specific order to satisfy their dependencies:
   (load "util-math.pact")
   (load "util-random.pact")
 
-If you want to use the random module, it musu be initialized just after loading:
+If you want to use the random module, it must be initialized just after loading:
 
 .. code:: lisp
 
