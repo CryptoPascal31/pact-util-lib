@@ -22,7 +22,7 @@
   "This module provides pseudo-random numbers/string generation \
    \ Documentation: https://pact-util-lib.readthedocs.io \
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
-  (defconst VERSION:string "0.2")
+  (defconst VERSION:string "0.3")
 
   (bless "RBfxKPExaz5q6i64FLA_k7UVM9MaOO0UDJulfPFZBRA")
 

@@ -14,7 +14,7 @@
    \ Documentation: https://pact-util-lib.readthedocs.io \
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
 
-  (defconst VERSION:string "0.2")
+  (defconst VERSION:string "0.3")
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
@@ -160,7 +160,7 @@
 
   (defun gcd:integer (a:integer b:integer)
     "Returns the greatest common divisor of 2 integers"
-    ; We use the eculidean iterative algortihm (optimized by modulo)
+    ; We use the euclidean iterative algorithm (optimized by modulo)
     ; According to several sources and my own tests, the maximum complexity of the euclidean algorithm is
     ; log/Phy ( min(a,b)). For safety, at then end, we check (enforce) at that the algorithm has ended (ie b=0)/
     ; But that enforcement should never fail.
@@ -181,7 +181,7 @@
   )
 
   (defun lcm:integer (a:integer b:integer)
-    "Returns the least commoon multiple of 2 integers"
+    "Returns the least common multiple of 2 integers"
     (enforce (and (!= a 0) (!= b 0)) "Arguments can't be 0")
     (/ (abs (* a b)) (gcd a b))
   )
