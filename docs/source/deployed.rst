@@ -23,7 +23,7 @@ Modules hashes:
   * **free.util-lists:** wm7RwXGdL1urmwU7is9wjbrw_bkW39wV_BuIng_ri14
   * **free.util-strings:** w3lESU0hy0tTA-68-eqnSgOf2CNw5nPlgvFtOd6d24w
   * **free.util-math:** KTVZOavXdQImWgjO0m1g0Knng94-u3V9mwYe3eNSQZM
-  * **free.util-random:** d8bf266kYzTY5j96M1p6PHchar38vmQU7nBDICZDBQk
+  * **free.util-random:** qSwrZYiS0ZR7fVcbIVrtC-f_ZB6n-Q-6JsTkn6zg2IQ
 
 Version 0.2
 ~~~~~~~~~~~

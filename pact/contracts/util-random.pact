@@ -25,6 +25,7 @@
   (defconst VERSION:string "0.3")
 
   (bless "RBfxKPExaz5q6i64FLA_k7UVM9MaOO0UDJulfPFZBRA")
+  (bless "I-yq-JDWu9Lpag6SJgkWbDtsaZ21k4YqOyA09uzSnuY")
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
