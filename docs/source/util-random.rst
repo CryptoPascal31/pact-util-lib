@@ -17,10 +17,15 @@ The random integers Xn are generated according to the following formula:
 The random strings is derived from Xn with the following formula:
   S = HASH( [Xn + 1] ) + HASH ( [Xn + 2] ) + HASH ( [Xn + 3] ) + ..........
 
-The result is hard (maybe impossible) to predict before mining since block-time includes microseconds.
-Several numbers can be generated in the same block or transaction. They will be all different, unpredictable and uncorrelated
+The result is easy to predict. Even if block-time includes microseconds, block-time is an exact copy of the creation-time of the previous block.
 
-Be careful, the miner can control the generated numbers => **Don't use for high stakes lottery or cryptography**
+That's why a contract whose security would rely on that module would be highly exploitable.
+
+An attacker just need to watch the current block, to predict what will be the generated numbers in the next block.
+
+**DO NOT NOT NOT USE this PRBS generator for cryptographic or lottery purposes**
+
+Several numbers can be generated in the same block or transaction. They will be all different, and uncorrelated.
 
 Integers
 ---------
