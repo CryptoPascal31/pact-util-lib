@@ -67,6 +67,25 @@
     (length (filter (= item) in))
   )
 
+  ;; Creation and extension functions
+  (defun make-list-like (in:list value)
+    "Creates a new list whose size is the same as in, by repeating value"
+    (make-list (length in) value)
+  )
+
+  (defun extend (in:list new-length:integer value)
+    "Extends a list to new-length by repeating value"
+    (let ((missing-items (- new-length (length in))))
+      (if (<= missing-items 0)
+          in
+          (+ in (make-list missing-items value))))
+  )
+
+  (defun extend-like (in:list target:list value)
+    "Extends a list to the same length as target, by repeating value"
+    (extend in (length target) value)
+  )
+
   ;; Insertion functions
   (defun insert-first:list (in:list item)
     "Insert an item at the left of the list"

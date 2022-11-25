@@ -132,6 +132,46 @@ Returns the number of occurrences of an item
   pact> (count ["a", "b", "a", "c"] "d")
   0
 
+Creation and extension functions
+---------------------------------
+
+make-list-like
+~~~~~~~~~~~~~~~
+*in* ``[]``  *value* ``<a>`` *→* ``[<a>]``
+
+Creates a new list whose size is the same as *in*, by repeating *value*.
+
+This is just a simple improvement of the native ``(make-list)``.
+
+.. code:: lisp
+
+  pact> (make-list-like [1 2 3 4 5] 1.0)
+  [1.0 1.0 1.0 1.0 1.0]
+
+
+extend
+~~~~~~
+*in* ``[<a>]`` *new-length* ``integer`` *value* ``<a>`` *→* ``[<a>]``
+
+Extend a list to *new-length* by repeating *value*.
+
+.. code:: lisp
+
+  pact> (extend [1.0 1.0] 5 2.0)
+  [1.0 1.0 2.0 2.0 2.0]
+
+extend-like
+~~~~~~~~~~~~
+*in* ``[<a>]`` *target* ``[]`` *value* ``<a>`` *→* ``[<a>]``
+
+Extends a list to the same length as *target*, by repeating *value*.
+
+.. code:: lisp
+
+  pact> (extend-like [1.0 1.0] [1 2 3 4 5] 2.0)
+  [1.0 1.0 2.0 2.0 2.0]
+
+
 Insertion functions
 --------------------
 

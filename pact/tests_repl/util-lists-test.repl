@@ -43,6 +43,25 @@
 (expect-that "Count of b is 2" (= 2) (count ["a","b","c","b","c","c"] "b"))
 (expect-that "Count of c is 3" (= 3) (count ["a","b","c","b","c","c"] "c"))
 
+;make-list-like
+(expect-that "Make list of size 5" (= [1.0 1.0 1.0 1.0 1.0]) (make-list-like [2.0 2.0 2.0 2.0 2.0] 1.0))
+(expect-that "Make list of size 0" (= []) (make-list-like [] 1.0))
+
+;extend
+(expect-that "Extend a list to 4 elements" (= [2.0 2.0 1.0 1.0]) (extend [2.0 2.0] 4 1.0))
+(expect-that "Try extend a list from 4 to 2 elements = Do nothing" (= [2.0 2.0 2.0 2.0]) (extend [2.0 2.0 2.0 2.0] 2 1.0))
+(expect-that "Try extend a list from 4 to 4 elements = Do nothing" (= [2.0 2.0 2.0 2.0]) (extend [2.0 2.0 2.0 2.0] 4 1.0))
+(expect-that "Try extend a list from 0 to 0 elements = Do nothing" (= []) (extend [] 0 1.0))
+(expect-that "Try extend a list from 0 to 4 elements" (= [1.0 1.0 1.0 1.0]) (extend [] 4 1.0))
+
+;extend-like
+(expect-that "Extend a list to 4 elements" (= [2.0 2.0 1.0 1.0]) (extend-like [2.0 2.0] [1 2 3 4] 1.0))
+(expect-that "Try extend a list from 4 to 2 elements = Do nothing" (= [2.0 2.0 2.0 2.0]) (extend-like [2.0 2.0 2.0 2.0] [1 2] 1.0))
+(expect-that "Try extend a list from 4 to 4 elements = Do nothing" (= [2.0 2.0 2.0 2.0]) (extend-like [2.0 2.0 2.0 2.0] [1 2 3 4] 1.0))
+(expect-that "Try extend a list from 0 to 0 elements = Do nothing" (= []) (extend-like [] [] 1.0))
+(expect-that "Try extend a list from 0 to 4 elements" (= [1.0 1.0 1.0 1.0]) (extend-like [] [1 2 3 4] 1.0))
+
+
 ;Insert first
 (expect-that "Insert test in front" (= ["test", "a", "b","c"]) (insert-first ["a","b","c"] "test"))
 (expect-that "Insert test in front of an empty list"  (= ["test"]) (insert-first [] "test"))
