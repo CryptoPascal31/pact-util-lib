@@ -71,9 +71,9 @@
 (expect-that "Append test in last of an empty list" (= ["test"]) (append-last [] "test"))
 
 ; Insert at
-(expect-failure "Negative index must fail" "out of bounds" (replace-at ["a"] -1 "test"))
-(expect-failure "Out of bounds index must fail" "out of bounds" (replace-at ["a"] 1 "test"))
-(expect-failure "Out of bounds index must fail" "out of bounds" (replace-at ["a","b"] 3 "test"))
+(expect-failure "Negative index must fail" "out of bounds" (insert-at ["a"] -1 "test"))
+(expect-failure "Out of bounds index must fail" "out of bounds" (insert-at ["a"] 2 "test"))
+(expect-failure "Out of bounds index must fail" "out of bounds" (insert-at ["a","b"] 3 "test"))
 
 (expect-that "Insert at position 0" (= ["test", "a", "b", "c"]) (insert-at ["a","b","c"] 0 "test"))
 (expect-that "Insert at position 1" (= ["a", "test", "b", "c"]) (insert-at ["a","b","c"] 1 "test"))
