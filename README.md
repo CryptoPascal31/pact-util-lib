@@ -29,9 +29,11 @@ Contains functions to handle Pact lists.
 * ```(defun insert-first:list (in:list item)``` : Insert an item at the left of the list
 * ```(defun append-last:list (in:list item)``` : Append an item at the end of the list
 * ```(defun insert-at:list (in:list idx:integer item)``` : Insert an item at position *idx*
+* ```(defun insert-at*:list (in:list idx:integer item default)```:  Insert an item at position *idx*, extends the list if it is too short using the *default* value
 * ```(defun replace-first:list (in:list item)``` : Replace the first item of the list
 * ```(defun replace-last:list (in:list item)``` : Replace the last item of the list
 * ```(defun replace-at:list (in:list idx:integer item)``` : Replace the item at position *idx*
+* ```(defun replace-at*:list (in:list idx:integer item default)```:  Replace an item at position *idx*, extends the list if it is too short using the *default* value
 * ```(defun replace-item:list (in:list old-item new-item)``` : Replace each occurrence of *old-item* by *new-item*
 * ```(defun replace-item*:list (in:list old-item new-item)``` : *(starred version)* Replace each occurrence of *old-item* by *new-item* but raises an error if *old-item* does not exist
 * ```(defun remove-first:list (in:list)``` : Remove first element from the list

@@ -103,6 +103,11 @@
             (drop idx in)])
   )
 
+  (defun insert-at*:list (in:list idx:integer item default)
+    "Insert an item at position idx, extends the list if it is too short using the default value"
+    (insert-at (extend in idx default) idx item)
+  )
+
   ;; Replacement functions
   (defun replace-first:list (in:list item)
     "Replace the first item of the list"
@@ -120,6 +125,11 @@
     (chain [(take idx in),
             [item],
             (drop (+ 1 idx) in)])
+  )
+
+  (defun replace-at*:list (in:list idx:integer item default)
+    "Replace an item at position idx, extends the list if it is too short using the default value"
+    (replace-at (extend in (+ idx 1) default) idx item)
   )
 
   (defun replace-item:list (in:list old-item new-item)

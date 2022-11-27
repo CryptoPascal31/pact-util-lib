@@ -215,6 +215,21 @@ Insert an item at position *idx*
   pact> (insert-at ["a", "b", "c"] 3 "d")
   ["a" "b" "c" "d"]
 
+insert-at*
+~~~~~~~~~~~~
+*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>``  *default* ``<a>`` *→* ``[<a>]``
+
+Starred version of ``(insert-at   )``. When the list is too short, don't fail (like ``(insert-at   )``).
+But add as many *default* elements to match the needed size.
+
+.. code:: lisp
+
+  pact> (insert-at* ["a", "b", "c"] 0 "d" "unknown")
+  ["d" "a" "b" "c"]
+
+  pact> (insert-at* ["a", "b", "c"] 5 "d" "unknown")
+  ["a" "b" "c" "unknown" "unknown" "d"]
+
 Replacement functions
 ----------------------
 
@@ -256,6 +271,21 @@ Replace the item at position *idx*
   pact> (replace-at ["a", "b", "c"]  1 "d")
   ["a" "d" "c"]
 
+
+replace-at*
+~~~~~~~~~~~~
+*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>``  *default* ``<a>`` *→* ``[<a>]``
+
+Starred version of ``(replace-at   )``. When the list is too short, don't fail (like ``(replace-at   )``).
+But add as many *default* elements to match the needed size.
+
+.. code:: lisp
+
+  pact> (replace-at* ["a", "b", "c"] 0 "d" "unknown")
+  ["d" "b" "c"]
+
+  pact> (replace-at* ["a", "b", "c"] 5 "d" "unknown")
+  ["a" "b" "c" "unknown" "unknown" "d"]
 
 replace-item
 ~~~~~~~~~~~~~~~

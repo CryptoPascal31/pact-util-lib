@@ -80,6 +80,16 @@
 (expect-that "Insert at position 2" (= ["a", "b", "test", "c"]) (insert-at ["a","b","c"] 2 "test"))
 (expect-that "Insert at position 3" (= ["a", "b", "c", "test"]) (insert-at ["a","b","c"] 3 "test"))
 
+; Insert-at*
+(expect-failure "Negative index must fail" "out of bounds" (insert-at* ["a"] -1 "test" "def"))
+(expect-that "Add one default element" (= ["a" "def" "test"]) (insert-at* ["a"] 2 "test" "def"))
+(expect-that "Add 2 default elements" (= ["a" "def" "def" "test"]) (insert-at* ["a"] 3 "test" "def"))
+
+(expect-that "Insert at position 0" (= ["test", "a", "b", "c"]) (insert-at* ["a","b","c"] 0 "test" "def"))
+(expect-that "Insert at position 1" (= ["a", "test", "b", "c"]) (insert-at* ["a","b","c"] 1 "test" "def"))
+(expect-that "Insert at position 2" (= ["a", "b", "test", "c"]) (insert-at* ["a","b","c"] 2 "test" "def"))
+(expect-that "Insert at position 3" (= ["a", "b", "c", "test"]) (insert-at* ["a","b","c"] 3 "test" "def"))
+
 ;replace-first
 (expect-failure "Empty list must fail" "empty" (replace-first [] "test"))
 (expect-that "Replace test in front" (= ["test", "b","c"]) (replace-first ["a","b","c"] "test"))
@@ -100,6 +110,19 @@
 (expect-that "Replace at position 1" (= ["a","test", "c"]) (replace-at ["a","b","c"] 1 "test"))
 (expect-that "Replace at position 2" (= ["a","b", "test"]) (replace-at ["a","b","c"] 2 "test"))
 (expect-that "Replace a single element list" (= ["test"]) (replace-at ["a"] 0 "test"))
+
+;replace-at*
+(expect-failure "Negative index must fail" "out of bounds" (replace-at* ["a"] -1 "test" "def"))
+
+(expect-that "Replace en empty list" (= ["test"]) (replace-at* [] 0 "test" "def"))
+(expect-that "Add one default element" (= ["a" "def" "test"]) (replace-at* ["a"] 2 "test" "def"))
+(expect-that "Add 2 default elements" (= ["a" "def" "def" "test"]) (replace-at* ["a"] 3 "test" "def"))
+
+(expect-that "Replace at position 0" (= ["test","b", "c"]) (replace-at* ["a","b","c"] 0 "test" "def"))
+(expect-that "Replace at position 1" (= ["a","test", "c"]) (replace-at* ["a","b","c"] 1 "test" "def"))
+(expect-that "Replace at position 2" (= ["a","b", "test"]) (replace-at* ["a","b","c"] 2 "test" "def"))
+(expect-that "Replace a single element list" (= ["test"]) (replace-at* ["a"] 0 "test" "def"))
+
 
 ;replace-item
 (expect-that "Replace a by test" (= ["test", "b", "c"]) (replace-item ["a","b","c"] "a" "test"))
