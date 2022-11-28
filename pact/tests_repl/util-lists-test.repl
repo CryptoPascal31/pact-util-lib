@@ -31,6 +31,14 @@
 (expect-that "Last item is d " (= "d") (last ["a", "b", "c", "d"]))
 (expect-that "Last item is a " (= "a") (last ["a"]))
 
+; at*
+(expect-failure "Index can't be negative" "negative" (at* ["a" "b" "c"] -1 "def"))
+(expect "At first element" "a" (at* ["a" "b" "c"] 0 "def"))
+(expect "At second element" "b" (at* ["a" "b" "c"] 1 "def"))
+(expect "At 3rd element" "c" (at* ["a" "b" "c"] 2 "def"))
+(expect "At 4th element" "def" (at* ["a" "b" "c"] 3 "def"))
+(expect "At 5th element" "def" (at* ["a" "b" "c"] 4 "def"))
+
 ; search
 (expect-that "Search target position is 1" (= [1]) (search ["a", "target", "b", "c"] "target" ))
 (expect-that "Search target position is 1 and 2" (= [1,2]) (search ["a", "target", "target", "b", "c"] "target" ))

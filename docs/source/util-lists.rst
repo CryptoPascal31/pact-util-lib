@@ -94,6 +94,22 @@ Returns the last item of a list
   pact> (last ["a", "b", "c"])
   "c"
 
+at*
+~~~
+*in* ``[<a>]`` *idx* ``integer`` *default* ``<a>`` *→* ``<a>``
+
+Starred version of the standard Pact function ``(at )``
+
+Return the element at *idx*, but returns *default* if the list is too short
+
+.. code:: lisp
+
+  pact> (at* ["a" "b" "c"] 1 "def")
+  "b"
+
+  pact> (at* ["a" "b" "c"] 4 "def")
+  "def"
+
 
 Search Functions
 -----------------

@@ -21,6 +21,7 @@ Contains functions to handle Pact lists.
 * ```(defun enumerate-list:[object] (in:list)``` : Returns a list of objects {'i:idx, 'v:value} where i is the index, and v the value
 * ```(defun first (in:list)``` : Returns the first item of a list
 * ```(defun last (in:list)``` : Returns the last item of the list
+* ```(defun at* (in:list idx:integer default)```: Returns the element at *idx*, but returns *default* if the list is too short
 * ```(defun search:[integer] (in:list item)``` : Search an item into the list and returns a list of index
 * ```(defun count:integer (in:list item)``` : Returns the number of occurrences of an item
 * ```  (defun make-list-like (in:list value)```: "Creates a new list whose size is the same as in, by repeating value
