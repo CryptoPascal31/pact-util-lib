@@ -145,7 +145,7 @@ The module is mainly intended to be used for non critical applications or random
 ## Tests
 Unit tests can be found in pact/test_repl.
 
-All functions are tested, but currently the coverage is not 100%. Tested with **Pact 4.4**
+All functions are tested, but currently the coverage is not 100%. Tested with **Pact 4.4.1**
 
 The ```pact``` executable is needed to run the tests.
 
