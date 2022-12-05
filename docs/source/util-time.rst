@@ -64,6 +64,38 @@ Compute a time from an Unix timestamp
   pact> (from-timestamp 1670198933.0)
   "2022-12-05T00:08:53Z"
 
+
+Compare function
+----------------
+
+earliest
+~~~~~~~~
+*time1* ``time`` *time2* ``time`` *→* ``time``
+
+Return the earliest time between *time1* and *time2*.
+
+This function is equivalent to a ``min`` between two times.
+
+.. code:: lisp
+
+  (earliest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z"))
+  "2022-12-04T14:44:24Z"
+
+
+latest
+~~~~~~~
+*time1* ``time`` *time2* ``time`` *→* ``time``
+
+Return the earliest time between *time1* and *time2*.
+
+This function is equivalent to a ``max`` between two times.
+
+.. code:: lisp
+
+  pact> (latest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z"))
+  "2022-12-04T14:54:24Z"
+
+
 Block height estimation functions
 ---------------------------------
 

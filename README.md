@@ -127,6 +127,8 @@ Contains some time utilities
 * ```(defun epoch:time ()``` : Returns Unix EPOCH
 * ```(defun genesis:time ()``` : Returns Kadena Genesis time
 * ```(defun now:time ()``` : Returns the current time
+* ```(defun earliest:time (time1:time time2:time)``` : Returns the earliest time between *time1* and *time2*.
+* ```(defun latest:time (time1:time time2:time)``` : Returns the latest time between *time1* and *time2*.
 * ```(defun to-timestamp:decimal (in:time)``` : Computes an Unix timestamp of the input time
 * ```(defun from-timestamp:decimal (timestamp:decimal)``` : Computes a time from an Unix timestamp
 * ```(defun est-height-at-time:integer (target-time:time)``` : Estimates the block height at a target-time

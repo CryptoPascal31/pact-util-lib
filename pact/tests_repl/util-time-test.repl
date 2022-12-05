@@ -29,6 +29,15 @@
 (expect "from-timestamp must be UNIX EPOCH for ZERO" (epoch) (from-timestamp 0.0))
 (expect "from-timestamp must be accurate for this example" (time "2022-12-05T00:08:53Z") (from-timestamp 1670198933.0))
 
+;;; (earliest ...)
+(expect "Test earliest" (time "2022-12-04T14:44:24Z") (earliest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z")))
+(expect "Test earliest" (time "2022-12-04T14:44:24Z") (earliest (time "2022-12-04T14:44:24Z")  (time "2022-12-04T14:54:24Z")))
+
+;;; (latest ...)
+(expect "Test earliest" (time "2022-12-04T14:54:24Z") (latest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z")))
+(expect "Test earliest" (time "2022-12-04T14:54:24Z") (latest (time "2022-12-04T14:44:24Z")  (time "2022-12-04T14:54:24Z")))
+
+
 ; For testing blocks count estimation, take real data from chain 1.
 ;BLOCK HEIGHT = 3047021 TIME=2022-09-22 09:10:30.111508
 ;BLOCK HEIGHT = 3148035 TIME=2022-10-27 11:22:13.298682   ===> Taken as a reference
