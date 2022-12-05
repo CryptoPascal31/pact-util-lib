@@ -2,7 +2,7 @@
 ## Introduction
 This library aims to provide some "high level" functions for writing Pact smart contracts.
 
-The library contains currently more than 80 convenience functions split into 4 modules
+The library contains currently more than 80 convenience functions split into 5 modules
 
 ## Documentation
 [Read the docs](https://pact-util-lib.readthedocs.io/)
@@ -118,6 +118,22 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun safe-ln (x:decimal default:decimal)``` : Natural log of x, but returns default when x <= 0
 * ```(defun safe-log10:decimal (x default:decimal)``` : Returns the log of x base 10, rounded to 12 decimals but returns default when y <= 0
 
+### util-time.pact
+Deployed as ```free.util-time```
+
+Contains some time utilities
+
+**Functions:**
+* ```(defun epoch:time ()``` : Returns Unix EPOCH
+* ```(defun genesis:time ()``` : Returns Kadena Genesis time
+* ```(defun now:time ()``` : Returns the current time
+* ```(defun to-timestamp:decimal (in:time)``` : Computes an Unix timestamp of the input time
+* ```(defun from-timestamp:decimal (timestamp:decimal)``` : Computes a time from an Unix timestamp
+* ```(defun est-height-at-time:integer (target-time:time)``` : Estimates the block height at a target-time
+* ```(defun est-time-at-height:time (target-block:integer)``` : Estimates the time of the target-block height
+* ```(defun diff-time-minutes:decimal (time1:time time2:time)```: Computes difference between *time1* and *time2* in minutes
+* ```(defun diff-time-hours:decimal (time1:time time2:time)```: Computes difference between *time1* and *time2* in hours
+* ```(defun diff-time-days:decimal (time1:time time2:time)```: Computes difference between *time1* and *time2* in days
 
 ### util-random.pact
 Deployed as ```free.util-random```

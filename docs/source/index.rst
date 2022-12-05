@@ -3,7 +3,7 @@ Pact Utilities library documentation
 
 This library aims to provide some "high level" functions for writing Pact smart contracts.
 
-The library contains currently more than 80 convenience functions split into 4 modules.
+The library contains currently more than 100 convenience functions split into 4 modules.
 
 After using and experimenting Pact since several months, I found out that:
  * Some functions were missing: (eg ``(str-to-decimal)``, ...)
@@ -24,4 +24,5 @@ https://github.com/CryptoPascal31/pact-util-lib/
    util-strings.rst
    util-math.rst
    util-random.rst
+   util-time.rst
    deployed.rst

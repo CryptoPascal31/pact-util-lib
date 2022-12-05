@@ -23,7 +23,9 @@ Modules must be loaded in a specific order to satisfy their dependencies:
   (load "util-lists.pact")
   (load "util-strings.pact")
   (load "util-math.pact")
+  (load "util-time.pact")
   (load "util-random.pact")
+
 
 If you want to use the random module, it must be initialized just after loading:
 

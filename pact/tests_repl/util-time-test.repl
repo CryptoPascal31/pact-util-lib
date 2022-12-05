@@ -1,0 +1,75 @@
+;SPDX-License-Identifier: MIT
+
+(begin-tx)
+(load "../contracts/util-time.pact")
+(commit-tx)
+
+(begin-tx)
+
+(use util-time)
+(print (format "Testing utils-time: Version:{}\n \
+                \                   Hash:{}" [VERSION, (at 'hash (describe-module 'util-time)) ]))
+
+
+;;; (epoch)
+(expect-that "Check Unix epoch" (and? (< (time "1969-12-31T00:00:00Z")) (>  (time "1970-01-02T00:00:00Z"))) (epoch))
+
+;;; (gensis)
+(expect-that "Check Kadena Genesis" (and? (< (time "2019-10-29T00:01:00Z")) (>  (time "2019-11-01T00:00:00Z"))) (genesis))
+
+;;; (now)
+(env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+(expect "Now should be the current time" (time "2022-12-04T14:54:24Z") (now))
+
+;;; (to-timestamp)
+(expect "to-timestamp must be 0 for UNIX EPOCH" 0.0 (to-timestamp (epoch)))
+(expect "to-timestamp must be accurate for this example" 1670198933.0 (to-timestamp (time "2022-12-05T00:08:53Z")))
+
+;;; (from-timestamp)
+(expect "from-timestamp must be UNIX EPOCH for ZERO" (epoch) (from-timestamp 0.0))
+(expect "from-timestamp must be accurate for this example" (time "2022-12-05T00:08:53Z") (from-timestamp 1670198933.0))
+
+; For testing blocks count estimation, take real data from chain 1.
+;BLOCK HEIGHT = 3047021 TIME=2022-09-22 09:10:30.111508
+;BLOCK HEIGHT = 3148035 TIME=2022-10-27 11:22:13.298682   ===> Taken as a reference
+;BLOCK HEIGHT = 3238031 TIME=2022-11-27 17:33:06.551073
+
+;;;(est-height-at-time ...)
+(env-chain-data { 'block-time: (time "2022-10-27T11:22:13Z"), 'block-height: 3148035})
+(expect "Current block" 3148035 (est-height-at-time (time "2022-10-27T11:22:13Z")))
+
+;Estimation done a +/- 60 blocks (30 minutes)
+(let ((around-block (lambda (x y) (and? (< (- x 60)) (> (+ x 60)) y))))
+  ; In the past
+  (expect-that "Block in the past" (around-block 3047021) (est-height-at-time (time "2022-09-22T09:10:30Z")))
+  ; In the future
+  (expect-that "Block in the future" (around-block 3238031) (est-height-at-time (time "2022-11-27T17:33:06Z")))
+)
+
+;;;(est-time-at-height ...)
+(env-chain-data { 'block-time: (time "2022-10-27T11:22:13Z"), 'block-height: 3148035})
+(expect "Current time" (time "2022-10-27T11:22:13Z")  (est-time-at-height 3148035 ))
+
+;Estimation done a +/- 60 blocks (30 minutes)
+(let ((around-time (lambda (x y) (and? (< (add-time x (minutes -30)) ) (> (add-time x (minutes 30)) ) y))))
+  ; In the past
+  (expect-that "Time in the past" (around-time (time "2022-09-22T09:10:30Z")) (est-time-at-height 3047021))
+  ; In the future
+  (expect-that "Time in the future" (around-time (time "2022-11-27T17:33:06Z")) (est-time-at-height 3238031))
+)
+
+;;; (diff-time-minutes)
+(expect "10 minutes delta" 10.0  (diff-time-minutes (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z")))
+(expect "Negative 10 minutes delta" -10.0  (diff-time-minutes (time "2022-12-04T14:44:24Z")  (time "2022-12-04T14:54:24Z")))
+
+;;; (diff-time-hours)
+(expect "10 hours delta" 10.0  (diff-time-hours (time "2022-12-04T14:54:24Z")  (time "2022-12-04T04:54:24Z")))
+(expect "Negative 10 hours delta" -10.0  (diff-time-hours (time "2022-12-04T04:54:24Z")  (time "2022-12-04T14:54:24Z")))
+
+;;; (diff-time-days)
+(expect "2 days delta" 2.0  (diff-time-days (time "2022-12-04T14:54:24Z")  (time "2022-12-02T14:54:24Z")))
+(expect "Negative 2 days delta" -2.0  (diff-time-days (time "2022-12-04T14:54:24Z")  (time "2022-12-06T14:54:24Z")))
+
+
+(print "Tests of util-time ended")
+(commit-tx)
