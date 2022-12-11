@@ -9,7 +9,8 @@
 (commit-tx)
 
 (let* ((get-hash (lambda (x) (at 'hash (describe-module x))))
-       (format-hash (lambda (x) (format "{}: {}" [x, (get-hash x)])))
+       (complement-str (lambda (x) (concat (make-list (- 12 (length x)) " "))))
+       (format-hash (lambda (x) (format "{}:{} {}" [x, (complement-str x), (get-hash x)])))
        (mod-list ["util-lists",
                   "util-strings",
                   "util-math",
