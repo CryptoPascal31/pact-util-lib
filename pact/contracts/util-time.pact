@@ -59,6 +59,13 @@
     (if (> time1 time2) time1 time2)
   )
 
+  (defun time-between:bool (time1:time time2:time in:time)
+    "Returns true if in is between time1 and time2"
+    (let ((a (earliest time1 time2))
+          (b (latest time1 time2)))
+      (and? (<= a) (>= b) in))
+  )
+
   ;; Block estimation function
   (defun est-height-at-time:integer (target-time:time)
     "Estimates the block height at a target-time"

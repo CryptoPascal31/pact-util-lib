@@ -38,6 +38,34 @@
 (expect "Test earliest" (time "2022-12-04T14:54:24Z") (latest (time "2022-12-04T14:44:24Z")  (time "2022-12-04T14:54:24Z")))
 
 
+;;; (time-between ...)
+(expect "Time is between => Returns True" true (time-between (time "2022-12-04T14:44:24Z")
+                                                             (time "2022-12-24T14:44:24Z")
+                                                             (time "2022-12-08T14:44:24Z")))
+
+
+(expect "Time is after => Returns False" false (time-between (time "2022-12-04T14:44:24Z")
+                                                             (time "2022-12-24T14:44:24Z")
+                                                             (time "2022-12-26T14:44:24Z")))
+
+(expect "Time is before => Returns False" false (time-between (time "2022-12-04T14:44:24Z")
+                                                              (time "2022-12-24T14:44:24Z")
+                                                              (time "2022-12-02T14:44:24Z")))
+
+(expect "Time is between (reverse order) => Returns True" true (time-between (time "2022-12-24T14:44:24Z")
+                                                               (time "2022-12-04T14:44:24Z")
+                                                               (time "2022-12-08T14:44:24Z")))
+
+(expect "Time is after (reverse order) => Returns False" false (time-between (time "2022-12-24T14:44:24Z")
+                                                                             (time "2022-12-04T14:44:24Z")
+                                                                             (time "2022-12-26T14:44:24Z")))
+
+(expect "Time is before (reverse order) => Returns False" false (time-between (time "2022-12-24T14:44:24Z")
+                                                                              (time "2022-12-04T14:44:24Z")
+                                                                              (time "2022-12-02T14:44:24Z")))
+
+
+
 ; For testing blocks count estimation, take real data from chain 1.
 ;BLOCK HEIGHT = 3047021 TIME=2022-09-22 09:10:30.111508
 ;BLOCK HEIGHT = 3148035 TIME=2022-10-27 11:22:13.298682   ===> Taken as a reference

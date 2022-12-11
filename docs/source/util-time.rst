@@ -95,6 +95,32 @@ This function is equivalent to a ``max`` between two times.
   pact> (latest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z"))
   "2022-12-04T14:54:24Z"
 
+time-between
+~~~~~~~~~~~~
+*time1* ``time`` *time2* ``time`` *in* ``time`` *→* ``bool``
+
+Return true if *in* is between *time1* and *time2*
+
+The order of *time1* and *time2* doesn't matter.
+
+.. code:: lisp
+
+  pact> (time-between (time "2022-12-04T14:44:24Z")
+  ....>               (time "2022-12-24T14:44:24Z")
+  ....>               (time "2022-12-08T14:44:24Z"))
+  true
+
+  pact> (time-between (time "2022-12-24T14:44:24Z")
+  ....>               (time "2022-12-04T14:44:24Z")
+  ....>               (time "2022-12-08T14:44:24Z"))
+  true
+
+  pact> (time-between (time "2022-12-24T14:44:24Z")
+  ....>               (time "2022-12-04T14:44:24Z")
+  ....>               (time "2022-12-26T14:44:24Z"))
+  false
+
+
 
 Block height estimation functions
 ---------------------------------
