@@ -171,9 +171,17 @@ Each module can be tested independently.
 
 *eg:* ```pact pact/tests_repl/util-random-test.repl```
 
-The whole test suite can be launched using the shell script all_tests.sh:
+or
+```(cd pact; make  test-util-random)```
 
-```sh pact/all_tests.sh```
+The whole test suite can be launched using:
+
+```make test```
+
+## Documentation
+The documentation can be generated using sphinx:
+
+```make doc```
 
 ## Todo
 * Add more units tests
