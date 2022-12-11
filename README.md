@@ -24,7 +24,7 @@ Contains functions to handle Pact lists.
 * ```(defun at* (in:list idx:integer default)```: Returns the element at *idx*, but returns *default* if the list is too short
 * ```(defun search:[integer] (in:list item)``` : Search an item into the list and returns a list of index
 * ```(defun count:integer (in:list item)``` : Returns the number of occurrences of an item
-* ```  (defun make-list-like (in:list value)```: "Creates a new list whose size is the same as in, by repeating value
+* ```(defun make-list-like (in:list value)```: "Creates a new list whose size is the same as in, by repeating value
 * ```(defun extend (in:list new-length:integer value)```: Extends a list to new-length by repeating value
 * ```(defun extend-like (in:list target:list value)```: Extends a list to the same length as target, by repeating value
 * ```(defun insert-first:list (in:list item)``` : Insert an item at the left of the list
