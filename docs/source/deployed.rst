@@ -1,6 +1,40 @@
 Deployed contracts
 ==================
 
+Version 0.4
+~~~~~~~~~~~
+
+**Added more documentation.**
+
+Added functions:
+  * ``util-list.at*``
+  * ``util-list.insert-at*``
+  * ``util-list.replace-at*``
+  * ``util-time.epoch``
+  * ``util-time.genesis``
+  * ``util-time.now``
+  * ``util-time.to-timestamp``
+  * ``util-time.from-timestamp``
+  * ``util-time.earliest``
+  * ``util-time.latest``
+  * ``util-time.time-between``
+  * ``util-time.est-height-at-time``
+  * ``util-time.est-time-at-height``
+  * ``util-time.diff-time-minutes``
+  * ``util-time.diff-time-hours``
+  * ``util-time.diff-time-days``
+
+Deployed on:
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
+
+Modules hashes:
+  * **free.util-lists:** _QVpeU5pHnrZ_Rfxel80mT0Eq81g7ICHEoOaEa9PbYQ
+  * **free.util-strings:** -YK2rOMWgx_cTnX-ehcx3j9UL8ZKYLbw7tgtdr2g_dU
+  * **free.util-math:** VDb9rrF11M18Em5V6C1alpOS2xEKp5lPEU3fsEr_PjU
+  * **free.util-random:** gq7DxC0_CPW3_zU4FbHXS6TFDd_cz45VYDjLCEzWsOs
+  * **free.util-time:** Livfi3LIV8EhUZW8Ju8Cy8zdkcABE7cuZ2az0iQF7fU
+
 
 Version 0.3
 ~~~~~~~~~~~
