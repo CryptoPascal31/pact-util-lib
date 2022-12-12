@@ -179,6 +179,23 @@ The whole test suite can be launched using:
 
 ```make test```
 
+## Deployment
+The deploy directory allows to do an automatic deployment on testnet and mainnet.
+
+It is based on a Makefile and on the following commands:
+* kda-tool : https://github.com/kadena-io/kda-tool
+* jq
+
+The private keys in ``./deploy/keys`` are obviously not present on Github
+
+The deployment is done by the command:
+
+```make testnet```
+
+or
+
+```make mainnet```
+
 ## Documentation
 The documentation can be generated using sphinx:
 
