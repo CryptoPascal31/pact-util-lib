@@ -1,8 +1,8 @@
 TEMP_PACT_FILES = .pact/util-lists.pact \
                   .pact/util-strings.pact \
                   .pact/util-math.pact \
-									.pact/util-time.pact \
-									.pact/util-random.pact
+                  .pact/util-time.pact \
+                  .pact/util-random.pact
 
 TESTNET_KEYS = keys/testnet-gas.key.yaml \
                keys/testnet-gov.key.yaml
@@ -13,8 +13,8 @@ MAINNET_KEYS = keys/mainnet-gas.key.yaml \
 SUFFIXES = lists \
            strings \
            math \
-					 time \
-					 random
+           time \
+           random
 
 KDA_TOOL = kda
 
@@ -47,7 +47,7 @@ testnet-local: testnet-gen
 testnet: testnet-gen
 	$(foreach suffix,$(SUFFIXES), $(KDA_TOOL) send tx-testnet-util-$(suffix)-*.json -n $(TESTNET_NODE) | jq ; \
 	                              sleep 180; \
-																$(KDA_TOOL) poll tx-testnet-util-$(suffix)-*.json -n $(TESTNET_NODE) | jq ; )
+	                              $(KDA_TOOL) poll tx-testnet-util-$(suffix)-*.json -n $(TESTNET_NODE) | jq ; )
 
 	kda poll tx-testnet-*.json -n $(TESTNET_NODE)| jq > testnet-deploy-log.json
 
@@ -68,7 +68,7 @@ mainnet-local: mainnet-gen
 mainnet: mainnet-gen
 	$(foreach suffix,$(SUFFIXES), $(KDA_TOOL) send tx-mainnet-util-$(suffix)-*.json -n $(MAINNET_NODE) | jq ; \
 	                              sleep 180; \
-																$(KDA_TOOL) poll tx-mainnet-util-$(suffix)-*.json -n $(MAINNET_NODE) | jq ; )
+	                              $(KDA_TOOL) poll tx-mainnet-util-$(suffix)-*.json -n $(MAINNET_NODE) | jq ; )
 	kda poll tx-mainnet-*.json -n $(MAINNET_NODE)| jq > mainnet-deploy-log.json
 
 
