@@ -1,0 +1,5 @@
+chain: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+deployer: util-lib-deployer-new
+gov-key: 58f9e6a1af7f96f1302ac80eea9e2ef6d77b62a7da092c15c37730f199ba27a9
+deployer-key: ce0bc52493dd69b2325b56565b099865f7e6cb007523d27b5f166d21b1aaabe5
+network: mainnet01

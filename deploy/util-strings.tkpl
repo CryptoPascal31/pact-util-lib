@@ -1,0 +1,17 @@
+codeFile: .pact/util-strings.pact
+data:
+publicMeta:
+  chainId: "{{chain}}"
+  sender: "{{deployer}}"
+  gasLimit: 80000
+  gasPrice: 0.00000001
+  ttl: 3600
+networkId: "{{network}}"
+signers:
+  - public: {{gov-key}}
+  - public: "{{deployer-key}}"
+    caps:
+      - name: "coin.GAS"
+        args: []
+
+type: exec
