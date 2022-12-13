@@ -15,6 +15,7 @@
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
 
   (defconst VERSION:string "0.4")
+
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
 
@@ -23,7 +24,6 @@
   (defconst GENESIS (time "2019-10-30T00:01:00Z"))
 
   (defconst BLOCK-TIME 30.0)
-
 
   ; General functions
   (defun epoch:time ()
