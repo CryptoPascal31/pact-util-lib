@@ -55,7 +55,7 @@
   )
 
   (defun latest:time (time1:time time2:time)
-    "Returns the lastest time betwwen time1 and time2"
+    "Returns the latest time between time1 and time2"
     (if (> time1 time2) time1 time2)
   )
 
