@@ -120,6 +120,37 @@ The order of *time1* and *time2* doesn't matter.
   ....>               (time "2022-12-26T14:44:24Z"))
   false
 
+is-past
+~~~~~~~
+*in* ``time`` *→* ``bool``
+
+Return true if *in* is in the past (before now)
+
+.. code:: lisp
+
+  pact> (env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+  "Updated public metadata"
+
+  pact> (is-past (time "2022-12-04T13:54:24Z"))
+  true
+  pact> (is-past (time "2022-12-04T15:54:24Z"))
+  false
+
+is-future
+~~~~~~~~~
+*in* ``time`` *→* ``bool``
+
+Return true if *in* is in the future (after now)
+
+.. code:: lisp
+
+  pact> (env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+  "Updated public metadata"
+
+  pact> (is-future (time "2022-12-04T13:54:24Z"))
+  false
+  pact> (is-future (time "2022-12-04T15:54:24Z"))
+  true
 
 
 Block height estimation functions

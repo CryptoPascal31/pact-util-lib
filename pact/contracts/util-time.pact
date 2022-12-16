@@ -66,6 +66,17 @@
       (and? (<= a) (>= b) in))
   )
 
+  (defun is-past (in:time)
+    "Returns true if the date is in the past (before now)"
+    (< in (now))
+  )
+
+  (defun is-future (in:time)
+    "Returns true if the date is in the future (after now)"
+    (> in (now))
+  )
+
+
   ;; Block estimation function
   (defun est-height-at-time:integer (target-time:time)
     "Estimates the block height at a target-time"
