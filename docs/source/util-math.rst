@@ -47,7 +47,8 @@ General functions
 between
 ~~~~~~~
 *a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
-Return true is a <= x <= b"
+
+Return true is a <= x <= b".
 
 .. code:: lisp
 
@@ -78,7 +79,7 @@ is-even
 ~~~~~~~
 *y* ``integer`` *→* ``bool``
 
-Return true if x is even
+Return true if x is even.
 
 .. code:: lisp
 
@@ -92,7 +93,7 @@ is-odd
 ~~~~~~~
 *y* ``integer`` *→* ``bool``
 
-Return true if x is odd
+Return true if x is odd.
 
 .. code:: lisp
 
@@ -108,7 +109,9 @@ gcd
 
 Return the greatest common divisor of *a* and *b*.
 
-Zeros are allowed for *a* or *b* or both. (gcd 0 0) returns 0.
+Zeros are allowed for *a* or *b* or both.
+
+``(gcd 0 0)`` returns 0.
 
 Negative numbers are allowed.
 
@@ -159,7 +162,7 @@ min
 ~~~
 *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
 
-Return the min of 2 values
+Return the min of 2 values.
 
 .. code:: lisp
 
@@ -170,7 +173,7 @@ max
 ~~~
 *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
 
-Return the max of 2 values
+Return the max of 2 values.
 
 .. code:: lisp
 
@@ -182,7 +185,7 @@ min3
 ~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
 
-Return the min of 3 values
+Return the min of 3 values.
 
 .. code:: lisp
 
@@ -193,7 +196,7 @@ max3
 ~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
 
-Return the max of 3 values
+Return the max of 3 values.
 
 .. code:: lisp
 
@@ -204,7 +207,7 @@ min4
 ~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
 
-Return the min of 4 values
+Return the min of 4 values.
 
 .. code:: lisp
 
@@ -215,7 +218,7 @@ max4
 ~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
 
-Return the max of 4 values
+Return the max of 4 values.
 
 .. code:: lisp
 
@@ -227,7 +230,7 @@ min-list
 ~~~~~~~~
 *x* ``[decimal]`` *→* ``decimal``
 
-Return the min of a list
+Return the min of a list.
 
 .. code:: lisp
 
@@ -238,7 +241,7 @@ max-list
 ~~~~~~~~
 *x* ``[decimal]`` *→* ``decimal``
 
-Return the max of a list
+Return the max of a list.
 
 .. code:: lisp
 
@@ -249,7 +252,7 @@ amin
 ~~~~
 *x* ``[decimal]`` *→* ``integer``
 
-Returns the min index of a list
+Return the min index of a list.
 
 .. code:: lisp
 
@@ -260,7 +263,7 @@ amax
 ~~~~
 *x* ``[decimal]`` *→* ``integer``
 
-Returns the max index of a list
+Return the max index of a list.
 
 .. code:: lisp
 
@@ -269,14 +272,14 @@ Returns the max index of a list
 
 Sum functions
 -------------
-Remarks:
+**Remarks:**
   There is no function to add 2 decimals here. Indeed the native (+ x y) can be used.
 
 sum3
 ~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
 
-Return the sum of 3 values
+Return the sum of 3 values.
 
 .. code:: lisp
 
@@ -288,7 +291,7 @@ sum4
 ~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
 
-Return the sum of 4 values
+Return the sum of 4 values.
 
 .. code:: lisp
 
@@ -299,7 +302,7 @@ sum
 ~~~
 *x* ``[decimal]`` *→* ``decimal``
 
-Return the sum of a list
+Return the sum of a list.
 
 .. code:: lisp
 
@@ -314,7 +317,7 @@ prod3
 ~~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
 
-Return the product of 3 values
+Return the product of 3 values.
 
 .. code:: lisp
 
@@ -325,7 +328,7 @@ prod4
 ~~~~~
 *x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
 
-Return the product of 4 values
+Return the product of 4 values.
 
 .. code:: lisp
 
@@ -336,7 +339,7 @@ prod
 ~~~~
 *x* ``[decimal]`` *→* ``decimal``
 
-Return the product of a list
+Return the product of a list.
 
 .. code:: lisp
 
@@ -347,7 +350,7 @@ square
 ~~~~~~~
 *x* ``decimal`` *→* ``decimal``
 
-Return the square of *x*
+Return the square of *x*.
 
 .. code:: lisp
 
@@ -362,8 +365,8 @@ safe-/
 ~~~~~~
 *x* ``decimal`` *y* ``decimal`` *default* ``decimal`` *→* ``decimal``
 
-Divide **x** by **y** but returns default if **y** is 0.0
-As a result ``safe-/`` never fails (Division by 0.0 is not possible anymore)
+Divide **x** by **y** but returns default if **y** is *0.0*.
+As a result ``safe-/`` never fails (Division by *0.0* is not possible anymore).
 
 .. code:: lisp
 
@@ -424,7 +427,7 @@ pow10
 ~~~~~
 *x* ``integer`` *→* ``decimal``
 
-Return 10^x, rounded to 12 decimals (rounding is important when x is negative)
+Return 10^x, rounded to 12 decimals (rounding is important when *x* is negative).
 
 .. code:: lisp
 
@@ -465,8 +468,8 @@ safe-log
 ~~~~~~~~
 *x* ``<a[integer,decimal]>`` *y* ``<a[integer,decimal]>``  *default* ``<a[integer,decimal]>``  *→* ``<a[integer,decimal]>``
 
-Log of **y base **x**, but returns default when **y** <= 0
-As a result ``safe-log`` never fails (Log of negative numbers not possible anymore)
+Log of *y* base *x*, but returns default when *y* is negative.
+As a result ``safe-log`` never fails (Log of negative numbers not possible anymore).
 
 .. code:: lisp
 
@@ -480,8 +483,8 @@ safe-ln
 ~~~~~~~~
 *x* ``decimal`` *default* ``decimal``  *→* ``decimal``
 
-Natural log of **x**, but returns default when **x** <= 0"
-As a result ``safe-ln`` never fails (Log of negative numbers not possible anymore)
+Natural log of *x*, but returns default when *x* <= *0.0*.
+As a result ``safe-ln`` never fails (Log of negative numbers is not possible anymore).
 
 .. code:: lisp
 
@@ -495,8 +498,8 @@ safe-log10
 ~~~~~~~~~~
 *x* ``<a[integer,decimal]>`` *default* ``decimal``  *→* ``decimal``
 
-Returns the log of **x** base 10, rounded to 12 decimals but returns default when **x** <= 0
-As a result ``safe-log10`` never fails (Log of negative numbers not possible anymore)
+Returns the log of *x* base 10, rounded to 12 decimals but returns default when *x* is negative.
+As a result ``safe-log10`` never fails (Log of negative numbers is not possible anymore)
 
 .. code:: lisp
 

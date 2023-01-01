@@ -11,7 +11,7 @@ enforce-not-empty
 ~~~~~~~~~~~~~~~~~
 *in* ``list`` *→* ``bool``
 
-Verify and enforces that a list is not empty
+Verify and enforces that a list is not empty.
 
 .. code:: lisp
 
@@ -53,8 +53,8 @@ chain
 ~~~~~~
 *in* ``list`` *→* ``list``
 
-Chain list of lists
- | All lists are chained to build a new unique list
+Chain list of lists:
+ | All lists are chained to build a new unique list.
 
 .. code:: lisp
 
@@ -65,7 +65,7 @@ enumerate-list
 ~~~~~~~~~~~~~~~
 *in* ``list`` *→* ``[object]``
 
-Returns a list of objects {'i:idx, 'v:value} where i is the index, and v the value
+Return a list of objects ``{'i:idx, 'v:value}`` where *'i* is the index, and *'v* the value.
 
 .. code:: lisp
 
@@ -76,7 +76,7 @@ first
 ~~~~~
 *in* ``[<a>]`` *→* ``<a>``
 
-Returns the first item of a list
+Return the first item of a list.
 
 .. code:: lisp
 
@@ -87,7 +87,7 @@ last
 ~~~~~
 *in* ``[<a>]`` *→* ``<a>``
 
-Returns the last item of a list
+Return the last item of a list.
 
 .. code:: lisp
 
@@ -98,9 +98,9 @@ at*
 ~~~
 *in* ``[<a>]`` *idx* ``integer`` *default* ``<a>`` *→* ``<a>``
 
-Starred version of the standard Pact function ``(at )``
+*Starred version of the standard Pact function ``(at )``*
 
-Return the element at *idx*, but returns *default* if the list is too short
+Return the element at *idx*, but returns *default* if the list is too short.
 
 .. code:: lisp
 
@@ -118,7 +118,7 @@ search
 ~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[integer]``
 
-Search an item into the list and returns a list of index
+Search an *item* into the list and returns a list of indexes.
 
 .. code:: lisp
 
@@ -135,7 +135,7 @@ count
 ~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``integer``
 
-Returns the number of occurrences of an item
+Returns the number of occurrences of an *item*.
 
 .. code:: lisp
 
@@ -195,7 +195,7 @@ insert-first
 ~~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-Insert an item at the left of the list
+Insert an item at the left of the list.
 
 .. code:: lisp
 
@@ -207,7 +207,7 @@ append-last
 ~~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-Append an item at the end of the list
+Append an item at the end of the list.
 
 .. code:: lisp
 
@@ -218,7 +218,7 @@ insert-at
 ~~~~~~~~~~~~
 *in* ``[<a>]`` *idx* ``integer`` *item* ``<a>`` *→* ``[<a>]``
 
-Insert an item at position *idx*
+Insert an item at position *idx*.
 
 .. code:: lisp
 
@@ -253,7 +253,7 @@ replace-first
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-Replace the first item of the list
+Replace the first item of the list.
 
 .. code:: lisp
 
@@ -265,7 +265,7 @@ replace-last
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-Replace the last item of the list
+Replace the last item of the list.
 
 .. code:: lisp
 
@@ -277,7 +277,7 @@ replace-at
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *idx* ``integer`` *item* ``<a>`` *→* ``[<a>]``
 
-Replace the item at position *idx*
+Replace the item at position *idx*.
 
 .. code:: lisp
 
@@ -307,7 +307,7 @@ replace-item
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *old-item* ``<a>`` *new-item* ``<a>`` *→* ``[<a>]``
 
-Replace each occurrence of old-item by new-item
+Replace each occurrence of *old-item* by *new-item*.
 
 .. code:: lisp
 
@@ -325,7 +325,7 @@ replace-item*
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *old-item* ``<a>`` *new-item* ``<a>`` *→* ``[<a>]``
 
-Replace each occurrence of old-item by new-item but raises an error if old-item does not exist
+Replace each occurrence of *old-item* by *new-item* but raises an error if *old-item* does not exist.
 
 .. code:: lisp
 
@@ -347,7 +347,7 @@ remove-first
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *→* ``[<a>]``
 
-Remove first element from the list
+Remove first element from the list.
 
 .. code:: lisp
 
@@ -358,7 +358,7 @@ remove-last
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *→* ``[<a>]``
 
-Remove last element from the list
+Remove last element from the list.
 
 .. code:: lisp
 
@@ -369,7 +369,7 @@ remove-at
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *idx* ``integer`` *→* ``[<a>]``
 
-Remove element at position *idx*
+Remove element at position *idx*.
 
 .. code:: lisp
 
@@ -386,7 +386,7 @@ remove-item
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-Remove an item from a list
+Remove an item from a list.
 
 .. code:: lisp
 
@@ -403,7 +403,7 @@ remove-item*
 ~~~~~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-Remove and item from the list but raises an error if it does not exist
+Remove and item from the list but raises an error if it does not exist.
 
 .. code:: lisp
 

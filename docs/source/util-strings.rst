@@ -13,7 +13,7 @@ to-string
 ~~~~~~~~~
 *x* ``<a>`` *→* ``integer``
 
-Convert any pact type (object, list, decimal, ...) to its string representation
+Convert any pact type (object, list, decimal, ...) to its string representation.
 
 .. code:: lisp
 
@@ -33,7 +33,7 @@ char-at
 ~~~~~~~~~
 *idx* ``integer``  *in* ``string`` *→* ``string``
 
-Return the character at position *idx*
+Return the character at position *idx*.
 
 .. code:: lisp
 
@@ -95,7 +95,7 @@ decode-ascii
 ~~~~~~~~~~~~
 *in* ``string`` *→* ``[integer]``
 
-Convert a string to an ASCII codes list: All characters must be printable
+Convert a string to an ASCII codes list: All characters must be printable.
 
 .. code:: lisp
 
@@ -122,7 +122,7 @@ encode-ascii
 ~~~~~~~~~~~~
 *in* ``[integer]`` *→* ``string``
 
-Convert an ASCII code list to a string: All characters must be printable
+Convert an ASCII code list to a string: All characters must be printable.
 
 .. code:: lisp
 
@@ -149,7 +149,7 @@ is-digit
 ~~~~~~~~
 *in* ``string`` *→* ``bool``
 
-Return true if all characters are digits [0-9]
+Return true if all characters are digits [0-9].
 
 .. code:: lisp
 
@@ -163,7 +163,7 @@ is-hex-digit
 ~~~~~~~~~~~~
 *in* ``string`` *→* ``bool``
 
-Return true if all characters are hexa [A-F a-F 0-9]
+Return true if all characters are hexa [A-F a-F 0-9].
 
 .. code:: lisp
 
@@ -180,7 +180,7 @@ is-alpha
 ~~~~~~~~
 *in* ``string`` *→* ``bool``
 
-Return true if all characters are in alphas [A-Z a-z]
+Return true if all characters are in alphas [A-Z a-z].
 
 .. code:: lisp
 
@@ -194,7 +194,7 @@ starts-with
 ~~~~~~~~~~~
 *in* ``string`` *to-match* ``string`` *→* ``bool``
 
-Return true if the string starts with the string to-match
+Return true if the string starts with the string to-match.
 
 .. code:: lisp
 
@@ -207,7 +207,7 @@ ends-with
 ~~~~~~~~~
 *in* ``string`` *to-match* ``string`` *→* ``bool``
 
-Return true if the string ends with the string to-match
+Return true if the string ends with the string to-match.
 
 .. code:: lisp
 
@@ -250,7 +250,7 @@ replace-char
 ~~~~~~~~~~~~
 *in* ``string`` *old-char* ``string`` *new-char* ``string`` *→* ``string``
 
-Replace all occurrences of old-char to new-char
+Replace all occurrences of old-char to new-char.
 
 .. code:: lisp
 
@@ -261,7 +261,7 @@ upper
 ~~~~~
 *in* ``string``*→* ``string``
 
-Transform a string to upper case
+Transform a string to upper case.
 
 .. code:: lisp
 
@@ -272,7 +272,7 @@ lower
 ~~~~~
 *in* ``string``*→* ``string``
 
-Transform a string to lower case
+Transform a string to lower case.
 
 .. code:: lisp
 
@@ -287,7 +287,7 @@ join
 ~~~~
 *separator* ``string`` *in* ``[string]`` *→* ``string``
 
-Join a list of string with a separator
+Join a list of string with a separator.
 
 .. code:: lisp
 
@@ -298,7 +298,9 @@ split
 ~~~~~
 *separator* ``string`` *in* ``string`` *→*  ``[string]``
 
-Split a string using a separator. Return a list of substrings. Separator must be a single char
+Split a string using a separator. Return a list of substrings.
+
+*separator* must be a single char.
 
 .. code:: lisp
 
@@ -314,7 +316,9 @@ left-strip
 ~~~~~~~~~~~
 *to-remove* ``string`` *in* ``string`` *→* ``string``
 
-Remove any leading characters. *to-remove* must be in a single-char.
+Remove any leading characters.
+
+*to-remove* must be in a single-char.
 
 .. code:: lisp
 
@@ -326,7 +330,9 @@ right-strip
 ~~~~~~~~~~~
 *to-remove* ``string`` *in* ``string`` *→* ``string``
 
-Remove any trailing characters. *to-remove* must be in a single-char.
+Remove any trailing characters.
+
+*to-remove* must be in a single-char.
 
 .. code:: lisp
 
@@ -337,7 +343,9 @@ strip
 ~~~~~
 *to-remove* ``string`` *in* ``string`` *→* ``string``
 
-Remove both leading and trailing characters. *to-remove* must be in a single-char.
+Remove both leading and trailing characters.
+
+*to-remove* must be in a single-char.
 
 .. code:: lisp
 

@@ -11,7 +11,7 @@ epoch
 ~~~~~
 *→* ``time``
 
-Return Unix EPOCH
+Return Unix EPOCH.
 
 .. code:: lisp
 
@@ -23,7 +23,7 @@ genesis
 ~~~~~~~~
 *→* ``time``
 
-Return Kadena Genesis time
+Return Kadena Genesis time.
 
 .. code:: lisp
 
@@ -35,7 +35,7 @@ now
 ~~~
 *→* ``time``
 
-Return the current time
+Return the current time.
 
 .. code:: lisp
 
@@ -46,7 +46,7 @@ today
 ~~~~~
 *→* ``string``
 
-Return the current day
+Return the current day.
 
 .. code:: lisp
 
@@ -57,7 +57,7 @@ to-timestamp
 ~~~~~~~~~~~~
 *in* ``time`` *→* ``decimal``
 
-Compute an Unix timestamp of the input date"
+Compute an Unix timestamp of the input date.
 
 .. code:: lisp
 
@@ -68,7 +68,7 @@ from-timestamp
 ~~~~~~~~~~~~~~
 *timestamp* ``decimal`` *→* ``time``
 
-Compute a time from an Unix timestamp
+Compute a time from an Unix timestamp.
 
 .. code:: lisp
 
@@ -110,7 +110,7 @@ time-between
 ~~~~~~~~~~~~
 *time1* ``time`` *time2* ``time`` *in* ``time`` *→* ``bool``
 
-Return true if *in* is between *time1* and *time2*
+Return true if *in* is between *time1* and *time2*.
 
 The order of *time1* and *time2* doesn't matter.
 
@@ -135,7 +135,7 @@ is-past
 ~~~~~~~
 *in* ``time`` *→* ``bool``
 
-Return true if *in* is in the past (before now)
+Return true if *in* is in the past (before now).
 
 .. code:: lisp
 
@@ -151,7 +151,7 @@ is-future
 ~~~~~~~~~
 *in* ``time`` *→* ``bool``
 
-Return true if *in* is in the future (after now)
+Return true if *in* is in the future (after now).
 
 .. code:: lisp
 
@@ -197,7 +197,7 @@ A block time of 30s is assumed.
 
 This function can used for the future or the past.
 
-If the computed result is a negative block height (before Genesis), 0 is returned
+If the computed result is a negative block height (before Genesis), 0 is returned.
 
 .. code:: lisp
 

@@ -23,7 +23,7 @@ That's why a contract whose security would rely on that module would be highly e
 
 An attacker just need to watch the current block, to predict what will be the generated numbers in the next block.
 
-**DO NOT NOT NOT USE this PRBS generator for cryptographic or lottery purposes**
+**DO NOT NOT NOT USE this PRBS generator for cryptographic or lottery purposes**.
 
 Several numbers can be generated in the same block or transaction. They will be all different, and uncorrelated.
 
@@ -47,7 +47,7 @@ random-int-range
 ~~~~~~~~~~~~~~~~
 *_min* ``integer`` *_max* ``integer`` *→* ``integer``
 
-Returns a random integer in range [min - max]
+Returns a random integer in range [min - max].
 
 .. code:: lisp
 
@@ -68,7 +68,7 @@ random-decimal-range
 ~~~~~~~~~~~~~~~~~~~~
 *_min* ``decimal`` *_max* ``decimal`` *→* ``decimal``
 
-Returns a random decimal in range [min - max]
+Returns a random decimal in range [min - max].
 
 .. code:: lisp
 
@@ -87,7 +87,7 @@ random-choice
 ~~~~~~~~~~~~~~~~
 *choices-list* ``[<a>]`` *→* ``<a>``
 
- Returns a random element from the non-empty list
+ Returns a random element from the non-empty list.
 
 .. code:: lisp
 
@@ -107,7 +107,7 @@ shuffle
 ~~~~~~~
 *in* ``[<a>]`` *→* ``[<a>]``
 
-Shuffles a list using a sort method with random indexes
+Shuffles a list using a sort method with random indexes.
 
 .. code:: lisp
 
@@ -135,7 +135,7 @@ random-string
 ~~~~~~~~~~~~~
 *len* ``integer`` *→* ``string``
 
-Returns a random string of length *len*
+Returns a random string of length *len*.
 
 .. code:: lisp
 
@@ -150,7 +150,7 @@ gen-uuid-rfc-4122-v4
 ~~~~~~~~~~~~~~~~~~~~
 *→* ``string``
 
-Generate an UUID (Universal Unique ID) according to RFC 4122 v4
+Generate an UUID (Universal Unique ID) according to RFC 4122 v4.
 
 .. code:: lisp
 
