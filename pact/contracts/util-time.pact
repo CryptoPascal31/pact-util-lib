@@ -81,6 +81,11 @@
     (> in (now))
   )
 
+  (defun is-today (in:time)
+    "Returns true if the time in is in the current day"
+    (let ((in-day (format-time "%F" in)))
+      (= (today) in-day))
+  )
 
   ;; Block estimation function
   (defun est-height-at-time:integer (target-time:time)

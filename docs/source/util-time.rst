@@ -163,6 +163,22 @@ Return true if *in* is in the future (after now)
   pact> (is-future (time "2022-12-04T15:54:24Z"))
   true
 
+is-today
+~~~~~~~~
+*in* ``time`` *→* ``bool``
+
+Return true if *in* is in the current day.
+
+.. code:: lisp
+
+  pact> (env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+  "Updated public metadata"
+  pact> (is-today (time "2022-12-04T13:54:24Z"))
+  true
+  pact> (is-today (time "2022-12-05T13:54:24Z"))
+  false
+
+
 
 Block height estimation functions
 ---------------------------------

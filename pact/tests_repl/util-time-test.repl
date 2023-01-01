@@ -79,6 +79,13 @@
 (expect "This date is not in the future" false (is-future (time "2022-12-04T13:54:24Z")))
 (expect "This date is in the future" true (is-future (time "2022-12-04T15:54:24Z")))
 
+;;; (is-today ...)
+(env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+(expect "This date is not today" false (is-today (time "2022-12-03T13:54:24Z")))
+(expect "This date is not today" false (is-today (time "2022-12-05T13:54:24Z")))
+(expect "This date IS today" true (is-today (time "2022-12-04T13:54:24Z")))
+
+
 ; For testing blocks count estimation, take real data from chain 1.
 ;BLOCK HEIGHT = 3047021 TIME=2022-09-22 09:10:30.111508
 ;BLOCK HEIGHT = 3148035 TIME=2022-10-27 11:22:13.298682   ===> Taken as a reference

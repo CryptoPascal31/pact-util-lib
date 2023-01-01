@@ -133,6 +133,7 @@ Contains some time utilities
 * ```(defun time-between:bool (time1:time time2:time in:time)``` : Returns true if *in* is between *time1* and *time2*
 * ```(defun is-past (in:time)```: Returns true if *in* is in the past (before now)
 * ```(defun is-future (in:time)```: Returns true if *in* is in the future (after now)
+* ```(defun is-today (in:time)```: Returns true if the time *in* is in the current day
 * ```(defun to-timestamp:decimal (in:time)``` : Computes an Unix timestamp of the input time
 * ```(defun from-timestamp:decimal (timestamp:decimal)``` : Computes a time from an Unix timestamp
 * ```(defun est-height-at-time:integer (target-time:time)``` : Estimates the block height at a target-time
