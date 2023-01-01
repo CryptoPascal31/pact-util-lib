@@ -14,7 +14,7 @@
 ;;; (epoch)
 (expect-that "Check Unix epoch" (and? (< (time "1969-12-31T00:00:00Z")) (>  (time "1970-01-02T00:00:00Z"))) (epoch))
 
-;;; (gensis)
+;;; (genesis)
 (expect-that "Check Kadena Genesis" (and? (< (time "2019-10-29T00:01:00Z")) (>  (time "2019-11-01T00:00:00Z"))) (genesis))
 
 ;;; (now)
