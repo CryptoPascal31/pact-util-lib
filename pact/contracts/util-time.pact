@@ -38,6 +38,12 @@
     "Returns the current time"
     (at 'block-time (chain-data)))
 
+  (defun today:string ()
+    "Returns the current day"
+    (format-time "%F" (now))
+  )
+
+
   (defun to-timestamp:decimal (in:time)
     "Computes an Unix timestamp of the input date"
     (diff-time in (epoch))

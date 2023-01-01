@@ -21,6 +21,10 @@
 (env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
 (expect "Now should be the current time" (time "2022-12-04T14:54:24Z") (now))
 
+;; (today)
+(env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+(expect "Now should be the current time" "2022-12-04" (today))
+
 ;;; (to-timestamp)
 (expect "to-timestamp must be 0 for UNIX EPOCH" 0.0 (to-timestamp (epoch)))
 (expect "to-timestamp must be accurate for this example" 1670198933.0 (to-timestamp (time "2022-12-05T00:08:53Z")))

@@ -42,6 +42,17 @@ Return the current time
   pact> (now)
   "2022-12-04T14:54:24Z"
 
+today
+~~~~~
+*→* ``string``
+
+Return the current day
+
+.. code:: lisp
+
+  pact> (today)
+  "2022-12-04"
+
 to-timestamp
 ~~~~~~~~~~~~
 *in* ``time`` *→* ``decimal``
