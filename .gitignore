@@ -1,0 +1,4 @@
+.pact-history
+docs/build/*
+deploy/keys/*.yaml
+deploy/*log.json
