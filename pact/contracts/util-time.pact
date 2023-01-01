@@ -43,7 +43,6 @@
     (format-time "%F" (now))
   )
 
-
   (defun to-timestamp:decimal (in:time)
     "Computes an Unix timestamp of the input date"
     (diff-time in (epoch))
