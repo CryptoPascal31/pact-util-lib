@@ -53,6 +53,16 @@
     (add-time (epoch) timestamp)
   )
 
+  (defun to-time:time (x)
+    "Converts a time, string, decimal or integer to a time"
+    (cond
+      ( (= (typeof x) "time") x)
+      ( (= (typeof x) "string") (time x))
+      ( (= (typeof x) "decimal") (from-timestamp x))
+      ( (= (typeof x) "integer") (from-timestamp (* x 1.0 )))
+      [(enforce false "Unknown input type")])
+  )
+
   ;; Compare functions
   (defun earliest:time (time1:time time2:time)
     "Returns the earliest time between time1 and time2"

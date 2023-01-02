@@ -76,6 +76,35 @@ Compute a time from an Unix timestamp.
   "2022-12-05T00:08:53Z"
 
 
+to-time
+~~~~~~~
+*in* ``<a[integer,decimal,string,time]>`` *→* ``time``
+
+Convnience function to onvert a time, string, decimal or integer to a time.
+
+The input type is automatically detected.
+
+
+When:
+
+- *in* is a ``time`` => Return as is.
+- *in* is a ``string`` => Return a parsed time using  ISO8601 format (%Y-%m-%dT%H:%M:%SZ).
+- *in* is an ``int`` or a ``decimal`` => Return a time, considering that the input is an UNIX timestamp
+
+.. code:: lisp
+
+  pact> (to-time (time "2022-12-05T13:54:24Z"))
+  "2022-12-05T13:54:24Z"
+  pact> (to-time "2022-12-05T13:54:24Z")
+  "2022-12-05T13:54:24Z"
+  pact> (to-time 36 )
+  "1970-01-01T00:00:36Z"
+  pact> (to-time 36.0 )
+  "1970-01-01T00:00:36Z"
+
+
+
+
 Compare function
 ----------------
 

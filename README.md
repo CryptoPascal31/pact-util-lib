@@ -136,6 +136,7 @@ Contains some time utilities
 * ```(defun is-today (in:time)```: Returns true if the time *in* is in the current day
 * ```(defun to-timestamp:decimal (in:time)``` : Computes an Unix timestamp of the input time
 * ```(defun from-timestamp:decimal (timestamp:decimal)``` : Computes a time from an Unix timestamp
+* ```(defun to-time:time (in)``` Convert a time, string, decimal or integer to a time
 * ```(defun est-height-at-time:integer (target-time:time)``` : Estimates the block height at a target-time
 * ```(defun est-time-at-height:time (target-block:integer)``` : Estimates the time of the target-block height
 * ```(defun diff-time-minutes:decimal (time1:time time2:time)```: Computes difference between *time1* and *time2* in minutes
