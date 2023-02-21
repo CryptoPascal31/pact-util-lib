@@ -173,6 +173,17 @@ Deployed as ```free.util-zk```
 
 Contains functions to handle ZK proofs. Currently this module only support Groth16 verification scheme.
 
+**Object definitions:**
+* ```(defschema point-G1 ```: Object representing a point in the G1 field
+* ```(defschema point-G2 ```: Object representing a point (a polynomial) in the G2 field
+* ```(defschema groth16-proof ```: Obejct representing a Groth16 proof (points *A*, *B* and *C*)
+
+**Functions:**
+* ```(defun serialize-proof:string (proof:object{groth16-proof}) ```: Serialiaze an object proof to its base64 representation (344 octets)
+* ```(defun deserialize-proof:object{groth16-proof} (proof-str:string)```: Deserialize a base64 proof string to its object representation
+
+
+
 ## Tests
 Unit tests can be found in pact/test_repl.
 
