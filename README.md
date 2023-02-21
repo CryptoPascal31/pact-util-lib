@@ -167,6 +167,12 @@ The module is mainly intended to be used for non critical applications or random
 * ```(defun shuffle (in:list)```: Shuffles the list *in*
 * ```(defun gen-uuid-rfc-4122-v4:string ()``` : Generate an UUID (Universal Unique ID) according to RFC 4122 v4
 
+
+### util-zk.pact
+Deployed as ```free.util-zk```
+
+Contains functions to handle ZK proofs. Currently this module only support Groth16 verification scheme.
+
 ## Tests
 Unit tests can be found in pact/test_repl.
 

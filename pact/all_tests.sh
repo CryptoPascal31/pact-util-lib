@@ -13,3 +13,5 @@ echo ""
 $PACT tests_repl/util-time-test.repl
 echo ""
 $PACT tests_repl/util-random-test.repl
+echo ""
+$PACT tests_repl/util-zk-test.repl
