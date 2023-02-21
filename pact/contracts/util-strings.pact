@@ -160,6 +160,17 @@
           (fold (process-char) [""] (str-to-list in))))
   )
 
+  (defun split-chunks:[string] (chunk-size:integer in:string)
+    "Split a string in chunks of size chunk-size"
+    (let* ((in-len (length in))
+           (out-len (+  (/ in-len chunk-size)
+                        (if (!= 0 (mod in-len chunk-size)) 1 0)))
+           (take-chunk (lambda (x) (take chunk-size (drop (* x chunk-size) in)))))
+      (if (= 0 out-len)
+          []
+          (map (take-chunk) (enumerate 0 (- out-len 1)))))
+  )
+
   (defun starts-with:bool (in:string to-match:string)
     "Returns true if the string starts with the string to-match"
     (let ((len (length to-match)))

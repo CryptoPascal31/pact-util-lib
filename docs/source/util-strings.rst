@@ -280,8 +280,8 @@ Transform a string to lower case.
   "hello world !"
 
 
-Separators functions
----------------------
+Separators/Split functions
+--------------------------
 
 join
 ~~~~
@@ -306,6 +306,27 @@ Split a string using a separator. Return a list of substrings.
 
   pact> (split ";" "one;two;three")
   ["one" "two" "three"]
+
+
+split-chunks
+~~~~~~~~~~~~
+*chunk-size* ``integer`` *in* ``string`` *→*  ``[string]``
+
+Split a string in sub-strings of *chunk-size*. Return a list of substrings.
+
+If the string size is not a multiple of *chunk-size*, the last element will be incomplete
+and will contains the remainder.
+
+If the string is empty, return an empty list.
+
+.. code:: lisp
+
+  pact> (split-chunks 3 "onetwotre")
+  ["one" "two" "tre"]
+  pact> (split-chunks 3 "onetwothree")
+  ["one" "two" "thr" "ee"]
+  pact> (split-chunks 3 "")
+  []
 
 
 

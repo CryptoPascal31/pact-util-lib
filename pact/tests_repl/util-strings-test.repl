@@ -140,6 +140,16 @@
 
 (expect-that "Split Empty string" (= []) (split "/" ""))
 
+;split-chunk
+(expect-that "Split empty" (= []) (split-chunks 4 ""))
+(expect-that "Split a" (= ["a"]) (split-chunks 1 "a"))
+(expect-that "Split a" (= ["a"]) (split-chunks 2 "a"))
+(expect-that "Split a" (= ["a"]) (split-chunks 1000 "a"))
+(expect-that "Split abcd" (= ["a", "b" , "c", "d"]) (split-chunks 1 "abcd"))
+(expect-that "Split abcd" (= ["ab" , "cd"]) (split-chunks 2 "abcd"))
+(expect-that "Split abcde" (= ["ab" , "cd", "e"]) (split-chunks 2 "abcde"))
+(expect-that "Split abcde" (= ["abc" , "de"]) (split-chunks 3 "abcde"))
+
 ;starts-with
 (expect "Kadena is great starts with Kadena" true (starts-with "Kadena is great" "Kadena"))
 (expect "Kadena is great doesn't start with Solana" false (starts-with "Kadena is great" "Solana"))
