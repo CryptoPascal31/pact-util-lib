@@ -88,18 +88,19 @@
   )
 
   ;; Block estimation function
+  (defun current-block ()
+     (at 'block-height (chain-data)))
+
   (defun est-height-at-time:integer (target-time:time)
     "Estimates the block height at a target-time"
     (let* ((delta (diff-time target-time (now)))
-          (current-block (at 'block-height (chain-data)))
-          (est-block (+ current-block (round (/ delta BLOCK-TIME)))))
+           (est-block (+ (current-block) (round (/ delta BLOCK-TIME)))))
       (if (> est-block 0 ) est-block 0))
   )
 
   (defun est-time-at-height:time (target-block:integer)
     "Estimates the time of the target-block height"
-    (let* ((current-block (at 'block-height (chain-data)))
-           (delta (- target-block current-block)))
+    (let ((delta (- target-block (current-block))))
       (add-time (now) (* BLOCK-TIME delta)))
   )
 
