@@ -41,6 +41,20 @@ Represents a GROTH 16 Proof
     C:object{point-G1}
   )
 
+
+groth16-verify-key
+~~~~~~~~~~~~~~~~~~
+
+.. code:: lisp
+
+  (defschema groth16-verify-key
+    alpha:object{point-G1}
+    beta:object{point-G2}
+    gamma:object{point-G2}
+    delta:object{point-G2}
+    ic:[object{point-G1}]
+  )
+
 ECC Arithmetic
 --------------
 
@@ -105,3 +119,32 @@ Deserialize a base64 proof string to its object representation
   9794083499477745551885635852864140214811154513402172713835626845455029169909]}
   ,"C": {"x": 2188339130061078784977610313576641337709587353412678866175084864819379744795
   ,"y": 7363399164077520072321162032202323356331016580445157674442815097597932017402}}
+
+
+Proof Verification
+------------------
+
+verify-groth16-proof
+~~~~~~~~~~~~~~~~~~~~
+*key* ``object{groth16-verify-key}``  *pub-inputs* ``[integer]``  *proof* ``object{groth16-proof}`` *→* ``bool``
+
+Verify a Groth16 proof against a list of public inputs and proof object
+
+The verification can have 3 outcomes:
+
+  - Return *true*, if the proof is vertified
+  - Throw a transaction failure in case one of the argument is invalid.- Since this function is pure, this case ban be handled with a ``(try )``
+
+  - Return *false*, if the proof is not ok.
+
+.. code:: lisp
+
+  pact> (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-GOOD)
+  true
+
+  pact> (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-BAD)
+  true
+
+  pact> (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-CORRUPTED)
+    util-zk.pact:118:10: Point not on curve
+      at <interactive>:0:0: (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-CORRUPTED)
