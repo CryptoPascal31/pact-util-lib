@@ -19,6 +19,8 @@
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
 
+  (use util-math [to-decimal])
+
   (defconst EPOCH (time "1970-01-01T00:00:00Z"))
 
   (defconst GENESIS (time "2019-10-30T00:01:00Z"))
@@ -101,7 +103,7 @@
   (defun est-time-at-height:time (target-block:integer)
     "Estimates the time of the target-block height"
     (let ((delta (- target-block (current-block))))
-      (add-time (now) (* BLOCK-TIME delta)))
+      (add-time (now) (* BLOCK-TIME (to-decimal delta))))
   )
 
   ;; Diff time functions
