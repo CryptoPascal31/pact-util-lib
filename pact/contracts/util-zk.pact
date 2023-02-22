@@ -43,7 +43,7 @@
   )
 
   (defun int256-to-b64  (x:integer)
-    "Convert an 256 bits integer to base 64"
+    "Convert a 256 bits integer to base 64"
     (drop 4 (int-to-str 64 (| x (shift 1 272))))
   )
 
