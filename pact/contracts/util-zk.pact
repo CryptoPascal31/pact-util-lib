@@ -14,6 +14,11 @@
    \ Documentation: https://pact-util-lib.readthedocs.io \
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
 
+  ; References:
+  ;  - https://www.zeroknowledgeblog.com/index.php/groth16
+  ;  - https://github.com/kadena-io/pact/blob/master/tests/pact/pairing.repl
+  ;  - https://github.com/iden3/snarkjs/blob/master/templates/verifier_groth16.sol.ejs
+
   (defconst VERSION:string "0.4")
 
   (use util-strings [split-chunks])
