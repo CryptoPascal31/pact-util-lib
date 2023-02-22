@@ -2,8 +2,8 @@
 
 (begin-tx)
 (load "../contracts/util-lists.pact")
-(load "../contracts/util-strings.pact")
 (load "../contracts/util-math.pact")
+(load "../contracts/util-strings.pact")
 (load "../contracts/util-random.pact")
 (create-table state-table)
 (util-random.reset-state)
@@ -13,7 +13,7 @@
 (use util-random)
 (use util-lists [count])
 (use util-strings [to-string join is-hex-digit char-at])
-(use util-math [sum between])
+(use util-math [sum between to-decimal])
 
 ;Check that the the generator cannot be reinitialized
 (expect-failure "Generator can be initialized onmy one time" "already initialized" (reset-state))
@@ -39,7 +39,7 @@
 (let* ((random-total-count 1000)
        (random-lst (map (lambda (x) (random-int-range 0 19)) (enumerate 1 random-total-count)))
        (x-count (map (count random-lst) (enumerate 0 19)))
-       (x-ratio (map (lambda (x) (/ (* x 1.0) random-total-count)) x-count)))
+       (x-ratio (map (lambda (x) (/ (to-decimal x) (to-decimal random-total-count))) x-count)))
   (expect "All drawn numbers must be in range 0 19" 1.0 (sum x-ratio))
   (map (lambda (x) (expect-that "Bucket % must be close to 0.05" (between 0.03 0.07) x)) x-ratio)
 )
@@ -51,7 +51,7 @@
 
 (let* ((random-total-count 1000)
        (random-lst (map (lambda (x) (random-decimal-range -10.0 10.0)) (enumerate 1 random-total-count)))
-       (count-between (lambda (x y)  (/ (* 1.0 (length (filter (between 0.0 1.0) random-lst))) random-total-count))))
+       (count-between (lambda (x y)  (/ (to-decimal (length (filter (between 0.0 1.0) random-lst))) (to-decimal random-total-count)))))
   ; Check some properties
    (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
    (expect "Nothing below -10.0" 0 (length (filter (> -10.0) random-lst)))
@@ -86,7 +86,7 @@
 (let* ((random-total-count 1000)
        (random-lst (map (lambda (x) (random-choice ["A", "B", "C", "D"])) (enumerate 1 random-total-count)))
        (x-count (map (count random-lst) ["A", "B", "C", "D"]))
-       (x-ratio (map (lambda (x) (/ (* x 1.0) random-total-count)) x-count)))
+       (x-ratio (map (lambda (x) (/ (to-decimal x) (to-decimal random-total-count))) x-count)))
   (print (+ "Choices ratios:" (to-string x-ratio)))
   (expect "All drawn strings must be in range A, B C or D" 1.0 (sum x-ratio))
   (map (lambda (x) (expect-that "Bucket % must be close to 0.25" (between 0.23 0.27) x)) x-ratio)
