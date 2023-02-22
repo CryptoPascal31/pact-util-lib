@@ -142,7 +142,7 @@
            (mid-1 (- mid 1))
            (sorted-x (sort x)))
       (if (is-even cnt)
-          (/ (+ (at mid sorted-x) (at mid-1 sorted-x)) 2)
+          (/ (+ (at mid sorted-x) (at mid-1 sorted-x)) 2.0)
           (at mid sorted-x)))
   )
 
