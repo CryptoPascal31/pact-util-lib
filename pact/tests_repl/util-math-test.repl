@@ -198,15 +198,15 @@
 (expect-that "(log10 20 0.0) => 1.3xxxx" (between 1.3 1.4) (log10 20)) ;Should work with integers too
 
 ;; (safe-log ....)
-(expect "(safe-log 2 1.0 0.0) => 0.0" 0.0 (safe-log 2 1.0 0.0))
-(expect "(safe-log 2 8.0 0.0) => 3.0" 3.0 (safe-log 2 8.0 0.0))
-(expect "(safe-log 2 0.0 0.0) => 0.0" 0.0 (safe-log 2 0.0 0.0))
-(expect "(safe-log 2 -2.0 0.0) => 0.0" 0.0 (safe-log 2 -2.0 0.0))
+(expect "(safe-log 2.0 1.0 0.0) => 0.0" 0.0 (safe-log 2.0 1.0 0.0))
+(expect "(safe-log 2.0 8.0 0.0) => 3.0" 3.0 (safe-log 2.0 8.0 0.0))
+(expect "(safe-log 2.0 0.0 0.0) => 0.0" 0.0 (safe-log 2.0 0.0 0.0))
+(expect "(safe-log 2.0 -2.0 0.0) => 0.0" 0.0 (safe-log 2.0 -2.0 0.0))
 (expect "(safe-log 2 8 0) => 3" 3 (safe-log 2 8 0)) ;Should work with integers too
-(expect "(safe-log 2 -2 0.0) => 0.0" 0.0 (safe-log 2 -2 0.0))
-(expect "(safe-log 2 -2 3.0) => 3.0" 3.0 (safe-log 2 -2 3.0))
 
 ;; (safe-ln ....)
+(expect "(safe-log 2.0 -2.0 0.0) => 0.0" 0.0 (safe-log 2.0 -2 0.0))
+(expect "(safe-log 2.0 -2.0 3.0) => 3.0" 3.0 (safe-log 2.0 -2 3.0))
 (expect "(safe-ln  1.0 0.0) => 0.0" 0.0 (safe-ln 1.0 0.0))
 (expect-that "(safe-ln E 0.0) => 1.0" (between 0.99 1.01) (safe-ln E 0.0))
 (expect "(safe-ln  0.0 0.0) => 0.0" 0.0 (safe-ln 0.0 0.0))
