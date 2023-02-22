@@ -181,6 +181,7 @@ Contains functions to handle ZK proofs. Currently this module only support Groth
 **Functions:**
 * ```(defun serialize-proof:string (proof:object{groth16-proof}) ```: Serialiaze an object proof to its base64 representation (344 octets)
 * ```(defun deserialize-proof:object{groth16-proof} (proof-str:string)```: Deserialize a base64 proof string to its object representation
+* ```(defun neg-G1:object{point-G1} (in:object{point-G1})```: Returns the negative of a point in G1
 
 
 

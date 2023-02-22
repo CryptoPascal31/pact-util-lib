@@ -72,5 +72,9 @@
   )
 
 
-
+  (defun neg-G1:object{point-G1} (in:object{point-G1})
+    "Returns the negative of a point in G1"
+    (bind in {"x" := x, "y" := y}
+      {'x:x, 'y: (- y)})
+  )
 )
