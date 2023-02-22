@@ -27,6 +27,12 @@
 
   (defconst GOLDEN-RATIO:decimal (/ (+ 1.0 (sqrt 5.0)) 2.0))
 
+  (defun to-decimal (x)
+    (if (= "decimal" (typeof x))
+        x
+        (* (if (> x 0) 1.0 -1.0) (sqrt (* x x))))
+  )
+
   (defun min:decimal (x:decimal y:decimal)
     "Returns the min of 2 values"
     (if (< x y) x y))
