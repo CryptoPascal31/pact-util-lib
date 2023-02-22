@@ -1,6 +1,7 @@
 ;SPDX-License-Identifier: MIT
 (begin-tx)
 (load "../contracts/util-lists.pact")
+(load "../contracts/util-math.pact")
 (load "../contracts/util-strings.pact")
 (commit-tx)
 
