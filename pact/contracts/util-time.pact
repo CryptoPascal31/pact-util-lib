@@ -92,7 +92,7 @@
     "Estimates the block height at a target-time"
     (let* ((delta (diff-time target-time (now)))
           (current-block (at 'block-height (chain-data)))
-          (est-block (round (+ current-block (/ delta BLOCK-TIME)))))
+          (est-block (+ current-block (round (/ delta BLOCK-TIME)))))
       (if (> est-block 0 ) est-block 0))
   )
 
