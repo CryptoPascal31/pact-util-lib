@@ -109,7 +109,5 @@
 
 (expect-failure "Invalid input data musy throw a faolure" "Invalid" (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A-INVALID PROOF-A-GOOD))
 
-(verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-CORRUPTED)
-
 (print "Tests of util-zk ended")
 (commit-tx)
