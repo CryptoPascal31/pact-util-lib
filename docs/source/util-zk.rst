@@ -8,7 +8,7 @@ Obejcts definitions
 
 point-G1
 ~~~~~~~~
-Represents the cordinates of a point on the curve (G1 field)
+Represents the cordinates of a point on the curve (G1 group)
 
 .. code:: lisp
 
@@ -19,7 +19,7 @@ Represents the cordinates of a point on the curve (G1 field)
 
 point-G2
 ~~~~~~~~
-Represents the cordinates of a polynomial in the extended field(G2 fiels)
+Represents the cordinates of a polynomial in the extended field(G2 group)
 
 .. code:: lisp
 
@@ -81,16 +81,16 @@ Serialization scheme
 To limit transaction size and handle more easily proofs, it is proposed to
 serialize proofs in a Pact friendly maneer.
 
-- Convert **A.x** and **A.y** to Base64 (URL) strings (2* 43 octets)
-- Convert **B.x[0..1]**, and **B.y[0..1]** to Base64 (URL) strings (4 * 43 octets)
-- Convert **C.x** and **C.y** to Base64 (URL) strings (2* 43 octets)
-- Concatenate the 8 strings to form a 344 octets length Base64 string.
+- Convert **A.x** and **A.y** to Base64 (URL) strings (2* 43 bytes)
+- Convert **B.x[0..1]**, and **B.y[0..1]** to Base64 (URL) strings (4 * 43 bytes)
+- Convert **C.x** and **C.y** to Base64 (URL) strings (2* 43 bytes)
+- Concatenate the 8 strings to form a 344 bytes length Base64 string.
 
 serialize-proof
 ~~~~~~~~~~~~~~~
 *proof* ``object{groth16-proof}`` *→* ``string``
 
-Serialiaze an object proof to its base64 representation (344 octets).
+Serialiaze an object proof to its base64 representation (344 bytes).
 
 .. code:: lisp
 

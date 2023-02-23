@@ -174,13 +174,13 @@ Deployed as ```free.util-zk```
 Contains functions to handle ZK proofs. Currently this module only support Groth16 verification scheme.
 
 **Object definitions:**
-* ```(defschema point-G1 ```: Object representing a point in the G1 field
-* ```(defschema point-G2 ```: Object representing a point (a polynomial) in the G2 field
+* ```(defschema point-G1 ```: Object representing a point in the G1 group
+* ```(defschema point-G2 ```: Object representing a point (a polynomial) in the G2 group
 * ```(defschema groth16-proof ```: Obejct representing a Groth16 proof (points *A*, *B* and *C*)
 * ```(defschema groth16-verify-key ```: Object representing a Groth16 verification key.
 
 **Functions:**
-* ```(defun serialize-proof:string (proof:object{groth16-proof}) ```: Serialiaze an object proof to its base64 representation (344 octets)
+* ```(defun serialize-proof:string (proof:object{groth16-proof}) ```: Serialiaze an object proof to its base64 representation (344 bytes)
 * ```(defun deserialize-proof:object{groth16-proof} (proof-str:string)```: Deserialize a base64 proof string to its object representation
 * ```(defun neg-G1:object{point-G1} (in:object{point-G1})```: Returns the negative of a point in G1
 * ```(defun verify-groth16-proof:bool (key:object{groth16-verify-key} pub-inputs:[integer] proof:object{groth16-proof})```: Verify a groth16 proof against a list of public inputs and proof object
