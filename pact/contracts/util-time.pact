@@ -101,7 +101,7 @@
   (defun est-time-at-height:time (target-block:integer)
     "Estimates the time of the target-block height"
     (let ((delta (- target-block (current-block))))
-      (add-time (now) (* BLOCK-TIME delta)))
+      (add-time (now) (* BLOCK-TIME (dec delta))))
   )
 
   ;; Diff time functions
