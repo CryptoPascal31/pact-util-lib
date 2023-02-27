@@ -103,6 +103,28 @@ Return true if x is odd.
   pact> (is-odd 5)
   true
 
+sizeof
+~~~~~~
+*y* ``integer`` *→* ``integer``
+
+Returns the storage size of a positive integer in bytes
+
+.. code:: lisp
+
+  pact> (sizeof 1)
+  1
+
+  pact> (sizeof 255)
+  1
+
+  pact> (sizeof 256)
+  2
+
+  pact> (sizeof 65536)
+  3
+
+
+
 gcd
 ~~~
 *a* ``integer`` *b* ``integer`` *→* ``integer``

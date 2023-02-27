@@ -116,6 +116,12 @@
     (enforce-not-empty x)
     (/ (sum x) (length x)))
 
+  (defun sizeof:integer (x:integer)
+    "Returns the storage size of a positive integer in bytes"
+    (enforce (>= x 0) "Sizeof does not allow negative numbers")
+    (if (= x 0) 1 (ceiling (log 256.0 (+ x 1))))
+  )
+
   (defun is-even:bool (x:integer)
     "Returns true if x is even"
     (= 0 (mod x 2)))

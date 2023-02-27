@@ -127,6 +127,18 @@
 (expect "(sign 0.0) => 0.0)" 0.0 (sign 0.0))
 (expect "(sign -3.0) => -1.0)" -1.0 (sign -3.0))
 
+;;; (def sizeof ....)
+(expect-failure "Does not accept negative numbers" "negative numbers" (sizeof -1))
+(expect "(sizeof 0) => 0" 1 (sizeof 0))
+(expect "(sizeof 1) => 1" 1 (sizeof 1))
+(expect "(sizeof 255) => 1" 1 (sizeof 255))
+(expect "(sizeof 256) => 2" 2 (sizeof 256))
+(expect "(sizeof 65535) => 2" 2 (sizeof 65535))
+(expect "(sizeof 65556) => 3" 3 (sizeof 65536))
+(expect "(sizeof (shift 1 31)) => 4" 4 (sizeof (shift 1 31)))
+(expect "(sizeof (- (shift 1 32)) 1) => 4" 4 (sizeof (- (shift 1 32) 1)))
+(expect "(sizeof (shift 1 32)) => 5" 5 (sizeof (shift 1 32)))
+
 ;;; (gcd ...)
 (expect "GCD (0, 0) = 0" 0 (gcd 0 0))
 (expect "GCD (31, 0) = 31" 31 (gcd 31 0))
