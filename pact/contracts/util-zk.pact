@@ -106,7 +106,7 @@
 
     ; Check that all public inputs are in the group
     (enforce (fold (and) true
-                   (map (> BN128-FIELD-MODULUS) pub-inputs))
+                   (map (> BN128-GROUP-MODULUS) pub-inputs))
              "Invalid public inputs")
 
     (bind key {'alpha:= alpha, 'beta:=beta, 'gamma:=gamma, 'delta:=delta, 'ic:=ic}
