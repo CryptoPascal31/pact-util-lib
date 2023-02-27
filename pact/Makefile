@@ -1,5 +1,5 @@
 PACT = pact
-REMOVE_WARNINGS = true
+REMOVE_WARNINGS = false
 
 ifeq ($(REMOVE_WARNINGS), true)
 	POST = |grep -v Warning
