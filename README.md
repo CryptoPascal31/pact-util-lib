@@ -209,4 +209,5 @@ The documentation can be generated using sphinx:
 ## Todo
 * Add more units tests
 * Benchmarks (gas) the functions
-*  Improve documentation
+* Remove warnnings when Pact is fixed: https://github.com/kadena-io/pact/pull/1150
+* Improve documentation
