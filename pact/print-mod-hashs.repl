@@ -6,6 +6,7 @@
 (load "contracts/util-math.pact")
 (load "contracts/util-random.pact")
 (load "contracts/util-time.pact")
+(load "contracts/util-zk.pact")
 (commit-tx)
 
 (let* ((get-hash (lambda (x) (at 'hash (describe-module x))))
@@ -15,6 +16,7 @@
                   "util-strings",
                   "util-math",
                   "util-random",
-                  "util-time"]))
+                  "util-time",
+                  "util-zk"]))
   (print (util-strings.join "\n" (map (format-hash) mod-list)))
 )
