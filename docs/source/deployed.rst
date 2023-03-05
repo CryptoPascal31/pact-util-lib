@@ -1,6 +1,33 @@
 Deployed contracts
 ==================
 
+Version 0.5
+~~~~~~~~~~~
+
+Added functions:
+  * ``util-math.sizeof``
+  * ``util-string.split-chunks``
+  * ``util-time.is-today``
+  * ``util-time.today``
+  * ``util-time.is-past``
+  * ``util-time.is-future``
+  * ``util-zk.serialize-proof``
+  * ``util-zk.deserialize-proof``
+  * ``util-zk.neg-G1``
+  * ``util-zk.verify-groth16-proof``
+
+Deployed on:
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
+
+Modules hashes:
+  * **free.util-lists:** mYH9B513yhSq2EBuEEXy3Sn-wddNLFdnooSw6WMEjd4
+  * **free.util-strings:** afQtGqwCyl7l8oIFA-FB3AmShMn3BHjI9D_NKDxlRjE
+  * **free.util-math:** mCgwRLIyTi6JhaF18huxjWvlNNXxA3mav-sDxyflMmc
+  * **free.util-random:** NEG7aa1Edx6oU97d5wRh2Tl6Sw9Hiv4GOGBcZK2UWtU
+  * **free.util-time:** QFg60Pul9sJSVqpcFA3SbP7QEPmIdTeSMI6T50OQvhQ
+  * **free.util-zk:** hY1iF-6KUvzp2O-hRPnTPFeqOxEF7utyVhrMVlgzTMk
+
 Version 0.4
 ~~~~~~~~~~~
 
