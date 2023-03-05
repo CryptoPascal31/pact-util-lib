@@ -79,7 +79,7 @@ Proof Management functions
 Serialization scheme
 ~~~~~~~~~~~~~~~~~~~~
 To limit transaction size and handle more easily proofs, it is proposed to
-serialize proofs in a Pact friendly maneer.
+serialize proofs in a Pact friendly way.
 
 - Convert **A.x** and **A.y** to Base64 (URL) strings (2* 43 bytes)
 - Convert **B.x[0..1]**, and **B.y[0..1]** to Base64 (URL) strings (4 * 43 bytes)
