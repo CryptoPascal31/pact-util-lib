@@ -1,6 +1,6 @@
 Lists functions
 ==================
-**Contract:**
+**Contract / Module:**
   * free.util-lists
 
 

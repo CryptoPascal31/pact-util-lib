@@ -1,6 +1,6 @@
 Strings functions
 ==================
-**Contract:**
+**Contract / Module:**
   * free.util-strings
 
 **Dependencies:**

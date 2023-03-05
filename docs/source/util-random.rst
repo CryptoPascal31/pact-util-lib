@@ -1,6 +1,6 @@
 Pseudo-random generation functions
 ====================================
-**Contract:**
+**Contract / Module:**
   * free.util-random
 
 **Dependencies:**

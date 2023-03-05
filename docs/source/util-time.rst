@@ -1,6 +1,6 @@
 Time functions
 ==================
-**Contract:**
+**Contract / Module:**
   * free.util-time
 
 

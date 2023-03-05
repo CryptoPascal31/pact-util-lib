@@ -1,6 +1,6 @@
 Math functions
 ==================
-**Contract:**
+**Contract / Module:**
   * free.util-math
 
 **Dependencies:**

@@ -5,7 +5,7 @@ Several functions to work with the new ZK operators of Pact 4.6.0.
 
 These functions can be used in conjunction with: https://github.com/CryptoPascal31/pact-zk-generator
 
-**Contract:**
+**Contract / Module:**
   * free.util-zk
 
 **Dependencies:**
