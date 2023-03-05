@@ -2,7 +2,8 @@ TEMP_PACT_FILES = .pact/util-lists.pact \
                   .pact/util-strings.pact \
                   .pact/util-math.pact \
                   .pact/util-time.pact \
-                  .pact/util-random.pact
+                  .pact/util-random.pact \
+                  .pact/util-zk.pact
 
 TESTNET_KEYS = keys/testnet-gas.key.yaml \
                keys/testnet-gov.key.yaml
@@ -14,7 +15,8 @@ SUFFIXES = lists \
            strings \
            math \
            time \
-           random
+           random \
+           zk
 
 KDA_TOOL = kda
 

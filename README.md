@@ -167,6 +167,25 @@ The module is mainly intended to be used for non critical applications or random
 * ```(defun shuffle (in:list)```: Shuffles the list *in*
 * ```(defun gen-uuid-rfc-4122-v4:string ()``` : Generate an UUID (Universal Unique ID) according to RFC 4122 v4
 
+
+### util-zk.pact
+Deployed as ```free.util-zk```
+
+Contains functions to handle ZK proofs. Currently this module only support Groth16 verification scheme.
+
+**Object definitions:**
+* ```(defschema point-G1 ```: Object representing a point in the G1 group
+* ```(defschema point-G2 ```: Object representing a point (a polynomial) in the G2 group
+* ```(defschema groth16-proof ```: Obejct representing a Groth16 proof (points *A*, *B* and *C*)
+* ```(defschema groth16-verify-key ```: Object representing a Groth16 verification key.
+
+**Functions:**
+* ```(defun serialize-proof:string (proof:object{groth16-proof}) ```: Serialiaze an object proof to its base64 representation (344 bytes)
+* ```(defun deserialize-proof:object{groth16-proof} (proof-str:string)```: Deserialize a base64 proof string to its object representation
+* ```(defun neg-G1:object{point-G1} (in:object{point-G1})```: Returns the negative of a point in G1
+* ```(defun verify-groth16-proof:bool (key:object{groth16-verify-key} pub-inputs:[integer] proof:object{groth16-proof})```: Verify a groth16 proof against a list of public inputs and proof object
+
+
 ## Tests
 Unit tests can be found in pact/test_repl.
 
