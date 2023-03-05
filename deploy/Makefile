@@ -3,7 +3,7 @@ TEMP_PACT_FILES = .pact/util-lists.pact \
                   .pact/util-math.pact \
                   .pact/util-time.pact \
                   .pact/util-random.pact \
-									.pact/util-zk.pact
+                  .pact/util-zk.pact
 
 TESTNET_KEYS = keys/testnet-gas.key.yaml \
                keys/testnet-gov.key.yaml
