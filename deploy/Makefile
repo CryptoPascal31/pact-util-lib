@@ -41,22 +41,10 @@ endef
 	@mkdir -p .pact/
 	echo "(namespace 'free)" | cat - $< > $@
 
-<<<<<<< HEAD
 testnet-gen: $(TEMP_PACT_FILES)  $(TESTNET_KEYS) $(TESTNET_DATA)
 	$(foreach suffix,$(SUFFIXES), $(KDA_TOOL) gen -t util-$(suffix).tkpl -d $(TESTNET_DATA) -o tx-testnet-util-$(suffix)-{{chain}}.yaml${\n})
 	$(KDA_TOOL) sign -k keys/testnet-gas.key.yaml tx-testnet-*.yaml
 	$(KDA_TOOL) sign -k keys/testnet-gov.key.yaml tx-testnet-*.yaml
-=======
-testnet-gen: $(TEMP_PACT_FILES)  $(TESTNET_KEYS)
-	kda gen -t util-lists.tkpl -d testnet.yaml -o tx-testnet-util-lists-{{chain}}.yaml
-	kda gen -t util-strings.tkpl -d testnet.yaml -o tx-testnet-util-strings-{{chain}}.yaml
-	kda gen -t util-math.tkpl -d testnet.yaml -o tx-testnet-util-math-{{chain}}.yaml
-	kda gen -t util-time.tkpl -d testnet.yaml -o tx-testnet-util-time-{{chain}}.yaml
-	kda gen -t util-random.tkpl -d testnet.yaml -o tx-testnet-util-random-{{chain}}.yaml
-	kda gen -t util-zk.tkpl -d testnet.yaml -o tx-testnet-util-zk-{{chain}}.yaml
-	kda sign -k keys/testnet-gas.key.yaml tx-testnet-*.yaml
-	kda sign -k keys/testnet-gov.key.yaml tx-testnet-*.yaml
->>>>>>> Add new util-zk contract
 
 
 testnet-local: testnet-gen
@@ -71,22 +59,10 @@ testnet: testnet-gen
 	$(KDA_TOOL) poll tx-testnet-*.json -n $(TESTNET_NODE)| jq > testnet-deploy-log.json
 
 
-<<<<<<< HEAD
 mainnet-gen: $(TEMP_PACT_FILES)  $(MAINNET_KEYS) $(MAINNET_DATA)
 	$(foreach suffix,$(SUFFIXES), $(KDA_TOOL) gen -t util-$(suffix).tkpl -d $(MAINNET_DATA) -o tx-mainnet-util-$(suffix)-{{chain}}.yaml${\n})
 	$(KDA_TOOL) sign -k keys/mainnet-gov.key.yaml tx-mainnet-*.yaml
 	$(KDA_TOOL) sign -k keys/mainnet-gas.key.yaml tx-mainnet-*.yaml
-=======
-mainnet-gen: $(TEMP_PACT_FILES)  $(MAINNET_KEYS)
-	kda gen -t util-lists.tkpl -d mainnet.yaml -o tx-mainnet-util-lists-{{chain}}.yaml
-	kda gen -t util-strings.tkpl -d mainnet.yaml -o tx-mainnet-util-strings-{{chain}}.yaml
-	kda gen -t util-math.tkpl -d mainnet.yaml -o tx-mainnet-util-math-{{chain}}.yaml
-	kda gen -t util-time.tkpl -d mainnet.yaml -o tx-mainnet-util-time-{{chain}}.yaml
-	kda gen -t util-random.tkpl -d mainnet.yaml -o tx-mainnet-util-random-{{chain}}.yaml
-	kda gen -t util-zk.tkpl -d testnet.yaml -o tx-mainnet-util-zk-{{chain}}.yaml
-	kda sign -k keys/mainnet-gov.key.yaml tx-mainnet-*.yaml
-	kda sign -k keys/mainnet-gas.key.yaml tx-mainnet-*.yaml
->>>>>>> Add new util-zk contract
 
 
 mainnet-local: mainnet-gen
