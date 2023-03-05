@@ -8,6 +8,10 @@ These functions can be used in conjunction with: https://github.com/CryptoPascal
 **Contract:**
   * free.util-zk
 
+**Dependencies:**
+  * free.util-lists
+  * free.util-strings
+
 Obejcts definitions
 -------------------
 
