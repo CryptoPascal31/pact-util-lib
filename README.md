@@ -107,6 +107,8 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun is-even:bool (x:integer)``` : Returns true if *x* is even
 * ```(defun is-odd:bool (x:integer)``` : Returns true if *x* is odd
 * ```(defun sizeof:integer (x:integer)```: Returns the storage size of a positive integer in bytes
+* ```(defun ++:integer (x:integer)```: Increment an integer
+* ```(defun --:integer (x:integer)```: Decrement an integer
 * ```(defun med:decimal (x:[decimal])``` : Returns the median of a list: if the length of the list is even return the (n/2 -1)th element
 * ```(defun med*:decimal (x:[decimal])``` : *(starred version)* Returns the median of a list: if the length of the list is even return the average of the (n/2 -1)th and (n/2)th elements
 * ```(defun between:bool (a:decimal b:decimal x:decimal)``` : Returns true is a <= x <= b

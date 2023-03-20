@@ -123,6 +123,27 @@ Returns the storage size of a positive integer in bytes
   pact> (sizeof 65536)
   3
 
+++
+~~
+*x* ``integer`` *→* ``integer``
+
+Increment an integer
+
+.. code:: lisp
+
+  pact> (++ 1)
+  2
+
+\- \-
+~~~~~
+*x* ``integer`` *→* ``integer``
+
+Decrement an integer
+
+.. code:: lisp
+
+  pact> (-- 1)
+  0
 
 
 gcd

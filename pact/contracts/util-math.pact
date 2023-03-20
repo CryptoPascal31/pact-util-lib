@@ -122,6 +122,16 @@
     (if (= x 0) 1 (ceiling (log 256.0 (+ x 1))))
   )
 
+  (defun ++:integer (x:integer)
+    "Increment integer"
+    (+ x 1)
+  )
+
+  (defun --:integer (x:integer)
+    "Decrement integer"
+    (- x 1)
+  )
+
   (defun is-even:bool (x:integer)
     "Returns true if x is even"
     (= 0 (mod x 2)))
