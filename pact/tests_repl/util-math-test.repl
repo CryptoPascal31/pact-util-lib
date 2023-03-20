@@ -127,7 +127,7 @@
 (expect "(sign 0.0) => 0.0)" 0.0 (sign 0.0))
 (expect "(sign -3.0) => -1.0)" -1.0 (sign -3.0))
 
-;;; (def sizeof ....)
+;;; (sizeof ....)
 (expect-failure "Does not accept negative numbers" "negative numbers" (sizeof -1))
 (expect "(sizeof 0) => 0" 1 (sizeof 0))
 (expect "(sizeof 1) => 1" 1 (sizeof 1))
