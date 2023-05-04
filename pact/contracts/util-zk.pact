@@ -1,6 +1,6 @@
 ;SPDX-License-Identifier: MIT
 
-; This modules provides some convenient time management function for Pact.
+; This modules provides some convenient Zero Knowledge function for Pact.
 ;
 ; Be aware that this module is only in Beta and hasn't been audited:
 ;    --> BE CAREFUL if a security enforcement depends on one of theses functions

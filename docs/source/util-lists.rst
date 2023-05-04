@@ -98,7 +98,7 @@ at*
 ~~~
 *in* ``[<a>]`` *idx* ``integer`` *default* ``<a>`` *→* ``<a>``
 
-*Starred version of the standard Pact function ``(at )``*
+*Starred version of the standard Pact function* ``(at )``
 
 Return the element at *idx*, but returns *default* if the list is too short.
 
