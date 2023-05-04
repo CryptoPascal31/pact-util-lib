@@ -9,6 +9,7 @@ These functions can be used in conjunction with: https://github.com/CryptoPascal
   * free.util-zk
 
 **Dependencies:**
+  * free.util-math
   * free.util-lists
   * free.util-strings
 

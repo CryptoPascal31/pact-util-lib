@@ -4,6 +4,7 @@
 
 (begin-tx)
 (load "../contracts/util-lists.pact")
+(load "../contracts/util-math.pact")
 (load "../contracts/util-strings.pact")
 (load "../contracts/util-zk.pact")
 (commit-tx)

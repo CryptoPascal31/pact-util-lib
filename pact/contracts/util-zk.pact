@@ -22,6 +22,8 @@
   (defconst VERSION:string "0.5")
 
   (use util-strings [split-chunks])
+  (use util-lists [remove-first first])
+  (use util-math [++])
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
@@ -110,11 +112,11 @@
              "Invalid public inputs")
 
     (bind key {'alpha:= alpha, 'beta:=beta, 'gamma:=gamma, 'delta:=delta, 'ic:=ic}
-      (enforce (= (+ 1 (length pub-inputs )) (length ic)) "Bad number of inputs")
+      (enforce (= (++ (length pub-inputs )) (length ic)) "Bad number of inputs")
       (bind proof {'A:=A, 'B:=B, 'C:=C}
         ; Compute The linear combinations of inputs and IC
-        (let* ((vk_0 (point-add 'g1 NULL-POINT-G1 (at 0 ic)))
-               (vk_n (fold (point-add "g1") vk_0 (zip (scalar-mult 'g1) (drop 1 ic) pub-inputs))))
+        (let* ((vk_0 (point-add 'g1 NULL-POINT-G1 (first ic)))
+               (vk_n (fold (point-add "g1") vk_0 (zip (scalar-mult 'g1) (remove-first ic) pub-inputs))))
           (pairing-check [(neg-G1 A)  alpha  vk_n   C]
                          [B           beta   gamma  delta]))))
   )
