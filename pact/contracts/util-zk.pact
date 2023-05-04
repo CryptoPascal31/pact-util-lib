@@ -96,7 +96,7 @@
 
   (defun neg-G1:object{point-G1} (in:object{point-G1})
     "Returns the negative of a point in G1"
-    (bind in {"x" := x, "y" := y}
+    (bind in {'x := x, 'y := y}
       {'x:x, 'y: (- y)})
   )
 
@@ -116,7 +116,7 @@
       (bind proof {'A:=A, 'B:=B, 'C:=C}
         ; Compute The linear combinations of inputs and IC
         (let* ((vk_0 (point-add 'g1 NULL-POINT-G1 (first ic)))
-               (vk_n (fold (point-add "g1") vk_0 (zip (scalar-mult 'g1) (remove-first ic) pub-inputs))))
+               (vk_n (fold (point-add 'g1) vk_0 (zip (scalar-mult 'g1) (remove-first ic) pub-inputs))))
           (pairing-check [(neg-G1 A)  alpha  vk_n   C]
                          [B           beta   gamma  delta]))))
   )
