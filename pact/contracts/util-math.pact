@@ -119,7 +119,8 @@
   (defun sizeof:integer (x:integer)
     "Returns the storage size of a positive integer in bytes"
     (enforce (>= x 0) "Sizeof does not allow negative numbers")
-    (if (= x 0) 1 (ceiling (log 256.0 (+ x 1))))
+    (if (= x 0) 1
+                (ceiling (log 256.0 (dec (++ x)))))
   )
 
   (defun ++:integer (x:integer)
