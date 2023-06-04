@@ -71,24 +71,24 @@
       (and? (<= a) (>= b) in))
   )
 
-  (defun is-past (in:time)
+  (defun is-past:bool (in:time)
     "Returns true if the date is in the past (before now)"
     (< in (now))
   )
 
-  (defun is-future (in:time)
+  (defun is-future:bool (in:time)
     "Returns true if the date is in the future (after now)"
     (> in (now))
   )
 
-  (defun is-today (in:time)
+  (defun is-today:bool (in:time)
     "Returns true if the time in is in the current day"
     (let ((in-day (format-time "%F" in)))
       (= (today) in-day))
   )
 
   ;; Block estimation function
-  (defun current-block ()
+  (defun current-block:integer ()
      (at 'block-height (chain-data)))
 
   (defun est-height-at-time:integer (target-time:time)
