@@ -44,6 +44,24 @@ Golden Ratio (Phi)
 
 General functions
 -----------------
+
+dec*
+~~~~
+*x* ``<a[integer,decimal]>``  *→* ``decimal``
+
+Starred version of ``(*dec)``. Convert an integer to a decimal, but does not fail
+if *x* is already a decimal.
+
+.. code:: lisp
+
+  pact> (dec* 3)
+  3.0
+
+  pact> (dec* 3.0)
+  3.0
+
+
+
 between
 ~~~~~~~
 *a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
