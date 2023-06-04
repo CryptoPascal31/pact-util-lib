@@ -48,7 +48,7 @@
     (diff-time in (epoch))
   )
 
-  (defun from-timestamp:decimal (timestamp:decimal)
+  (defun from-timestamp:time (timestamp:decimal)
     "Computes a time from an Unix timestamp"
     (add-time (epoch) timestamp)
   )
