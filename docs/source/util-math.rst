@@ -66,7 +66,7 @@ between
 ~~~~~~~
 *a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
 
-Return true is a <= x <= b".
+Return true is *a* <= *x* <= *b*.
 
 .. code:: lisp
 
@@ -97,7 +97,7 @@ is-even
 ~~~~~~~
 *y* ``integer`` *→* ``bool``
 
-Return true if x is even.
+Return true if *x* is even.
 
 .. code:: lisp
 
@@ -111,7 +111,7 @@ is-odd
 ~~~~~~~
 *y* ``integer`` *→* ``bool``
 
-Return true if x is odd.
+Return true if *x* is odd.
 
 .. code:: lisp
 
@@ -426,7 +426,7 @@ safe-/
 ~~~~~~
 *x* ``decimal`` *y* ``decimal`` *default* ``decimal`` *→* ``decimal``
 
-Divide **x** by **y** but returns default if **y** is *0.0*.
+Divide *x* by *y* but returns default if *y* is *0.0*.
 As a result ``safe-/`` never fails (Division by *0.0* is not possible anymore).
 
 .. code:: lisp
