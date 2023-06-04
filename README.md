@@ -118,6 +118,7 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun safe-log (x y default)``` : Log of Y base X, but returns default when y <= 0
 * ```(defun safe-ln (x:decimal default:decimal)``` : Natural log of x, but returns default when x <= 0
 * ```(defun safe-log10:decimal (x default:decimal)``` : Returns the log of x base 10, rounded to 12 decimals but returns default when y <= 0
+* ```(defun dec* (x)```: Convert  an integer or decimal to decimal
 
 ### util-time.pact
 Deployed as ```free.util-time```
