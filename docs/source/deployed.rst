@@ -1,6 +1,27 @@
 Deployed contracts
 ==================
 
+Version 0.6
+~~~~~~~~~~~
+
+Added functions:
+  * ``util-math.++``
+  * ``util-math.--``
+  * ``util-math.dec*``
+
+Deployed on:
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
+
+Modules hashes:
+  * **free.util-lists:** 5dyAhqMGH4IM_q2S7RQ_N2ZKvko8HPXFQZlprsATcBc
+  * **free.util-strings:** dQ-CDwgBjgtVmmAWZWVVHNGMNPFZuDy2drGb-Bk3MxE
+  * **free.util-math:** ub6UFAqyTQ8dVpy6zK4-rNG-W6hqHwS-NX_bfCFGLVc
+  * **free.util-random:** od06XLD2aQzeFoasShObwYCWVTqgx-09IEL0fbksoFM
+  * **free.util-time:** iY4_6feELzTLXe7H5qzRuXi8tiWhpXgtKGB74JjW2Fk
+  * **free.util-zk:** idjgCDWYgW08IzxGxhsZv-8jX15TMw9bQX7PrpeU0TU
+
+
 Version 0.5
 ~~~~~~~~~~~
 

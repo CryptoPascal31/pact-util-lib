@@ -28,12 +28,13 @@
    \ Documentation: https://pact-util-lib.readthedocs.io \
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
 
-  (defconst VERSION:string "0.5")
+  (defconst VERSION:string "0.6")
 
   (bless "RBfxKPExaz5q6i64FLA_k7UVM9MaOO0UDJulfPFZBRA")
   (bless "I-yq-JDWu9Lpag6SJgkWbDtsaZ21k4YqOyA09uzSnuY")
   (bless "qSwrZYiS0ZR7fVcbIVrtC-f_ZB6n-Q-6JsTkn6zg2IQ")
   (bless "gq7DxC0_CPW3_zU4FbHXS6TFDd_cz45VYDjLCEzWsOs")
+  (bless "NEG7aa1Edx6oU97d5wRh2Tl6Sw9Hiv4GOGBcZK2UWtU")
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
