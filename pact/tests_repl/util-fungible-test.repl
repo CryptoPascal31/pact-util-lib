@@ -1,0 +1,89 @@
+;SPDX-License-Identifier: MIT
+(enforce-pact-version "4.7")
+(begin-tx)
+(load "../contracts/util-fungible.pact")
+(commit-tx)
+
+(begin-tx)
+(use util-fungible)
+
+(print (format "Testing util-fungible: Version:{}\n \
+                \                      Hash:{}" [VERSION, (at 'hash (describe-module 'util-fungible)) ]))
+
+;enforce-precision
+(expect-failure "Bad precision" "Amount 3.1415 violates the required precision 3" (enforce-precision 3 3.1415))
+(expect "Good precision" true (enforce-precision 4 3.1415))
+(expect "Good precision" true (enforce-precision 3 3.141))
+(expect "Good precision" true (enforce-precision 3 3.14))
+
+;enforce-valid-amount
+(expect-failure "Bad precision" "Amount 3.1415 violates the required precision 3" (enforce-valid-amount 3 3.1415))
+(expect-failure "Negative ammount" "positive" (enforce-valid-amount 3 -3.1))
+(expect "Good precision" true (enforce-valid-amount 4 3.1415))
+(expect "Good precision" true (enforce-valid-amount 3 3.141))
+(expect "Good precision" true (enforce-valid-amount 3 3.14))
+
+;enforce-valid-account
+(expect "Good Account" true (enforce-valid-account "Hello"))
+(expect "Good Account" true (enforce-valid-account "ABC"))
+(expect "Good Account" true (enforce-valid-account "k:bf98930d4f1fcb8f3c4a5df1776dc26f8464c65d5486259fcc17baa861a866a6"))
+
+(expect-failure "Short account" "Account name does not conform to the length rquirements [3-256]" (enforce-valid-account "AB"))
+(expect-failure "Long account" "Account name does not conform to the length rquirements [3-256]" (enforce-valid-account "AB \
+\ ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB \
+\ ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB \
+\ ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB \
+\ ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB"))
+
+;enforce-valid-transfer
+(expect "Good transfer" true (enforce-valid-transfer "alice" "bob" 3 3.14))
+(expect-failure "Bad sender" "Account name does not conform to the length rquirements [3-256]" (enforce-valid-transfer "al" "bob" 3 3.14))
+(expect-failure "Bad receiver" "Account name does not conform to the length rquirements [3-256]" (enforce-valid-transfer "alice" "b" 3 3.14))
+(expect-failure "Sender = Receiver" "Sender and Receiver must be different: alice" (enforce-valid-transfer "alice" "alice" 3 3.14))
+(expect-failure "Bad precision" "Amount 3.1415 violates the required precision 3" (enforce-valid-transfer "alice" "bob" 3 3.1415))
+
+;enforce-valid-transfer-chain
+(expect "Good transfer" true (enforce-valid-transfer-xchain "alice" "bob" 3 3.14))
+(expect-failure "Bad sender" "Account name does not conform to the length rquirements [3-256]" (enforce-valid-transfer-xchain "al" "bob" 3 3.14))
+(expect-failure "Bad receiver" "Account name does not conform to the length rquirements [3-256]" (enforce-valid-transfer-xchain "alice" "b" 3 3.14))
+(expect "Sender = Receiver OK for X-chain" true (enforce-valid-transfer-xchain "alice" "alice" 3 3.14))
+(expect-failure "Bad precision" "Amount 3.1415 violates the required precision 3" (enforce-valid-transfer-xchain "alice" "bob" 3 3.1415))
+
+;enforce-reserved
+(env-data {'fucked-ks:["fucked-key"],
+           'single-ks:["2e04bc04a9cf96701a806110242aee08a1692437413bead299fffb4a5b2e4bb6"],
+           'multi-ks:["8241d3d5e1c243e97fd311a504262a96e16d70a907ea7a8e41ae2f60100c351f", "ade902fddaf9c3694cd142c1f19337ab4803133bd196b852586821a810e621b8"]})
+
+(expect-failure "k: account should fail" "violation"  (enforce-reserved "k:2e04bc04a9cf96701a806110242aee08a1692437413bead299fffb4a5b2e4bb6" (read-keyset 'fucked-ks)))
+(expect "Good k: account" true                        (enforce-reserved "k:2e04bc04a9cf96701a806110242aee08a1692437413bead299fffb4a5b2e4bb6" (read-keyset 'single-ks)))
+(expect-failure "W: account should fail" "violation"  (enforce-reserved "w:127kxcOb8pWGdjxcFrtUG9RTWnVv7KUZ85BA9upSl7s:keys-all" (read-keyset 'single-ks)))
+(expect "Good w: account" true                        (enforce-reserved "w:127kxcOb8pWGdjxcFrtUG9RTWnVv7KUZ85BA9upSl7s:keys-all" (read-keyset 'multi-ks)))
+(expect-failure "R: account should fail" "violation"  (enforce-reserved "r:free.dadaa" (read-keyset 'fucked-ks)))
+(expect "Non principal account" true                  (enforce-reserved "ImFucked" (read-keyset 'fucked-ks)))
+
+;enforce-reserved*
+(expect-failure "k: account should fail" "violation"  (enforce-reserved* "k:2e04bc04a9cf96701a806110242aee08a1692437413bead299fffb4a5b2e4bb6" (read-keyset 'fucked-ks)))
+(expect "Good k: account" true                        (enforce-reserved* "k:2e04bc04a9cf96701a806110242aee08a1692437413bead299fffb4a5b2e4bb6" (read-keyset 'single-ks)))
+(expect-failure "W: account should fail" "violation"  (enforce-reserved* "w:127kxcOb8pWGdjxcFrtUG9RTWnVv7KUZ85BA9upSl7s:keys-all" (read-keyset 'single-ks)))
+(expect "Good w: account" true                        (enforce-reserved* "w:127kxcOb8pWGdjxcFrtUG9RTWnVv7KUZ85BA9upSl7s:keys-all" (read-keyset 'multi-ks)))
+(expect-failure "R: account should fail" "violation"  (enforce-reserved* "r:free.dadaa" (read-keyset 'fucked-ks)))
+(expect-failure "Non principal fail" "Only principal" (enforce-reserved* "ImFucked" (read-keyset 'fucked-ks)))
+
+
+;enforce-valid-chain-id
+(expect "Good chain" true (enforce-valid-chain-id "0"))
+(expect "Good chain" true (enforce-valid-chain-id "19"))
+(expect-failure "Bad chain ID" "not a valid"  (enforce-valid-chain-id "20"))
+(expect-failure "Bad chain ID" "not a valid" (enforce-valid-chain-id ""))
+(expect-failure "Bad chain ID" "not a valid" (enforce-valid-chain-id "A"))
+(expect-failure "Bad chain ID" "not a valid" (enforce-valid-chain-id "Hello"))
+(expect-failure "Bad chain ID" "not a valid" (enforce-valid-chain-id "-1"))
+
+;enforce-not-same-chain
+(env-chain-data {'chain-id:"12"})
+(expect "Not the same 12 vs 3" true (enforce-not-same-chain "3"))
+(expect "Not the same 12 vs 0" true (enforce-not-same-chain "0"))
+(expect-failure "Target chain 12 cannot be the current chain"  (enforce-not-same-chain "12"))
+
+(print "Tests of util-fungible ended")
+(commit-tx)

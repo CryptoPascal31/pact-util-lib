@@ -6,6 +6,7 @@
 (load "contracts/util-math.pact")
 (load "contracts/util-random.pact")
 (load "contracts/util-time.pact")
+(load "contracts/util-fungible.pact")
 (load "contracts/util-zk.pact")
 (commit-tx)
 
@@ -17,6 +18,7 @@
                   "util-math",
                   "util-random",
                   "util-time",
+                  "util-fungible",
                   "util-zk"]))
   (print (util-strings.join "\n" (map (format-hash) mod-list)))
 )
