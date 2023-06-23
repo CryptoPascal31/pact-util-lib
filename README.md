@@ -171,6 +171,23 @@ The module is mainly intended to be used for non critical applications or random
 * ```(defun gen-uuid-rfc-4122-v4:string ()``` : Generate an UUID (Universal Unique ID) according to RFC 4122 v4
 
 
+### util-fungible.pact
+Deployed as ```free.util-fungible```
+
+This module contains helper to create `fungible-v2` tokens. It aims to replace
+the official `util.fungible-util`.
+
+**Functions:**
+* ```(defun enforce-precision:bool (precision:integer amount:decimal)``` : Validate the precision (number of decimals) of an amount
+* ```(defun enforce-valid-amount:bool (precision:integer amount:decimal)``` : Validate that an amount is positive and does not viloate the precision
+* ```(defun enforce-valid-account:bool (account:string)``` : Enforce that an account name conforms to the fungible standards
+* ```(defun enforce-valid-transfer:bool (sender:string receiver:string precision:integer amount:decimal)``` :  Validate that the sender, the receiver and the amount are valid for a transfer
+* ```(defun enforce-valid-transfer-xchain:bool (sender:string receiver:string precision:integer amount:decimal)``` !  Validate that the sender, the receiver and the amount are valid for an X-chain transfer
+* ```(defun enforce-reserved:bool (account:string guard:guard)``` : Enforce that a principal account matches to it's guard
+* ```(defun enforce-reserved*:bool (account:string guard:guard)``` :  Starred version for  `enforce-reserved`. Has to be used for principal only tokens.
+* ```(defun enforce-valid-chain-id:bool (chain-id:string)``` : Enforce that *chain-id* is a valid chain identifier
+* ```(defun enforce-not-same-chain (chain-id:string)``` : Enforce that *chain-id* is not same as the current chain
+
 ### util-zk.pact
 Deployed as ```free.util-zk```
 
