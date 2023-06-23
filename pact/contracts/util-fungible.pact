@@ -32,7 +32,7 @@
   (defconst VALID_CHAIN_IDS:[string] (map (int-to-str 10) (enumerate 0 19)))
 
   (defun enforce-precision:bool (precision:integer amount:decimal)
-    "Validate the precision (number of decimals) on an amount"
+    "Validate the precision (number of decimals) of an amount"
     (enforce (= (floor amount precision) amount)
              (format "Amount {} violates the required precision {}"
                      [amount precision]))
@@ -46,7 +46,7 @@
   )
 
   (defun enforce-valid-account:bool (account:string)
-    "Enforce that an account name conforms to  inimum and maximum length \
+    "Enforce that an account name conforms to minimum and maximum length \
    \ requirements, as well as the latin-1 character set."
 
     (enforce (is-charset STD_CHARSET account)
@@ -70,7 +70,7 @@
 
   (defun enforce-valid-transfer-xchain:bool (sender:string receiver:string precision:integer
                                              amount:decimal)
-      "Validate that the sender, the receiver and the amount are valid for a transfer"
+      "Validate that the sender, the receiver and the amount are valid for an X-chain transfer"
       (enforce-valid-amount precision amount)
       (enforce-valid-account sender)
       (enforce-valid-account receiver)
@@ -94,10 +94,11 @@
 
   (defun enforce-valid-chain-id:bool (chain-id:string)
     "Enforce that chain-id is a valid chain identifier"
-    (enforce (contains chain-id VALID_CHAIN_IDS) "Target chain is not a valid chainweb chain ID"))
+    (enforce (contains chain-id VALID_CHAIN_IDS) "Target chain is not a valid Chainweb chainID"))
 
 
   (defun enforce-not-same-chain (chain-id:string)
+    "Enforce that chain-id is not same as the current chain"
     (enforce (!= (at 'chain-id (chain-data)) chain-id)
              (format "Target chain {} cannot be the current chain" [chain-id]))
   )
