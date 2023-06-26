@@ -3,6 +3,7 @@ TEMP_PACT_FILES = .pact/util-lists.pact \
                   .pact/util-math.pact \
                   .pact/util-time.pact \
                   .pact/util-random.pact \
+									.pact/util-fungible.pact \
                   .pact/util-zk.pact
 
 TESTNET_KEYS = keys/testnet-gas.key.yaml \
@@ -16,6 +17,7 @@ SUFFIXES = lists \
            math \
            time \
            random \
+					 fungible \
            zk
 
 KDA_TOOL = kda
