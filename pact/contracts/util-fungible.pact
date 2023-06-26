@@ -97,7 +97,7 @@
     (enforce (contains chain-id VALID_CHAIN_IDS) "Target chain is not a valid Chainweb chainID"))
 
 
-  (defun enforce-not-same-chain (chain-id:string)
+  (defun enforce-not-same-chain:bool (chain-id:string)
     "Enforce that chain-id is not same as the current chain"
     (enforce (!= (at 'chain-id (chain-data)) chain-id)
              (format "Target chain {} cannot be the current chain" [chain-id]))
