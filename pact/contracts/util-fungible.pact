@@ -2,7 +2,7 @@
 
 ; This module provides some utilities to work with fungible tokens.
 ;
-; The library deployed by the Kadena team was outdatted and a little bit shitty.
+; The library deployed by the Kadena team was outdated and a little bit shitty.
 ; That's why I created this.
 ;
 ; Be aware that this module is only in Beta and hasn't been audited:
@@ -40,7 +40,7 @@
 
   (defun enforce-valid-amount:bool (precision:integer amount:decimal)
     "Validate that an amount is positive and does not viloate the precision \
-   \ Must be used to handle evry amount in a fungible module"
+   \ Must be used to handle every amount in a fungible module"
     (enforce (> amount 0.0) "Amount must be positive")
     (enforce-precision precision amount)
   )
@@ -102,6 +102,5 @@
     (enforce (!= (at 'chain-id (chain-data)) chain-id)
              (format "Target chain {} cannot be the current chain" [chain-id]))
   )
-
 
 )
