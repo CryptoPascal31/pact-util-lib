@@ -3,6 +3,9 @@ Fungible helper functions
 **Contract / Module:**
   * free.util-fungible
 
+**Dependencies:**
+  * free.util-chain-data
+
 This modules contains many helpers to create *standard* fungible modules (aka Tokens).
 
 All theses functions are inspired by the ``coin`` contract and the venerable ``util.fungible-util``

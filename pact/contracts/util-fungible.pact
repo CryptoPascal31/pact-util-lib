@@ -18,10 +18,12 @@
    \ Documentation: https://pact-util-lib.readthedocs.io \
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
 
-  (defconst VERSION:string "0.7pre1")
+  (defconst VERSION:string "0.7pre2")
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
+
+  (use util-chain-data [chain-id])
 
   (defconst STD_CHARSET:integer CHARSET_LATIN1)
 
@@ -92,15 +94,14 @@
              (format "Reserved protocol guard violation: {}" [(typeof-principal account)]))
   )
 
-  (defun enforce-valid-chain-id:bool (chain-id:string)
+  (defun enforce-valid-chain-id:bool (target-chain-id:string)
     "Enforce that chain-id is a valid chain identifier"
-    (enforce (contains chain-id VALID_CHAIN_IDS) "Target chain is not a valid Chainweb chainID"))
+    (enforce (contains target-chain-id VALID_CHAIN_IDS) "Target chain is not a valid Chainweb chainID"))
 
-
-  (defun enforce-not-same-chain:bool (chain-id:string)
+  (defun enforce-not-same-chain:bool (target-chain-id:string)
     "Enforce that chain-id is not same as the current chain"
-    (enforce (!= (at 'chain-id (chain-data)) chain-id)
-             (format "Target chain {} cannot be the current chain" [chain-id]))
+    (enforce (!= (chain-id) target-chain-id)
+             (format "Target chain {} cannot be the current chain {}" [target-chain-id, (chain-id)]))
   )
 
 )

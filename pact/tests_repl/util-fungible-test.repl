@@ -1,6 +1,7 @@
 ;SPDX-License-Identifier: MIT
 (enforce-pact-version "4.7")
 (begin-tx)
+(load "../contracts/util-chain-data.pact")
 (load "../contracts/util-fungible.pact")
 (commit-tx)
 
@@ -81,9 +82,11 @@
 
 ;enforce-not-same-chain
 (env-chain-data {'chain-id:"12"})
+(use util-chain-data)
+(print (chain-id))
 (expect "Not the same 12 vs 3" true (enforce-not-same-chain "3"))
 (expect "Not the same 12 vs 0" true (enforce-not-same-chain "0"))
-(expect-failure "Target chain 12 cannot be the current chain"  (enforce-not-same-chain "12"))
+(expect-failure "Same-chain -> Fail" "Target chain 12 cannot be the current chain"  (enforce-not-same-chain "12"))
 
 (print "Tests of util-fungible ended")
 (commit-tx)
