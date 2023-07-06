@@ -7,6 +7,7 @@ Pseudo-random generation functions
   * free.util-lists
   * free.util-strings
   * free.util-math
+  * free.util-chain-data
 
 This module provides random generation functions.
 
