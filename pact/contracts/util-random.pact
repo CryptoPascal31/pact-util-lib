@@ -103,16 +103,14 @@
       (at idx choices-list))
   )
 
-  (defun shuffle (in:list)
+  (defun shuffle:list (in:list)
     "Shuffle a list"
     (let* ((seed (random-int))
-           (idx-to-rnd (lambda (x) (str-to-int 64 (hash (+ x seed)))))
+           (indexes (enumerate seed (+ (length in) seed)))
            (assign-order (lambda (x i) {'order:i, 'val:x })))
       (map (at 'val)
            (sort ['order]
-                 (zip (assign-order)
-                       in
-                       (map (idx-to-rnd) (enumerate 0 (length in )))))))
+                 (zip (assign-order) in (map (hash) indexes)))))
   )
 
   (defun gen-uuid-rfc-4122-v4:string ()
