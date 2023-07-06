@@ -212,7 +212,7 @@
     (round (* x (pow10 y)) 12))
 
   (defun dec*:decimal(x)
-    "Convert  an integer or decimal to decimal"
+    "Convert an integer or decimal to decimal"
     (if (= (typeof x) "decimal") x (dec x)))
 
   ;;; Log functions
