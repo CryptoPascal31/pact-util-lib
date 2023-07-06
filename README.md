@@ -9,6 +9,21 @@ The library contains currently more than 100 convenience functions split into 5 
 
 ## Modules
 
+### util-chain-data.pact
+Deployed as ```free.util-chain-data```
+
+Contains helpers to work with environment data:
+
+**Functions:**
+* ```(defun chain-id:string ()```
+* ```(defun block-height:integer ()```
+* ```(defun block-time:time ()```
+* ```(defun prev-block-hash:string ()```
+* ```(defun sender:string ()```
+* ```(defun gas-limit:integer ()```
+* ```(defun gas-price:decimal ()```
+* ```(defun total-gas-limit:decimal ()``` : Returns the maximum spendable gas for the transaction
+
 ### util-lists.pact
 Deployed as ```free.util-lists```
 

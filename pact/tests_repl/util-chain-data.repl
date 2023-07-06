@@ -1,0 +1,26 @@
+;SPDX-License-Identifier: MIT
+(enforce-pact-version "4.7")
+(begin-tx)
+(load "../contracts/util-chain-data.pact")
+(commit-tx)
+
+(typecheck "util-chain-data")
+
+(begin-tx)
+(use util-chain-data)
+(env-chain-data {'chain-id: "2",
+                 'block-height: 20,
+                 'block-time:(time "2022-12-04T14:54:24Z"),
+                 'prev-block-hash:(hash "previous"),
+                 'sender:"John Rambo",
+                 'gas-limit:36,
+                 'gas-price:0.01})
+
+(expect "chain-id" "2" (chain-id))
+(expect "block-height" 20 (block-height))
+(expect "block-time" (time "2022-12-04T14:54:24Z") (block-time))
+(expect "prev-block-hash" (hash "previous") (prev-block-hash))
+(expect "sender" "John Rambo" (sender))
+(expect "gas-limit" 36 (gas-limit))
+(expect "gas-price" 0.01 (gas-price))
+(expect "total-gas-limit" 0.36 (total-gas-limit))

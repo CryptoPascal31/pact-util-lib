@@ -41,7 +41,8 @@
 
   (use util-lists [enforce-not-empty])
   (use util-strings [join])
-  (use util-math [pow10])
+  (use util-math [pow10 -- ++])
+  (use util-chain-data [block-time])
 
   (defschema state-schema
     state:string)
@@ -61,7 +62,7 @@
     "Core private function which returns the 256 bits random number in base 64"
     (with-read state-table "" {"state":= old-state}
       (let* ((seed1 (tx-hash))
-             (seed2 (hash (at 'block-time (chain-data))))
+             (seed2 (hash (block-time)))
              (new-state (hash (concat [old-state seed1 seed2]))))
         (update state-table "" {'state:new-state})
         new-state))
@@ -75,8 +76,8 @@
     "Returns a random integer in range [min - max]"
     (enforce (and (>= min_ 0) (>= max_ 0)) "Min and Max must be positive")
     (enforce (> max_ min_) "Max must be > to min")
-    (let ((remainder  (+ (- max_ min_) 1)))
-      (+ (mod (random-int) remainder) min_))
+    (let ((modulus (++ (- max_ min_))))
+      (+ (mod (random-int) modulus) min_))
   )
 
   (defun random-decimal-range:decimal (min_:decimal max_:decimal)
@@ -89,7 +90,7 @@
 
   (defun random-string:string (len:integer)
     "Returns a random string whose length is given by the argument"
-    (let* ((cnt (+ (/ len 43) 1))
+    (let* ((cnt (++ (/ len 43)))
            (rnd (random-int))
            (substrings (map (lambda (x) (hash (+ rnd x))) (enumerate 1 cnt))))
       (take len (concat substrings)))
@@ -98,21 +99,19 @@
   (defun random-choice (choices-list:list)
     "Returns a random element from the non-empty list"
     (enforce-not-empty choices-list)
-    (let* ((max-idx (- (length choices-list) 1 ))
+    (let* ((max-idx (-- (length choices-list)))
            (idx (random-int-range 0 max-idx)))
       (at idx choices-list))
   )
 
-  (defun shuffle (in:list)
+  (defun shuffle:list (in:list)
     "Shuffle a list"
     (let* ((seed (random-int))
-           (idx-to-rnd (lambda (x) (str-to-int 64 (hash (+ x seed)))))
+           (indexes (enumerate seed (+ (length in) seed)))
            (assign-order (lambda (x i) {'order:i, 'val:x })))
       (map (at 'val)
            (sort ['order]
-                 (zip (assign-order)
-                       in
-                       (map (idx-to-rnd) (enumerate 0 (length in )))))))
+                 (zip (assign-order) in (map (hash) indexes)))))
   )
 
   (defun gen-uuid-rfc-4122-v4:string ()
