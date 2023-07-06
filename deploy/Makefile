@@ -1,4 +1,5 @@
-TEMP_PACT_FILES = .pact/util-lists.pact \
+TEMP_PACT_FILES = .pact/util-chain-data.pact \
+                  .pact/util-lists.pact \
                   .pact/util-strings.pact \
                   .pact/util-math.pact \
                   .pact/util-time.pact \
@@ -11,7 +12,8 @@ TESTNET_KEYS = keys/testnet-gas.key.yaml \
 MAINNET_KEYS = keys/mainnet-gas.key.yaml \
                keys/mainnet-gov.key.yaml
 
-SUFFIXES = lists \
+SUFFIXES = chain-data \
+           lists \
            strings \
            math \
            time \

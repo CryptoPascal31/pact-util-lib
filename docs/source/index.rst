@@ -23,6 +23,7 @@ https://github.com/CryptoPascal31/pact-util-lib/
    util-lists.rst
    util-strings.rst
    util-math.rst
+   util-chain-data.rst
    util-random.rst
    util-time.rst
    util-zk.rst
