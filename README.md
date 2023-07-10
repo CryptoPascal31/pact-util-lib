@@ -81,7 +81,9 @@ Contains functions to handle Pact strings. This module depends on util-lists.
 * ```(defun split:[string] (separator:string in:string)``` : Split a string using a separator. Returns a list of substrings. *separator* can only be a single char
 * ``` (defun split-chunks:[string] (chunk-size:integer in:string)``` : Split a string in chunks of size **chunk-size**
 * ```(defun starts-with:bool (in:string to-match:string)``` : Returns true if the string starts with the string *to-match*
+* ```(defun starts-with*:bool (to-match:string in:string)``` : Returns true if the string starts with the string *to-match*
 * ```(defun ends-with:bool (in:string to-match:string)``` : Returns true if the string ends with the string *to-match*
+* ```(defun ends-with*:bool (to-match:string in:string)``` : Returns true if the string ends with the string *to-match*
 * ```(defun left-strip:string (to-remove:string in:string)``` : Remove any leading characters
 * ```(defun right-strip:string (to-remove:string in:string)``` : Remove any trailing characters
 * ```(defun strip:string (to-remove:string in:string)``` : Remove both leading and trailing characters

@@ -158,12 +158,26 @@
 (expect "Kadena starts with Kadena" true (starts-with "Kadena" "Kadena"))
 (expect "Kade doesn't start with Kadena" false (starts-with "Kade" "Kadena"))
 
+;starts-with*
+(expect "Kadena is great starts with Kadena" true (starts-with* "Kadena" "Kadena is great"))
+(expect "Kadena is great doesn't start with Solana" false (starts-with* "Solana" "Kadena is great"))
+(expect "aKadena is great doesn't start with Kadena" false (starts-with* "Kadena" "aKadena is great"))
+(expect "Kadena starts with Kadena" true (starts-with* "Kadena" "Kadena"))
+(expect "Kade doesn't start with Kadena" false (starts-with* "Kadena" "Kade"))
+
 ;ends-with
 (expect "Kadena is great ends with great" true (ends-with "Kadena is great" "great"))
 (expect "Kadena is great doesn't end with bad" false (ends-with "Kadena is great" "bad"))
 (expect "Kadena is greater doesn't end with great" false (ends-with "Kadena is greater" "great"))
 (expect "adena doesn't end with Kadena" false (ends-with "adena" "Kadena"))
 (expect "Kadena ends with Kadena" true (ends-with "Kadena" "Kadena"))
+
+;ends-with*
+(expect "Kadena is great ends with great" true (ends-with* "great" "Kadena is great"))
+(expect "Kadena is great doesn't end with bad" false (ends-with* "bad" "Kadena is great"))
+(expect "Kadena is greater doesn't end with great" false (ends-with* "great" "Kadena is greater"))
+(expect "adena doesn't end with Kadena" false (ends-with* "Kadena" "adena"))
+(expect "Kadena ends with Kadena" true (ends-with* "Kadena" "Kadena"))
 
 ; left-strip
 (expect-that "Strip Hello world with leading spaces should remove them" (= "Hello world ") (left-strip " " "    Hello world "))

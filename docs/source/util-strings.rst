@@ -203,6 +203,23 @@ Return true if the string starts with the string to-match.
   pact> (starts-with "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9" "c:")
   false
 
+starts-with*
+~~~~~~~~~~~~
+*to-match* ``string`` *in* ``string`` *→* ``bool``
+
+Return true if the string starts with the string to-match.
+
+This is the starred version of the orginal `starts-with` but argument are reversed.
+
+Can be especially useful to write partial functions for filtering, mapping, ...
+
+.. code:: lisp
+
+  pact> (starts-with* "k:" "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9")
+  true
+  pact> (starts-with* "c:" "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9" )
+  false
+
 ends-with
 ~~~~~~~~~
 *in* ``string`` *to-match* ``string`` *→* ``bool``
@@ -214,6 +231,23 @@ Return true if the string ends with the string to-match.
   pact> (ends-with "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9" "2fb9")
   true
   pact> (ends-with "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9" "0471")
+  false
+
+ends-with*
+~~~~~~~~~~
+*to-match* ``string`` *in* ``string`` *→* ``bool``
+
+Return true if the string ends with the string to-match.
+
+This is the starred version of the orginal `starts-with` but argument are reversed.
+
+Can be especially useful to write partial functions for filtering, mapping, ...
+
+.. code:: lisp
+
+  pact> (ends-with* "2fb9" "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9")
+  true
+  pact> (ends-with* "0471" "k:0471bef109d43896f55f7b768733c2ba219364a9a7f2d470ed321f456a6b2fb9")
   false
 
 contains-chars
