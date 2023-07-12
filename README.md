@@ -247,7 +247,5 @@ The documentation can be generated using sphinx:
 ```make doc```
 
 ## Todo
-* Add more units tests
+* Add some FV: it looks like that typechecks with lambda will be fixed in the next stable version of Pact.
 * Benchmarks (gas) the functions
-* Remove warnnings when Pact is fixed: https://github.com/kadena-io/pact/pull/1150
-* Improve documentation
