@@ -203,6 +203,11 @@ the official `util.fungible-util`.
 * ```(defun enforce-valid-chain-id:bool (chain-id:string)``` : Enforce that *chain-id* is a valid chain identifier
 * ```(defun enforce-not-same-chain (chain-id:string)``` : Enforce that *chain-id* is not same as the current chain
 
+**Other:**
+*  ```(defschema fungible-xchain-sch```: Schema for yielded value in cross-chain transfers
+
+
+
 ### util-zk.pact
 Deployed as ```free.util-zk```
 

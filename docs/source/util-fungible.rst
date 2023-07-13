@@ -287,3 +287,21 @@ to a different chain.
 
   pact> (enforce-not-same-chain "0")
   kda-env/pact-util-lib/util-fungible.pact:102:4:Error: Target chain 0 cannot be the current chain
+
+fungible-xchain-sch
+~~~~~~~~~~~~~~~~~~~
+
+Predefined schema to be used as a yielded value for X-chains pacts.
+
+
+
+It has the following definition:
+
+.. code:: lisp
+
+  (defschema fungible-xchain-sch
+    receiver:string
+    receiver-guard:guard
+    amount:decimal
+    source-chain:string
+  )
