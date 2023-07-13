@@ -36,8 +36,8 @@ test-util-random:
 	@echo ""
 
 test-util-zk:
-		$(PACT) tests_repl/util-zk-test.repl $(POST)
-		@echo ""
+	$(PACT) tests_repl/util-zk-test.repl $(POST)
+	@echo ""
 
 test-util-fungible:
 	$(PACT) tests_repl/util-fungible-test.repl $(POST)
