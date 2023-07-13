@@ -27,4 +27,5 @@ https://github.com/CryptoPascal31/pact-util-lib/
    util-random.rst
    util-time.rst
    util-zk.rst
+   util-fungible.rst
    deployed.rst

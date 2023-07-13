@@ -35,7 +35,11 @@ test-util-zk:
 		$(PACT) tests_repl/util-zk-test.repl $(POST)
 		@echo ""
 
-test: test-util-lists test-util-strings test-util-math test-util-time test-util-random test-util-zk
+test-util-fungible:
+	$(PACT) tests_repl/util-fungible-test.repl $(POST)
+	@echo ""
+
+test: test-util-lists test-util-strings test-util-math test-util-time test-util-random test-util-zk test-util-fungible
 
 
 hashes:
