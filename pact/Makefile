@@ -10,6 +10,10 @@ endif
 
 all: test
 
+test-util-chain-data:
+	$(PACT) tests_repl/util-chain-data.repl $(POST)
+	@echo ""
+
 test-util-lists:
 	@echo $(POST)
 	$(PACT) tests_repl/util-lists-test.repl $(POST)
@@ -39,7 +43,7 @@ test-util-fungible:
 	$(PACT) tests_repl/util-fungible-test.repl $(POST)
 	@echo ""
 
-test: test-util-lists test-util-strings test-util-math test-util-time test-util-random test-util-zk test-util-fungible
+test: test-util-chain-data test-util-lists test-util-strings test-util-math test-util-time test-util-random test-util-zk test-util-fungible
 
 
 hashes:

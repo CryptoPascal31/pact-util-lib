@@ -4,9 +4,13 @@ PACT="pact"
 
 cd "$(dirname "$0")"
 
+$PACT tests_repl/util-chain-data.repl
+echo ""
 $PACT tests_repl/util-lists-test.repl
 echo ""
 $PACT tests_repl/util-strings-test.repl
+echo ""
+$PACT tests_repl/util-chain-funible-test.repl
 echo ""
 $PACT tests_repl/util-math-test.repl
 echo ""

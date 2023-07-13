@@ -1,6 +1,7 @@
 ;SPDX-License-Identifier: MIT
 
 (begin-tx)
+(load "contracts/util-chain-data.pact")
 (load "contracts/util-lists.pact")
 (load "contracts/util-strings.pact")
 (load "contracts/util-math.pact")
@@ -11,9 +12,10 @@
 (commit-tx)
 
 (let* ((get-hash (lambda (x) (at 'hash (describe-module x))))
-       (complement-str (lambda (x) (concat (make-list (- 12 (length x)) " "))))
+       (complement-str (lambda (x) (concat (make-list (- 15 (length x)) " "))))
        (format-hash (lambda (x) (format "{}:{} {}" [x, (complement-str x), (get-hash x)])))
-       (mod-list ["util-lists",
+       (mod-list ["util-chain-data",
+                  "util-lists",
                   "util-strings",
                   "util-math",
                   "util-random",
