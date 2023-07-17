@@ -436,10 +436,10 @@ In fact the fucntion simply remove the first element and append a new element.
 
 .. code:: lisp
 
-  pact> (fifo-push ["a", "b", "c", d"] "x")
+  pact> (fifo-push ["a", "b", "c", "d"] "x")
   ["b" "c" "d" "x"]
 
-  pact> (fifo-push (fifo-push ["a", "b", "c", d"] "x") "y")
+  pact> (fifo-push (fifo-push ["a", "b", "c", "d"] "x") "y")
   ["c" "d" "x", "y"]
 
 
