@@ -57,7 +57,7 @@ Contains functions to handle Pact lists.
 * ```(defun remove-item:list (in:list item)``` : Remove an item from a list
 * ```(defun remove-item*:list (in:list item)``` : *(starred version)* Remove and item from the list but raises an error if it does not exist
 * ```(defun fifo-push (in:list item)``` Append an *item* and rotate the FIFO for constant size FIFO
-* ```(defun fifo-push* (in:list fifo-size:integer item)``` Append an item, rotate the FIFO if full 
+* ```(defun fifo-push* (in:list fifo-size:integer item)``` Append an item, rotate the FIFO if full
 
 ### util-strings.pact
 Deployed as ```free.util-strings```
@@ -183,6 +183,7 @@ The module is mainly intended to be used for non critical applications or random
 **Functions:**
 * ```(defun random-int:integer ()``` : Returns a 256 bit random integer
 * ```(defun random-int-range:integer (min_:integer max_:integer)``` : Returns a random integer in range [min - max]
+* ```(defun random-bool:bool ()``` Returns a random boolean: a coin flip
 * ```(defun random-decimal-range:decimal (min_:decimal max_:decimal)```: Returns a random (uniform distribution) decimal in range [min - max]
 * ```(defun random-string (len:integer)``` : Returns a random string whose length is given by the argument
 * ```(defun random-choice (choices-list:list)```: Returns a random element from the non-empty list

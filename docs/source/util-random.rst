@@ -62,6 +62,27 @@ Returns a random integer in range [min - max].
   0
 
 
+Booleans
+--------
+
+random-bool
+~~~~~~~~~~~
+*→* ``bool``
+
+Returns a random boolean
+
+.. code:: lisp
+
+  pact> (random-bool)
+  true
+
+  pact> (random-bool)
+  true
+
+  pact> (random-bool)
+  false
+
+
 Decimals
 ---------
 

@@ -41,7 +41,7 @@
 
   (use util-lists [enforce-not-empty])
   (use util-strings [join])
-  (use util-math [pow10 -- ++])
+  (use util-math [pow10 -- ++ is-even])
   (use util-chain-data [block-time])
 
   (defschema state-schema
@@ -95,6 +95,10 @@
            (substrings (map (lambda (x) (hash (+ rnd x))) (enumerate 1 cnt))))
       (take len (concat substrings)))
   )
+
+  (defun random-bool:bool ()
+    "Returns a random boolean: a coin flip"
+    (is-even (random-int)))
 
   (defun random-choice (choices-list:list)
     "Returns a random element from the non-empty list"
