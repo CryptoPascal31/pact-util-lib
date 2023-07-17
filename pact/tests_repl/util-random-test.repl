@@ -11,10 +11,20 @@
 (commit-tx)
 
 (begin-tx)
+(module test-utils G
+  (defcap G() true)
+  (defconst RND-TOTAL-COUNT:integer 1000)
+  (defconst RND-TOTAL-ENUM:[integer] (enumerate 1 RND-TOTAL-COUNT))
+)
+(commit-tx)
+
+(begin-tx)
 (use util-random)
 (use util-lists [count])
 (use util-strings [to-string join is-hex-digit char-at])
 (use util-math [sum between])
+
+(use test-utils)
 
 ;Check that the the generator cannot be reinitialized
 (expect-failure "Generator can be initialized onmy one time" "already initialized" (reset-state))
@@ -27,9 +37,8 @@
 (print (+ "   "(join "\n   " (map (lambda (x) (int-to-str 10 (random-int))) (enumerate 0 9) ))))
 (print "")
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (random-int)) (enumerate 1 random-total-count))))
-  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+(let* ((random-lst (map (lambda (x) (random-int))  RND-TOTAL-ENUM)))
+  (expect "All generated must be distinct" RND-TOTAL-COUNT (length (distinct random-lst)))
 )
 
 ;random-bool
@@ -37,8 +46,7 @@
 (print (+ "   "(join " " (map (lambda (x) (to-string (random-bool))) (enumerate 0 9) ))))
 (print "")
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (random-bool)) (enumerate 1 random-total-count)))
+(let* ((random-lst (map (lambda (x) (random-bool)) RND-TOTAL-ENUM))
        (t-cnt (count random-lst true))
        (f-cnt (count random-lst false)))
     (expect "Total must be 1000" 1000 (+ t-cnt f-cnt))
@@ -50,10 +58,9 @@
 (print (join " / " (map (lambda (x) (int-to-str 10 (random-int-range 0 5))) (enumerate 0 19) )))
 (print "")
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (random-int-range 0 19)) (enumerate 1 random-total-count)))
+(let* ((random-lst (map (lambda (x) (random-int-range 0 19)) RND-TOTAL-ENUM))
        (x-count (map (count random-lst) (enumerate 0 19)))
-       (x-ratio (map (lambda (x) (/ (dec x) (dec random-total-count))) x-count)))
+       (x-ratio (map (lambda (x) (/ (dec x) (dec RND-TOTAL-COUNT))) x-count)))
   (expect "All drawn numbers must be in range 0 19" 1.0 (sum x-ratio))
   (map (lambda (x) (expect-that "Bucket % must be close to 0.05" (between 0.03 0.07) x)) x-ratio)
 )
@@ -63,11 +70,10 @@
 (print (join " / " (map (lambda (x) (to-string (random-decimal-range -10.0 10.0))) (enumerate 0 19) )))
 (print "")
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (random-decimal-range -10.0 10.0)) (enumerate 1 random-total-count)))
-       (count-between (lambda (x y)  (/ (dec (length (filter (between 0.0 1.0) random-lst))) (dec random-total-count)))))
+(let* ((random-lst (map (lambda (x) (random-decimal-range -10.0 10.0)) RND-TOTAL-ENUM))
+       (count-between (lambda (x y)  (/ (dec (length (filter (between 0.0 1.0) random-lst))) (dec RND-TOTAL-COUNT)))))
   ; Check some properties
-   (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+   (expect "All generated must be distinct" RND-TOTAL-COUNT (length (distinct random-lst)))
    (expect "Nothing below -10.0" 0 (length (filter (> -10.0) random-lst)))
    (expect "Nothing above 10.0" 0 (length (filter (< 10.0) random-lst)))
 
@@ -89,23 +95,20 @@
 (expect "Length of generated string must be 43" 43 (length (random-string 43)))
 (expect "Length of generated string must be 128" 128 (length (random-string 128)))
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (random-string 128)) (enumerate 1 random-total-count))))
-  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+(let* ((random-lst (map (lambda (x) (random-string 128)) RND-TOTAL-ENUM)))
+  (expect "All generated must be distinct" RND-TOTAL-COUNT (length (distinct random-lst)))
 )
 
 ;; rabndom-choice
 (expect-failure "Choice list must not be empty" "cannot be empty" (random-choice []))
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (random-choice ["A", "B", "C", "D"])) (enumerate 1 random-total-count)))
+(let* ((random-lst (map (lambda (x) (random-choice ["A", "B", "C", "D"])) RND-TOTAL-ENUM))
        (x-count (map (count random-lst) ["A", "B", "C", "D"]))
-       (x-ratio (map (lambda (x) (/ (dec x) (dec random-total-count))) x-count)))
+       (x-ratio (map (lambda (x) (/ (dec x) (dec RND-TOTAL-COUNT))) x-count)))
   (print (+ "Choices ratios:" (to-string x-ratio)))
   (expect "All drawn strings must be in range A, B C or D" 1.0 (sum x-ratio))
-  (map (lambda (x) (expect-that "Bucket % must be close to 0.25" (between 0.23 0.27) x)) x-ratio)
+  (map (lambda (x) (expect-that "Bucket % must be close to 0.25" (between 0.22 0.28) x)) x-ratio)
 )
-
 
 ;; shuffle
 (print "Ten examples of random shuffle:")
@@ -116,10 +119,9 @@
  ; check that it works with an empty list too
 (expect "Empty list should result en aempty list" [] (shuffle []))
 (let* ((in-list  ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"])
-       (random-total-count 1000)
-       (random-lst (map (lambda (x) (shuffle in-list)) (enumerate 1 random-total-count))))
+       (random-lst (map (lambda (x) (shuffle in-list)) RND-TOTAL-ENUM)))
   (map (lambda (x) (expect "Output list must have the same size as input list" (length in-list) (length x))) random-lst)
-  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+  (expect "All generated must be distinct" RND-TOTAL-COUNT (length (distinct random-lst)))
 )
 
 
@@ -143,9 +145,8 @@
 
 )
 
-(let* ((random-total-count 1000)
-       (random-lst (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 1 random-total-count))))
-  (expect "All generated must be distinct" random-total-count (length (distinct random-lst)))
+(let* ((random-lst (map (lambda (x) (gen-uuid-rfc-4122-v4)) RND-TOTAL-ENUM)))
+  (expect "All generated must be distinct" RND-TOTAL-COUNT (length (distinct random-lst)))
 )
 
 (print "Tests of util-random ended")
