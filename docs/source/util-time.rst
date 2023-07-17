@@ -3,6 +3,8 @@ Time functions
 **Contract / Module:**
   * free.util-time
 
+**Dependencies:**
+  * free.util-chain-data
 
 General functions
 -----------------
