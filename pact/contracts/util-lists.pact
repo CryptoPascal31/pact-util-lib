@@ -180,4 +180,17 @@
     (enforce (contains item in) "The item is not present in the list")
     (remove-item in item)
   )
+
+  ;; FIFO functions
+  (defun fifo-push (in:list item)
+    "Append an item and rotate the FIFO for constant size FIFO"
+    (remove-first (append-last in item)))
+
+  (defun fifo-push* (in:list fifo-size:integer item)
+    "Append an item, rotate the FIFO if full"
+    (if (>= (length in) fifo-size)
+      (fifo-push in item)
+      (append-last in item))
+  )
+
 )

@@ -416,3 +416,51 @@ Remove and item from the list but raises an error if it does not exist.
   pact> (remove-item* ["a", "b", "c", "a", "d"] "e")
   util-lists.pact:140:4: The item is not present in the list
    at <interactive>:0:0: (remove-item* ["a" "b" "c" "a" "d"] "e")
+
+
+FIFO functions
+--------------
+
+Pact lists can be used as FIFO.
+
+
+fifo-push
+~~~~~~~~~
+*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+
+This function push an element into a fixed size FIFO.
+
+The FIFO keep a constant size before and after the call.
+
+In fact the fucntion simply remove the first element and append a new element.
+
+.. code:: lisp
+
+  pact> (fifo-push ["a", "b", "c", d"] "x")
+  ["b" "c" "d" "x"]
+
+  pact> (fifo-push (fifo-push ["a", "b", "c", d"] "x") "y")
+  ["c" "d" "x", "y"]
+
+
+fifo-push*
+~~~~~~~~~~
+*in* ``[<a>]`` *fifo-size* ``integer`` *item* ``<a>`` *→* ``[<a>]``
+
+This function push an element into a defined size (by *fifo-size*) FIFO.
+
+*fifo-size* is target size
+
+If the current size is less then *fifo-size*, the element is only append.
+
+If the current size is equal to *fifo-size*, it means that the FIFO is full, and
+the element is append, and the FIFO is rotated (ie: first element removed and new element append)
+
+
+.. code:: lisp
+
+    pact> (fifo-push* ["a", "b", "c", "d"] 5  "x")
+    ["a" "b" "c" "d" "x"]
+
+    pact> (fifo-push* ["a", "b", "c", "d", "x"] 5  "y")
+    ["b," "c" "d" "x", "y"]
