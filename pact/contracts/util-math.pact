@@ -169,11 +169,11 @@
 
   (defun sign:decimal (x:decimal)
     "Returns 1.0 if x is positive, 0.0 if x is null, and -1.0 if x is negative"
-    (if (= x 0.0)
-        0.0
-        (if (> x 0.0)
-            1.0
-            -1.0)))
+    (cond
+      ((> x 0.0) 1.0)
+      ((< x 0.0) -1.0)
+      0.0))
+
 
   (defun gcd:integer (a:integer b:integer)
     "Returns the greatest common divisor of 2 integers"
