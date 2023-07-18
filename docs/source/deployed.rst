@@ -1,6 +1,45 @@
 Deployed contracts
 ==================
 
+Version 0.7 (Pre-version)
+~~~~~~~~~~~
+
+Added functions:
+  * ``util-chain-data.*``
+  * ``util-list.shift-left``
+  * ``util-list.shift-right``
+  * ``util-list.roll-left``
+  * ``util-list.roll-right``
+  * ``util-list.fifo-push``
+  * ``util-strings.starts-with*``
+  * ``util-strings.ends-with*``
+  * ``util-math.clamp``
+  * ``util-random.random-bool``
+  * ``util-fungible.enforce-precision``
+  * ``util-fungible.enforce-valid-amount``
+  * ``util-fungible.enforce-valid-transfer``
+  * ``util-fungible.enforce-valid-transfer-xchain``
+  * ``util-fungible.enforce-reserved``
+  * ``util-fungible.enforce-reserved*``
+  * ``util-fungible.enforce-valid-chain-id``
+  * ``util-fungible.enforce-not-same-chain``
+
+Deployed on:
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
+
+Modules hashes:
+
+* **free.util-chain-data:**
+* **free.util-lists:**
+* **free.util-strings:**
+* **free.util-math:**
+* **free.util-random:**
+* **free.util-time:**
+* **free.util-fungible:**
+* **free.util-zk:**
+
+
 Version 0.6
 ~~~~~~~~~~~
 
