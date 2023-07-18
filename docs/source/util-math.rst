@@ -341,6 +341,9 @@ Clamp *x* between *low-limit* and *up-limit*:
   * if *x* < *low-limit* => Return *low-limit*
   * if *x* is between *low-limit*  and *up-limit* => Return *x*
 
+Equivalent to ``MAX(low-limit, MIN(up-limit, x))``
+
+
 .. code:: lisp
 
   pact> (clamp 10.0 20.0 12.0)
