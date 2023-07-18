@@ -35,6 +35,7 @@
   (bless "qSwrZYiS0ZR7fVcbIVrtC-f_ZB6n-Q-6JsTkn6zg2IQ")
   (bless "gq7DxC0_CPW3_zU4FbHXS6TFDd_cz45VYDjLCEzWsOs")
   (bless "NEG7aa1Edx6oU97d5wRh2Tl6Sw9Hiv4GOGBcZK2UWtU")
+  (bless "od06XLD2aQzeFoasShObwYCWVTqgx-09IEL0fbksoFM")
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
