@@ -79,6 +79,14 @@
       (at 'i (fold (cmp) (first in-enum) (remove-first in-enum))))
   )
 
+  (defun clamp:decimal (low-limit:decimal up-limit:decimal x:decimal)
+    "Clamp x between low-limit and up-limit"
+    (cond
+      ((< x low-limit) low-limit)
+      ((> x up-limit) up-limit)
+      x)
+  )
+
   (defun sum3:decimal (x:decimal y:decimal z:decimal)
     "Returns the sum of 3 values"
     (+ x (+ y z)))

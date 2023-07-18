@@ -331,6 +331,28 @@ Return the max index of a list.
   pact> (amax [1.1 8.2 -1.0 5.1])
   1
 
+clamp
+~~~~~
+*low-limit* ``decimal`` *up-limit* ``decimal`` *x* ``decimal`` *→* ``decimal``
+
+Clamp *x* between *low-limit* and *up-limit*:
+
+  * if *x* > *up-limit* => Return *up-limit*
+  * if *x* < *low-limit* => Return *low-limit*
+  * if *x* is between *low-limit*  and *up-limit* => Return *x*
+
+.. code:: lisp
+
+  pact> (clamp 10.0 20.0 12.0)
+  12.0
+  pact> (clamp 10.0 20.0 8.0)
+  10.0
+  pact> (clamp 10.0 20.0 25.0)
+  20.0
+
+
+
+
 Sum functions
 -------------
 **Remarks:**

@@ -73,6 +73,11 @@
 (expect "(amax [3.0 1.0 4.0]) =>2" 2 (amax [3.0 1.0 4.0]))
 (expect "(amax [3.0 1.0 9.0 0.0 -2.0 -1.0]) =>2" 2 (amax [3.0 1.0 9.0 0.0 -2.0 -1.0]))
 
+;;; (clamp ...)
+(expect "Clamp between -1.0 and 1.0" 0.5 (clamp -1.0 1.0 0.5))
+(expect "Clamp between -1.0 and 1.0" 1.0 (clamp -1.0 1.0 1.5))
+(expect "Clamp between -1.0 and 1.0" -1.0 (clamp -1.0 1.0 -2.5))
+
 ;;; (sum3 ....)
 (expect "(sum3 3.0 4.0 5.0) => 12.0" 12.0 (sum3 3.0 4.0 5.0))
 

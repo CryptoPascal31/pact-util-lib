@@ -117,6 +117,7 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun max4:decimal (x:decimal y:decimal z:decimal zz:decimal)``` : Returns the max of 4 values
 * ```(defun max-list:decimal (x:[decimal])``` : Returns the max of a list
 * ```(defun amax:integer (in:[decimal])``` : Returns the max index of a list
+* ```(defun clamp:decimal (low-limit:decimal up-limit:decimal x:decimal)```: Clamp *x* between limits.
 * ```(defun sum3:decimal (x:decimal y:decimal z:decimal)``` : Returns the sum of 3 values
 * ```(defun sum4:decimal (x:decimal y:decimal z:decimal zz:decimal)``` : Returns the sum of 4 values
 * ```(defun sum:decimal (x:[decimal])``` : Returns the sum of a list
