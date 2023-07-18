@@ -173,30 +173,45 @@
 (expect-that "Remove 2 items" (= ["b", "c"]) (remove-item* ["a","b","c","a"] "a"))
 (expect-failure "Remove nothing" "not present" (remove-item* ["a","b","c"] "d"))
 
+; shift-left
+(expect-that "Shift a 1 sized list = Replace" (= ["x"]) (shift-left ["a"] "x"))
+(expect-that "Shift a 2 sized list" (= ["b","x"]) (shift-left ["a","b"] "x"))
+(expect-that "Shift a 3 sized list" (= ["b","c","x"]) (shift-left ["a","b","c"] "x"))
+(expect-that "Shift a 4 sized list" (= ["b","c","d","x"]) (shift-left ["a","b","c","d"] "x"))
+(expect-that "Double shift" (= ["c","d","x","y"]) (shift-left (shift-left ["a","b","c","d"] "x") "y"))
+
+; shift-right
+(expect-that "Shift a 1 sized list = Replace" (= ["x"]) (shift-right ["a"] "x"))
+(expect-that "Shift a 2 sized list" (= ["x","a"]) (shift-right ["a","b"] "x"))
+(expect-that "Shift a 3 sized list" (= ["x","a","b"]) (shift-right ["a","b","c"] "x"))
+(expect-that "Shift a 4 sized list" (= ["x","a","b","c"]) (shift-right ["a","b","c","d"] "x"))
+(expect-that "Double shift" (= ["y","x","a","b"]) (shift-right (shift-right ["a","b","c","d"] "x") "y"))
+
+; roll-left
+(expect-that "Roll a 1 sized list = Replace" (= ["a"]) (roll-left ["a"]))
+(expect-that "Roll a 2 sized list" (= ["b","a"]) (roll-left ["a","b"]))
+(expect-that "Roll a 3 sized list" (= ["b","c","a"]) (roll-left ["a","b","c"]))
+(expect-that "Roll a 4 sized list" (= ["b","c","d","a"]) (roll-left ["a","b","c","d"]))
+(expect-that "Double roll" (= ["c","d","a","b"]) (roll-left (roll-left ["a","b","c","d"])))
+
+
 ; fifo-push
-(expect-that "Push into a 1 sized list = Replace" (= ["x"]) (fifo-push ["a"] "x"))
-(expect-that "Push into a 2 sized list" (= ["b","x"]) (fifo-push ["a","b"] "x"))
-(expect-that "Push into a 3 sized list" (= ["b","c","x"]) (fifo-push ["a","b","c"] "x"))
-(expect-that "Push into a 4 sized list" (= ["b","c","d","x"]) (fifo-push ["a","b","c","d"] "x"))
-(expect-that "Double push" (= ["c","d","x","y"]) (fifo-push (fifo-push ["a","b","c","d"] "x") "y"))
+(expect-that "Push into a an empty list, fifo size 1" (= ["x"]) (fifo-push []  1 "x"))
+(expect-that "Push into a an empty list, fifo size 2" (= ["x"]) (fifo-push []  2 "x"))
+(expect-that "Push into a an empty list, fifo size 10" (= ["x"]) (fifo-push []  10 "x"))
 
-; fifo-push*
-(expect-that "Push into a an empty list, fifo size 1" (= ["x"]) (fifo-push* []  1 "x"))
-(expect-that "Push into a an empty list, fifo size 2" (= ["x"]) (fifo-push* []  2 "x"))
-(expect-that "Push into a an empty list, fifo size 10" (= ["x"]) (fifo-push* []  10 "x"))
+(expect-that "Push into a 1 sized list, fifo size 1" (= ["x"]) (fifo-push ["a"]  1 "x"))
+(expect-that "Push into a 1 sized list, fifo size 2" (= ["a","x"]) (fifo-push ["a"]  2 "x"))
+(expect-that "Push into a 1 sized list, fifo size 10" (= ["a","x"]) (fifo-push ["a"]  10 "x"))
 
-(expect-that "Push into a 1 sized list, fifo size 1" (= ["x"]) (fifo-push* ["a"]  1 "x"))
-(expect-that "Push into a 1 sized list, fifo size 2" (= ["a","x"]) (fifo-push* ["a"]  2 "x"))
-(expect-that "Push into a 1 sized list, fifo size 10" (= ["a","x"]) (fifo-push* ["a"]  10 "x"))
+(expect-that "Push into a 2 sized list, fifo size 1" (= ["b", "x"]) (fifo-push ["a","b"]  1 "x"))
+(expect-that "Push into a 2 sized list, fifo size 2" (= ["b","x"]) (fifo-push ["a","b"]  2 "x"))
+(expect-that "Push into a 2 sized list, fifo size 10" (= ["a","b", "x"]) (fifo-push ["a","b"]  10 "x"))
 
-(expect-that "Push into a 2 sized list, fifo size 1" (= ["b", "x"]) (fifo-push* ["a","b"]  1 "x"))
-(expect-that "Push into a 2 sized list, fifo size 2" (= ["b","x"]) (fifo-push* ["a","b"]  2 "x"))
-(expect-that "Push into a 2 sized list, fifo size 10" (= ["a","b", "x"]) (fifo-push* ["a","b"]  10 "x"))
+(expect-that "Push into a 9 sized list, fifo size 10" (= ["a", "b","c","d","e","f","g","h","i","x"]) (fifo-push ["a","b","c","d","e","f","g","h","i"]  10 "x"))
+(expect-that "Push into a 10 sized list, fifo size 10" (= ["b","c","d","e","f","g","h","i","j","x"]) (fifo-push ["a","b","c","d","e","f","g","h","i","j"]  10 "x"))
 
-(expect-that "Push into a 9 sized list, fifo size 10" (= ["a", "b","c","d","e","f","g","h","i","x"]) (fifo-push* ["a","b","c","d","e","f","g","h","i"]  10 "x"))
-(expect-that "Push into a 10 sized list, fifo size 10" (= ["b","c","d","e","f","g","h","i","j","x"]) (fifo-push* ["a","b","c","d","e","f","g","h","i","j"]  10 "x"))
-
-(expect-that "Double push in a  9 sized list, fifo size 10" (= ["b","c","d","e","f","g","h","i","x","y"]) (fifo-push* (fifo-push* ["a","b","c","d","e","f","g","h","i"] 10 "x") 10 "y"))
+(expect-that "Double push in a  9 sized list, fifo size 10" (= ["b","c","d","e","f","g","h","i","x","y"]) (fifo-push (fifo-push ["a","b","c","d","e","f","g","h","i"] 10 "x") 10 "y"))
 
 
 

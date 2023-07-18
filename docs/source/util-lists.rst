@@ -418,32 +418,71 @@ Remove and item from the list but raises an error if it does not exist.
    at <interactive>:0:0: (remove-item* ["a" "b" "c" "a" "d"] "e")
 
 
-FIFO functions
---------------
+Shits and Rolls
+----------------
 
-Pact lists can be used as FIFO.
-
-
-fifo-push
-~~~~~~~~~
+shift-left
+~~~~~~~~~~~
 *in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-This function push an element into a fixed size FIFO.
+Shift a list to the left, and append an element.
 
-The FIFO keep a constant size before and after the call.
-
-In fact the fucntion simply remove the first element and append a new element.
+The leftmost (first) element is trashed
 
 .. code:: lisp
 
-  pact> (fifo-push ["a", "b", "c", "d"] "x")
+  pact> (shift-left ["a", "b", "c", "d"] "x")
   ["b" "c" "d" "x"]
 
-  pact> (fifo-push (fifo-push ["a", "b", "c", "d"] "x") "y")
+  pact> (shift-left (shift-left ["a", "b", "c", "d"] "x") "y")
   ["c" "d" "x", "y"]
 
+shift-right
+~~~~~~~~~~~
+*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
 
-fifo-push*
+Shift a list to the right, and insert an element at the first position.
+
+The rightmost (last) element is trashed.
+
+.. code:: lisp
+
+  pact> (shift-right ["a", "b", "c", "d"] "x")
+  ["x" "a" "b" "c"]
+
+  pact> (shift-right (shift-right ["a", "b", "c", "d"] "x") "y")
+  ["y" "x" "a", "b"]
+
+roll-left
+~~~~~~~~~~~
+*in* ``[<a>]`` *→* ``[<a>]``
+
+Roll a list from right to left.
+
+.. code:: lisp
+
+  pact> (roll-left ["a", "b", "c", "d"])
+  ["b" "c" "d" "a"]
+
+  pact> (roll-left (roll-left ["a", "b", "c", "d"]))
+  ["c" "d" "a", "b"]
+
+roll-right
+~~~~~~~~~~~
+*in* ``[<a>]`` *→* ``[<a>]``
+
+Roll a list from left to right.
+
+.. code:: lisp
+
+  pact> (roll-right ["a", "b", "c", "d"])
+  ["d" "a" "b" "c"]
+
+  pact> (roll-right (roll-right ["a", "b", "c", "d","e"]))
+  ["d" "e" "a" "b" "c"]
+
+
+fifo-push
 ~~~~~~~~~~
 *in* ``[<a>]`` *fifo-size* ``integer`` *item* ``<a>`` *→* ``[<a>]``
 
@@ -453,8 +492,8 @@ This function push an element into a defined size (by *fifo-size*) FIFO.
 
 If the current size is less then *fifo-size*, the element is only append.
 
-If the current size is equal to *fifo-size*, it means that the FIFO is full, and
-the element is append, and the FIFO is rotated (ie: first element removed and new element append)
+If the current size is equal to *fifo-size*, it means that the FIFO is full, the FIFO
+is shifted.
 
 
 .. code:: lisp

@@ -56,8 +56,11 @@ Contains functions to handle Pact lists.
 * ```(defun remove-last:list (in:list)``` : Remove element at position *idx*
 * ```(defun remove-item:list (in:list item)``` : Remove an item from a list
 * ```(defun remove-item*:list (in:list item)``` : *(starred version)* Remove and item from the list but raises an error if it does not exist
-* ```(defun fifo-push (in:list item)``` Append an *item* and rotate the FIFO for constant size FIFO
-* ```(defun fifo-push* (in:list fifo-size:integer item)``` Append an item, rotate the FIFO if full
+* ```(defun shift-left:list (in:list item)```: Shift a list to the left
+* ```(defun shift-right:list (in:list item)```: Shift a list to the right
+* ```(defun roll-left:list (in:list)```: Roll a list to the left
+* ```(defun roll-right:list (in:list item)```  Roll a list to the right
+* ```(defun fifo-push:list (in:list fifo-size:integer item)``` Append an item at the right, and shift left if the FIFO if full
 
 ### util-strings.pact
 Deployed as ```free.util-strings```

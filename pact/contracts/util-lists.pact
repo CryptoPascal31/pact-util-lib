@@ -181,16 +181,27 @@
     (remove-item in item)
   )
 
-  ;; FIFO functions
-  (defun fifo-push (in:list item)
-    "Append an item and rotate the FIFO for constant size FIFO"
+  ;; Shift/Roll functions
+  (defun shift-left:list (in:list item)
+    "Shift a list to the left"
     (remove-first (append-last in item)))
 
-  (defun fifo-push* (in:list fifo-size:integer item)
-    "Append an item, rotate the FIFO if full"
+  (defun shift-right:list (in:list item)
+    "Shift a list to the right"
+    (remove-last (insert-first in item)))
+
+  (defun roll-left:list (in:list)
+    "Roll a list to the left"
+    (shift-left in (first in)))
+
+  (defun roll-right:list (in:list)
+    "Roll a list to the right"
+    (shift-right in (last in)))
+
+  (defun fifo-push:list (in:list fifo-size:integer item)
+    "Append an item at the right, and shift left if the FIFO if full"
     (if (>= (length in) fifo-size)
-      (fifo-push in item)
+      (shift-left in item)
       (append-last in item))
   )
-
 )
