@@ -8,6 +8,10 @@
 
 (begin-tx)
 (use util-chain-data)
+
+(print (format "Testing util-chain-data: Version:{}\n \
+                \                        Hash:{}" [VERSION, (at 'hash (describe-module 'util-chain-data)) ]))
+
 (env-chain-data {'chain-id: "2",
                  'block-height: 20,
                  'block-time:(time "2022-12-04T14:54:24Z"),
