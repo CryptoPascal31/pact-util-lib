@@ -15,13 +15,13 @@ Deployed as ```free.util-chain-data```
 Contains helpers to work with environment data:
 
 **Functions:**
-* ```(defun chain-id:string ()```
-* ```(defun block-height:integer ()```
-* ```(defun block-time:time ()```
-* ```(defun prev-block-hash:string ()```
-* ```(defun sender:string ()```
-* ```(defun gas-limit:integer ()```
-* ```(defun gas-price:decimal ()```
+* ```(defun chain-id:string ()```: Returns *chain-id* from public chain data
+* ```(defun block-height:integer ()```: Returns *block-height* from public chain data
+* ```(defun block-time:time ()```: Returns *block-time* from public chain data
+* ```(defun prev-block-hash:string ()```: Returns *prev-block-hash* from public chain data
+* ```(defun sender:string ()```: Returns *sender* from public chain data
+* ```(defun gas-limit:integer ()```: Returns *gas-limit* from public chain data
+* ```(defun gas-price:decimal ()```: Returns *gas-price* from public chain data
 * ```(defun total-gas-limit:decimal ()``` : Returns the maximum spendable gas for the transaction
 
 ### util-lists.pact

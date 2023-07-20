@@ -20,6 +20,7 @@ Modules must be loaded in a specific order to satisfy their dependencies:
 
 .. code:: lisp
 
+  (load "util-chain-data.pact")
   (load "util-lists.pact")
   (load "util-strings.pact")
   (load "util-fungible.pact")
