@@ -11,7 +11,7 @@
 (load "contracts/util-zk.pact")
 (commit-tx)
 
-(let* ((get-hash (lambda (x) (at 'hash (describe-module x))))
+(let* ((get-hash (lambda (x) (compose (describe-module) (at 'hash) x)))
        (complement-str (lambda (x) (concat (make-list (- 15 (length x)) " "))))
        (format-hash (lambda (x) (format "{}:{} {}" [x, (complement-str x), (get-hash x)])))
        (mod-list ["util-chain-data",
@@ -22,5 +22,20 @@
                   "util-time",
                   "util-fungible",
                   "util-zk"]))
-  (print (util-strings.join "\n" (map (format-hash) mod-list)))
+
+  (print (+ (util-strings.join "\n" (map (format-hash) mod-list))
+            (format "\n-----\nGlobal Hash: {}" [(hash (concat (map (get-hash) mod-list)))])
+          ))
 )
+
+
+; Global hash can be verified on-chain by:
+;(hash (concat
+;(map (compose (+ "free.util-") (compose (describe-module) (at 'hash))) ["chain-data",
+;                                                                        "lists",
+;                                                                        "strings",
+;                                                                        "math",
+;                                                                        "random",
+;                                                                        "time",
+;                                                                        "fungible",
+;                                                                        "zk"])))
