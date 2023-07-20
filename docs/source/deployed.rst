@@ -1,7 +1,7 @@
 Deployed contracts
 ==================
 
-Version 0.7 (Pre-version)
+Version 0.7
 ~~~~~~~~~~~
 
 Added functions:
@@ -30,14 +30,14 @@ Deployed on:
 
 Modules hashes:
 
-* **free.util-chain-data:**
-* **free.util-lists:**
-* **free.util-strings:**
-* **free.util-math:**
-* **free.util-random:**
-* **free.util-time:**
-* **free.util-fungible:**
-* **free.util-zk:**
+* **free.util-chain-data:** zXd78WCHboVyQMIBrWComoBrK6nt7_o9St3kmTZXso0
+* **free.util-lists:** phg3FBQPsJEMlaPL4Aga1oGbWW5JVtXkK6WgCoAVpaA
+* **free.util-strings:** exAFfvjPTlkJHR975MhFYFA-bccJDMTLxNhBw2lyfb4
+* **free.util-math:** oNRgcUENFDx7qMytXsEDz90bDv-RTGI0R43C2Bx0VN8
+* **free.util-random:** SVQVrKpSIj-1qBY3SxceeG_3GkODAIYdzszYa44yPe4
+* **free.util-time:** GRwr0jH7MfHA0E6DbRqHpdWSATbjlY861u5ZtmkFfow
+* **free.util-fungible:** Lao-67tr7tq2-BUWuClfD47aj9lEfCzwFhODqn9IiEc
+* **free.util-zk:** m6CrlW1K99NOfLVD15U1k6wZfse4uFKnTgvT2GKoG_8
 
 
 Version 0.6
