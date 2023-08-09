@@ -32,11 +32,16 @@
     "Chain list of lists"
     (fold (+) [] in))
 
-  (defun enumerate-list:[object] (in:list)
+  (defschema list-enum
+    "Object returned by enumerate-list"
+    i:integer
+    v)
+
+  (defun enumerate-list:[object{list-enum}] (in:list)
     "Returns a list of objects {'i:idx, 'v:value} where i is the index, and v the value"
     ; The enumerate should go from 0 to N-1, but since zip takes the shortest, and for clarity we go from 0 to N
     (let ((indexes (enumerate 0 (length in))))
-      (zip (lambda (idx x) {'i:idx, 'v:x}) indexes in))
+      (zip (lambda (idx:integer x) {'i:idx, 'v:x}) indexes in))
   )
 
   ;; Getter Funtcions
@@ -62,11 +67,10 @@
     "Search an item into the list and returns a list of index"
     ; Save gas if item is not in list => use the native contains to return empty
     (if (contains item in)
-        (let ((match-func (lambda (out-list x)
-                                  (if (= (at 'v x) item)
-                                      (append-last out-list (at 'i x))
-                                      out-list))))
-          (fold match-func [] (enumerate-list in)))
+        (let ((match-func (lambda (out-list:list x:object{list-enum})
+                                  (bind x {'i:=i, 'v:=v}
+                                    (if (= v item) (append-last out-list i) out-list)))))
+          (fold (match-func) [] (enumerate-list in)))
         [])
   )
 
@@ -76,12 +80,12 @@
   )
 
   ;; Creation and extension functions
-  (defun make-list-like (in:list value)
+  (defun make-list-like:list (in:list value)
     "Creates a new list whose size is the same as in, by repeating value"
     (make-list (length in) value)
   )
 
-  (defun extend (in:list new-length:integer value)
+  (defun extend:list (in:list new-length:integer value)
     "Extends a list to new-length by repeating value"
     (let ((missing-items (- new-length (length in))))
       (if (<= missing-items 0)
@@ -89,7 +93,7 @@
           (+ in (make-list missing-items value))))
   )
 
-  (defun extend-like (in:list target:list value)
+  (defun extend-like:list (in:list target:list value)
     "Extends a list to the same length as target, by repeating value"
     (extend in (length target) value)
   )
