@@ -137,7 +137,11 @@
 
 (expect-that "Split ab (one element)" (= ["ab"]) (split "/" "ab"))
 
+(expect-that "Split /ab (first element empty)" (= ["", "ab"]) (split "/" "/ab"))
+
 (expect-that "Split ab/ (last element empty)" (= ["ab", ""]) (split "/" "ab/"))
+
+(expect-that "Split /ab/ (firs and last element empty)" (= ["", "ab", ""]) (split "/" "/ab/"))
 
 (expect-that "Split Empty string" (= []) (split "/" ""))
 
