@@ -67,10 +67,9 @@
     "Search an item into the list and returns a list of index"
     ; Save gas if item is not in list => use the native contains to return empty
     (if (contains item in)
-        (let ((match-func (lambda (out-list:list x:object{list-enum})
-                                  (bind x {'i:=i, 'v:=v}
-                                    (if (= v item) (append-last out-list i) out-list)))))
-          (fold (match-func) [] (enumerate-list in)))
+        (let ((indexes (enumerate 0 (length in)))
+              (match (lambda (v i) (if (= item v) i -1))))
+          (remove-item (zip (match) in indexes) -1))
         [])
   )
 
