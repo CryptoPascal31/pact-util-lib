@@ -1,6 +1,5 @@
 ;SPDX-License-Identifier: MIT
-
-(enforce-pact-version "4.6.0")
+(enforce-pact-version "4.8")
 
 (begin-tx)
 (load "../contracts/util-lists.pact")
