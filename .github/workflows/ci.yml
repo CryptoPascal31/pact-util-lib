@@ -1,0 +1,65 @@
+name: CI-pact-util-lib
+
+
+on:
+  push:
+
+  workflow_dispatch:
+
+
+jobs:
+  UT:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Install Pact
+        run: |
+          wget -nv https://github.com/kadena-io/pact/releases/download/v4.8/pact-4.8-linux-20.04.zip
+          unzip pact-4.8-linux-20.04.zip  pact -d .bin
+          chmod +x .bin/pact
+
+      - name: Print hashes
+        run: .bin/pact pact/print-mod-hashs.repl
+
+      - name: Test util-chain-data
+        run: |
+          .bin/pact pact/tests_repl/util-chain-data.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+      - name: Test util-lists
+        run: |
+          .bin/pact pact/tests_repl/util-lists-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+      - name: Test util-strings
+        run: |
+          .bin/pact pact/tests_repl/util-strings-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+      - name: Test util-math
+        run: |
+          .bin/pact pact/tests_repl/util-math-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+      - name: Test util-random
+        run: |
+          .bin/pact pact/tests_repl/util-random-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+
+      - name: Test util-time
+        run: |
+          .bin/pact pact/tests_repl/util-time-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+      - name: Test util-fungible
+        run: |
+          .bin/pact pact/tests_repl/util-fungible-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+
+      - name: Test util-zk
+        run: |
+          .bin/pact pact/tests_repl/util-zk-test.repl 2>&1 | tee out.txt
+          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
