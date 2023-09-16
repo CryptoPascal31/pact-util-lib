@@ -44,6 +44,31 @@ Return the current time.
   pact> (now)
   "2022-12-04T14:54:24Z"
 
+
+tomorrow
+~~~~~~~~~
+*→* ``time``
+
+Return the current time + 24 hours.
+
+.. code:: lisp
+
+  pact> (tomorrow)
+  "2022-12-05T14:54:24Z"
+
+
+yesterday
+~~~~~~~~~
+*→* ``time``
+
+Return the current time - 24 hours.
+
+.. code:: lisp
+
+  pact> (yesterday)
+  "2022-12-03T14:54:24Z"
+
+
 today
 ~~~~~
 *→* ``string``

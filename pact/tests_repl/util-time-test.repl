@@ -22,6 +22,15 @@
 (env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
 (expect "Now should be the current time" (time "2022-12-04T14:54:24Z") (now))
 
+;;; (tomorrow)
+(env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+(expect "Tomorrow should the current time + 1 day" (time "2022-12-05T14:54:24Z") (tomorrow))
+
+;;; (yesterday)
+(env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
+(expect "Yesterday should the current time - 1 day" (time "2022-12-03T14:54:24Z") (yesterday))
+
+
 ;; (today)
 (env-chain-data { 'block-time: (time "2022-12-04T14:54:24Z") })
 (expect "Now should be the current time" "2022-12-04" (today))

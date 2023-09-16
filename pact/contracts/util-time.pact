@@ -40,6 +40,14 @@
     "Returns the current time"
     (block-time))
 
+  (defun tomorrow:time ()
+    "Returns current time + 24 hours"
+    (add-time (now) (days 1)))
+
+  (defun yesterday:time ()
+    "Returns current time - 24 hours"
+    (add-time (now) (days -1)))
+
   (defun today:string ()
     "Returns the current day"
     (format-time "%F" (now))

@@ -155,6 +155,8 @@ Contains some time utilities
 * ```(defun epoch:time ()``` : Returns Unix EPOCH
 * ```(defun genesis:time ()``` : Returns Kadena Genesis time
 * ```(defun now:time ()``` : Returns the current time
+* ```(defun tomorrow:time ()```: Returns current time + 24 hours
+* ```(defun yesterday:time ()```: Returns current time - 24 hours
 * ```(defun today:string ()```: Returns the current day
 * ```(defun earliest:time (time1:time time2:time)``` : Returns the earliest time between *time1* and *time2*.
 * ```(defun latest:time (time1:time time2:time)``` : Returns the latest time between *time1* and *time2*.
