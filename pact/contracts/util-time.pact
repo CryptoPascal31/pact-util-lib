@@ -20,6 +20,7 @@
     (enforce-keyset "free.util-lib"))
 
   (use util-chain-data [block-time block-height])
+  (use util-math [between])
 
   (defconst EPOCH (time "1970-01-01T00:00:00Z"))
 
@@ -58,8 +59,12 @@
     (diff-time in (epoch))
   )
 
+  (defconst TIMESTAMP-LIMIT:decimal 3155695200000.0)
+
   (defun from-timestamp:time (timestamp:decimal)
     "Computes a time from an Unix timestamp"
+    ; Since add-time is not safe for big numbers we enforce a min/max of 100kyears
+    (enforce (between (- TIMESTAMP-LIMIT) TIMESTAMP-LIMIT timestamp) "Timestamp out of bounds")
     (add-time (epoch) timestamp)
   )
 

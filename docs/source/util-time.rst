@@ -4,6 +4,8 @@ Time functions
   * free.util-time
 
 **Dependencies:**
+  * free.util-lists
+  * free.util-math
   * free.util-chain-data
 
 General functions
