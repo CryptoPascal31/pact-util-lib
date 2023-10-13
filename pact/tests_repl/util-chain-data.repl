@@ -1,5 +1,5 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "4.8")
+(enforce-pact-version "4.9")
 (begin-tx)
 (load "../contracts/util-chain-data.pact")
 (commit-tx)
