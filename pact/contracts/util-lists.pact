@@ -44,6 +44,11 @@
       (zip (lambda (idx:integer x) {'i:idx, 'v:x}) indexes in))
   )
 
+  (defun contains*:bool (in:list item)
+    "Starred version of contains for list => arguments inverted"
+    (contains item in)
+  )
+
   ;; Getter Functions
   (defun first (in:list)
     "Returns the first item of a list"

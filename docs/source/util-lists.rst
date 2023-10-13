@@ -72,6 +72,24 @@ Return a list of objects ``{'i:idx, 'v:value}`` where *'i* is the index, and *'v
   pact> (enumerate-list ["a", "b", "c"])
   [{"i": 0,"v": "a"} {"i": 1,"v": "b"} {"i": 2,"v": "c"}]
 
+
+contains*
+~~~~~~~~~
+*in* ``[<a>]`` *item* ``<a>`` *→* ``bool``
+
+Starred version of contains for list => arguments inverted.
+
+Useful for mapping and filtering
+
+.. code:: lisp
+
+  pact> (contains* ["a", "b", "c"] "c")
+  true
+
+  pact> (contains* ["a", "b", "c"] "d")
+  false
+
+
 first
 ~~~~~
 *in* ``[<a>]`` *→* ``<a>``

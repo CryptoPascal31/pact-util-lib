@@ -34,6 +34,7 @@ Contains functions to handle Pact lists.
 * ```(defun enforce-list-bounds:bool (x:list idx:integer)``` : Verify and enforce that *idx* is in list bounds
 * ```(defun chain:list (in:list)``` : Chain list of lists
 * ```(defun enumerate-list:[object] (in:list)``` : Returns a list of objects {'i:idx, 'v:value} where i is the index, and v the value
+* ```(defun contains*:bool (in:list item)``` : Starred version of contains for list => arguments inverted
 * ```(defun first (in:list)``` : Returns the first item of a list
 * ```(defun last (in:list)``` : Returns the last item of the list
 * ```(defun at* (in:list idx:integer default)```: Returns the element at *idx*, but returns *default* if the list is too short

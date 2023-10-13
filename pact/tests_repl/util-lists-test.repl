@@ -21,6 +21,10 @@
 (expect-that "Enumerated single element list" (= [{'i:0,'v:"a"}]) (enumerate-list ["a"]))
 (expect-that "Enumerated empty list" (= []) (enumerate-list []))
 
+;contains*
+(expect "List contains the element" true (contains* ["a", "b", "c"] "b"))
+(expect "List does not contain the element" false (contains* ["a", "b", "c"] "d"))
+
 ; first
 (expect-failure "Empty list must fail" "empty" (first []))
 (expect-that "First item is a " (= "a") (first ["a", "b", "c", "d"]))
