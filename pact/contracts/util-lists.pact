@@ -39,12 +39,12 @@
 
   (defun enumerate-list:[object{list-enum}] (in:list)
     "Returns a list of objects {'i:idx, 'v:value} where i is the index, and v the value"
-    ; The enumerate should go from 0 to N-1, but since zip takes the shortest, and for clarity we go from 0 to N
+    ; The enumeration should go from 0 to N-1, but since zip takes the shortest, and for clarity we go from 0 to N
     (let ((indexes (enumerate 0 (length in))))
       (zip (lambda (idx:integer x) {'i:idx, 'v:x}) indexes in))
   )
 
-  ;; Getter Funtcions
+  ;; Getter Functions
   (defun first (in:list)
     "Returns the first item of a list"
     (enforce-not-empty in)
