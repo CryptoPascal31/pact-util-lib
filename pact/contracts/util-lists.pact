@@ -22,7 +22,15 @@
 
   (defun enforce-not-empty:bool (x:list)
     "Verify and ENFORCES that a list is not empty"
-    (enforce (> (length x) 0) "List cannot be empty"))
+    (enforce (is-not-empty x) "List cannot be empty"))
+
+  (defun is-empty:bool (x:list)
+    "Return true if the list is empty"
+    (= 0 (length x)))
+
+  (defun is-not-empty:bool (x:list)
+    "Return true if the list is not empty"
+    (< 0 (length x)))
 
   (defun enforce-list-bounds:bool (x:list idx:integer)
     "Verify and ENFORCES that idx is in list bounds"

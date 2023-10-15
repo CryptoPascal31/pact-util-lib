@@ -22,6 +22,37 @@ Verify and enforces that a list is not empty.
   util-lists.pact:22:4: List cannot be empty
     at <interactive>:0:0: (enforce-not-empty [])
 
+
+is-empty
+~~~~~~~~
+*in* ``list`` *→* ``bool``
+
+Return true if the list is empty.
+
+.. code:: lisp
+
+  pact> (is-empty [])
+  true
+
+  pact> (is-empty ["a" "b"])
+  false
+
+
+is-not-empty
+~~~~~~~~~~~~
+*in* ``list`` *→* ``bool``
+
+Return true if the list is not empty.
+
+.. code:: lisp
+
+  pact> (is-not-empty [])
+  false
+
+  pact> (is-not-empty ["a" "b"])
+  true
+
+
 enforce-list-bounds
 ~~~~~~~~~~~~~~~~~~~~~
 *in* ``list`` *idx* ``integer`` *→* ``bool``
