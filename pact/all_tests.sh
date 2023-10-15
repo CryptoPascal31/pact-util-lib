@@ -10,7 +10,7 @@ $PACT tests_repl/util-lists-test.repl
 echo ""
 $PACT tests_repl/util-strings-test.repl
 echo ""
-$PACT tests_repl/util-chain-funible-test.repl
+$PACT tests_repl/util-fungible-test.repl
 echo ""
 $PACT tests_repl/util-math-test.repl
 echo ""
