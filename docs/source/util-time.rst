@@ -71,6 +71,18 @@ Return the current time - 24 hours.
   "2022-12-03T14:54:24Z"
 
 
+from-now
+~~~~~~~~
+*delta* ``decimal`` *→* ``time``
+
+Returns the *delta* time taking *now* as a reference.
+
+.. code:: lisp
+
+  pact> (from-now (hours 1))
+  "2022-12-05T15:54:24Z"
+
+
 today
 ~~~~~
 *→* ``string``

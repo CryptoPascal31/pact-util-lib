@@ -158,6 +158,7 @@ Contains some time utilities
 * ```(defun epoch:time ()``` : Returns Unix EPOCH
 * ```(defun genesis:time ()``` : Returns Kadena Genesis time
 * ```(defun now:time ()``` : Returns the current time
+* ```(defun from-now:time (delta:decimal)``` : Returns the delta time taking now as a reference
 * ```(defun tomorrow:time ()```: Returns current time + 24 hours
 * ```(defun yesterday:time ()```: Returns current time - 24 hours
 * ```(defun today:string ()```: Returns the current day

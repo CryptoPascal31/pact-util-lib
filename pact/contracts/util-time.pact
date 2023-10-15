@@ -43,11 +43,18 @@
 
   (defun tomorrow:time ()
     "Returns current time + 24 hours"
-    (add-time (now) (days 1)))
+    (from-now (days 1))
+  )
 
   (defun yesterday:time ()
     "Returns current time - 24 hours"
-    (add-time (now) (days -1)))
+    (from-now (days -1))
+  )
+
+  (defun from-now:time (delta:decimal)
+    "Returns the delta time taking now as a reference"
+    (add-time (now) delta)
+  )
 
   (defun today:string ()
     "Returns the current day"
