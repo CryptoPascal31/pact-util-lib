@@ -38,6 +38,36 @@ Return true if the list is empty.
   false
 
 
+is-singleton
+~~~~~~~~~~~~
+*in* ``list`` *→* ``bool``
+
+Return true if the list has exactly 1 element.
+
+.. code:: lisp
+
+  pact> (is-singleton ["a"])
+  true
+
+  pact> (is-empty ["a" "b"])
+  false
+
+
+is-pair
+~~~~~~~
+*in* ``list`` *→* ``bool``
+
+Return true if the list has exactly 2 elements.
+
+.. code:: lisp
+
+  pact> (is-pair ["a"])
+  false
+
+  pact> (is-pair ["a" "b"])
+  true
+
+
 is-not-empty
 ~~~~~~~~~~~~
 *in* ``list`` *→* ``bool``

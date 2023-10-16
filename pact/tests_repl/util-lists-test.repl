@@ -11,7 +11,7 @@
                 \                   Hash:{}" [VERSION, (at 'hash (describe-module 'util-lists)) ]))
 
 
-;is-empty 
+;is-empty
 (expect "Empty-list" true (is-empty []))
 (expect "Non empty-list" false (is-empty ["a" "b"]))
 (expect "Non empty-list" false (is-empty ["a"]))
@@ -20,6 +20,17 @@
 (expect "Empty-list" false (is-not-empty []))
 (expect "Non empty-list" true (is-not-empty ["a" "b"]))
 (expect "Non empty-list" true (is-not-empty ["a"]))
+
+;is-singleton
+(expect "Empty-list" false (is-singleton []))
+(expect "Singleton list" true (is-singleton ["a"]))
+(expect "Pair list" false (is-singleton ["a", "b"]))
+
+;is-pair
+(expect "Empty-list" false (is-pair []))
+(expect "Singleton list" false (is-pair ["a"]))
+(expect "Pair list" true (is-pair ["a", "b"]))
+(expect "Length 3 list" false (is-pair ["a", "b", "c"]))
 
 ; chain
 (expect-that "Chained lists" (= ["a", "b", "c", "d"]) (chain [ ["a", "b"], ["c", "d"]]))
