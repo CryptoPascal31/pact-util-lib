@@ -193,15 +193,10 @@
 
   ;; Stripping functions
   (defun --count-to-strip:integer (to-remove:string in:[string])
-    (let* ((do-count (lambda (state x)
-                             (bind state {"s":=s, "cnt":=cnt}
-                              (if (not s)
-                                  state
-                                  (if (= x to-remove)
-                                      (+ {'cnt: (+ cnt 1)} state)
-                                      (+ {'s:false} state)))))))
-
-      (at 'cnt (fold (do-count) {'s:true, 'cnt:0} in)))
+    (fold (lambda (cnt x) (if (>= cnt 0)      cnt
+                          (if (= x to-remove) (- cnt 1)
+                                              (- (+ cnt 1) ))))
+          -1 in)
   )
 
   (defun left-strip:string (to-remove:string in:string)
