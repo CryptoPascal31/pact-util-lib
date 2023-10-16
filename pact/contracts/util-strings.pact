@@ -23,7 +23,7 @@
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
 
-  (use util-lists [replace-item first last append-last insert-first replace-last search])
+  (use util-lists)
 
   (defconst ASCII-TABLE  {" ":32, "!":33, "\"":34, "#":35, "$":36, "%":37, "&":38, "\'":39,
                           "(":40, ")":41, "*":42, "+":43, ",":44, "-":45, ".":46, "/":47,
@@ -142,11 +142,8 @@
 
   (defun join:string (separator:string in:[string])
     "Join a list of string with a separator"
-    (if (= 0 (length in))
-        ""
-        (if (= 1 (length in))
-            (at 0 in)
-            (+ (first in) (concat (map (+ separator) (drop 1 in))))))
+    (if (is-empty in) ""
+        (+ (first in) (concat (map (+ separator) (remove-first in)))))
   )
 
   (defun split:[string] (separator:string in:string)
