@@ -184,16 +184,19 @@
 (expect "Kadena ends with Kadena" true (ends-with* "Kadena" "Kadena"))
 
 ; left-strip
+(expect-that "Nothing to strip" (= "Hello world  ") (left-strip " " "Hello world  "))
 (expect-that "Strip Hello world with leading spaces should remove them" (= "Hello world ") (left-strip " " "    Hello world "))
 (expect-that "Strip and empty string" (= "") (left-strip " " ""))
 (expect-that "Strip and empty string with whitespaces" (= "") (left-strip " " "                   "))
 
 ; right-strip
+(expect-that "Nothing to strip" (= "  Hello world") (right-strip " " "  Hello world"))
 (expect-that "Strip Hello world with trailing spaces should remove them" (= " Hello world") (right-strip " " " Hello world    "))
 (expect-that "Strip and empty string" (= "") (right-strip " " ""))
 (expect-that "Strip and empty string with whitespaces" (= "") (right-strip " " "                   "))
 
 ; strip
+(expect-that "Nothing to strip" (= "Hello world") (strip " " "Hello world"))
 (expect-that "Strip Hello world with leading and trailing spaces should remove them" (= "Hello world") (strip " " "    Hello world "))
 (expect-that "Strip and empty string" (= "") (strip " " ""))
 (expect-that "Strip and empty string with whitespaces" (= "") (strip " " "                   "))
