@@ -1,6 +1,47 @@
 Deployed contracts
 ==================
 
+Version 0.8
+~~~~~~~~~~~
+
+Added functions:
+  * ``util-lists.is-empty``
+  * ``util-lists.is-not-empty``
+  * ``util-lists.is-singleton``
+  * ``util-lists.is-pair``
+  * ``util-lists.contains*``
+  * ``util-time.tomorrow``
+  * ``util-time.yesterday``
+  * ``util-time.from-now``
+
+Bugs fixes:
+  * ``util-time.from-timestamp`` (Prevent  possible overflow)
+
+Improved functions: (behavior is not expected to change)
+  * ``util-lists.search`` (Gas improvement)
+  * ``util-strings.join`` (Readability)
+  * ``util-strings.split`` (Gas improvement)
+  * ``util-strings.strip`` (Gas improvement)
+  * ``util-strings.strip-left`` (Gas improvement)
+  * ``util-strings.strip-right`` (Gas improvement)
+  * ``util-strings.str-to-decimal`` (Gas improvement)
+
+Deployed on:
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
+
+Modules hashes:
+
+  * **free.util-chain-data:** eiouBpR7CQMMCH2ORVdH_MhEljlFAh1lV3BNbSyl7TM
+  * **free.util-lists:** a-tRQsbhF2DR3UGcQr_8HEmtU17_EAc1NT0Yhw1qZa0
+  * **free.util-strings:** O05mysmD0vzJt9D5pp6wB21KMRedbic5mkAPptqE_s8
+  * **free.util-math:** Nd7y9268aT_DQA9aMK2cWlpxaULQS08EZourjp0wNq4
+  * **free.util-random:** 0C6T81mWS7QBA7nPBvaJLeO0ExPMwbVg20eKTNQ2DhU
+  * **free.util-time:** 4_wiwacn0SMB9zBvDSNt2bZuKHAcqWw-dygUHyWw6dA
+  * **free.util-fungible:** Eqks82QsVEZvwNXm_VD7U_FomdD4D41JFoqgsBEj2vM
+  * **free.util-zk:** 9huAxHg84MAZHs-T0h_WR1NpM38op_G8CXy2xRsdnAc
+
+
 Version 0.7
 ~~~~~~~~~~~
 

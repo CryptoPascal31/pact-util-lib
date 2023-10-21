@@ -246,7 +246,7 @@ Contains functions to handle ZK proofs. Currently this module only support Groth
 ## Tests
 Unit tests can be found in pact/test_repl.
 
-All functions are tested, but currently the coverage is not 100%. Tested with **Pact 4.4.1**
+All functions are tested, but currently the coverage is not 100%. Tested with **Pact 4.9.0**
 
 The ```pact``` executable is needed to run the tests.
 
@@ -284,5 +284,5 @@ The documentation can be generated using sphinx:
 ```make doc```
 
 ## Todo
-* Add some FV: it looks like that typechecks with lambda will be fixed in the next stable version of Pact.
+* Add some FV.
 * Benchmarks (gas) the functions
