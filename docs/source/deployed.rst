@@ -1,6 +1,28 @@
 Deployed contracts
 ==================
 
+Version 0.8.1
+~~~~~~~~~~~~~~
+Bugfix:
+  * util-strings.join: Workaround for https://github.com/kadena-io/pact/issues/1316
+
+Deployed on:
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
+
+Modules hashes:
+
+* **util-chain-data:** eiouBpR7CQMMCH2ORVdH_MhEljlFAh1lV3BNbSyl7TM
+* **util-lists:** a-tRQsbhF2DR3UGcQr_8HEmtU17_EAc1NT0Yhw1qZa0
+* **util-strings:** A_xZc2n2EIqUhALJGkEIrGcrVTSkgwycS6qdvsRpR6o
+* **util-math:** Nd7y9268aT_DQA9aMK2cWlpxaULQS08EZourjp0wNq4
+* **util-random:** 0C6T81mWS7QBA7nPBvaJLeO0ExPMwbVg20eKTNQ2DhU
+* **util-time:** 4_wiwacn0SMB9zBvDSNt2bZuKHAcqWw-dygUHyWw6dA
+* **util-fungible:** Eqks82QsVEZvwNXm_VD7U_FomdD4D41JFoqgsBEj2vM
+* **util-zk:** 9huAxHg84MAZHs-T0h_WR1NpM38op_G8CXy2xRsdnAc
+
+
+
 Version 0.8
 ~~~~~~~~~~~
 
