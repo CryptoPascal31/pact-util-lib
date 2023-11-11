@@ -20,11 +20,21 @@
     (enforce-keyset "free.util-lib"))
 
   (use util-chain-data [block-time block-height])
-  (use util-math [between])
+  (use util-math [between pow10])
 
-  (defconst EPOCH (time "1970-01-01T00:00:00Z"))
+  (defconst EPOCH:time (time "1970-01-01T00:00:00Z"))
 
-  (defconst GENESIS (time "2019-10-30T00:01:00Z"))
+
+  (defconst HASKELL-EPOCH:time (time "1858-11-17T00:00:00Z"))
+
+  (defconst GENESIS:time (time "2019-10-30T00:01:00Z"))
+
+  (defconst SAFE-DELTA:decimal (- (/ (^ 2.0 62.0) (pow10 6)) 1.0))
+
+  (defconst MIN-SAFE-TIME:time (add-time HASKELL-EPOCH (- SAFE-DELTA)))
+
+  (defconst MAX-SAFE-TIME:time (add-time HASKELL-EPOCH SAFE-DELTA))
+
 
   (defconst BLOCK-TIME 30.0)
 
@@ -41,6 +51,18 @@
     "Returns the current time"
     (block-time))
 
+  (defun --enforce-safe-time:bool (in:time)
+    (enforce (time-between MIN-SAFE-TIME MAX-SAFE-TIME in) "Time out of safe bounds"))
+
+  (defun --enforce-safe-delta:bool (in:decimal)
+    (enforce (between (- SAFE-DELTA) SAFE-DELTA in) "Delta out of safe bounds"))
+
+  (defun add-time-safe:time (in:time delta:decimal)
+    (--enforce-safe-time in)
+    (--enforce-safe-delta delta)
+    (add-time in delta)
+  )
+
   (defun tomorrow:time ()
     "Returns current time + 24 hours"
     (from-now (days 1))
@@ -53,6 +75,7 @@
 
   (defun from-now:time (delta:decimal)
     "Returns the delta time taking now as a reference"
+    (--enforce-safe-delta delta)
     (add-time (now) delta)
   )
 
@@ -63,15 +86,13 @@
 
   (defun to-timestamp:decimal (in:time)
     "Computes an Unix timestamp of the input date"
+    (--enforce-safe-time in)
     (diff-time in (epoch))
   )
 
-  (defconst TIMESTAMP-LIMIT:decimal 3155695200000.0)
-
   (defun from-timestamp:time (timestamp:decimal)
     "Computes a time from an Unix timestamp"
-    ; Since add-time is not safe for big numbers we enforce a min/max of 100kyears
-    (enforce (between (- TIMESTAMP-LIMIT) TIMESTAMP-LIMIT timestamp) "Timestamp out of bounds")
+    (--enforce-safe-delta timestamp)
     (add-time (epoch) timestamp)
   )
 
@@ -112,6 +133,7 @@
 
   (defun est-height-at-time:integer (target-time:time)
     "Estimates the block height at a target-time"
+    (--enforce-safe-time target-time)
     (let* ((delta (diff-time target-time (now)))
            (est-block (+ (block-height) (round (/ delta BLOCK-TIME)))))
       (if (> est-block 0 ) est-block 0))
@@ -119,8 +141,10 @@
 
   (defun est-time-at-height:time (target-block:integer)
     "Estimates the time of the target-block height"
-    (let ((delta (- target-block (block-height))))
-      (add-time (now) (* BLOCK-TIME (dec delta))))
+    (let* ((delta-blocks (- target-block (block-height)))
+           (delta (* BLOCK-TIME (dec delta-blocks))))
+      (--enforce-safe-delta delta)
+      (add-time (now) delta))
   )
 
   ;; Diff time functions

@@ -48,8 +48,8 @@
 ;;; (from-timestamp)
 (expect "from-timestamp must be UNIX EPOCH for ZERO" (epoch) (from-timestamp 0.0))
 (expect "from-timestamp must be accurate for this example" (time "2022-12-05T00:08:53Z") (from-timestamp 1670198933.0))
-(expect-failure "Out of bounds timestamp" "Timestamp out of bounds" (from-timestamp 6311390400000.0))
-(expect-failure "Out of bounds timestamp" "Timestamp out of bounds" (from-timestamp -6311390400000.0))
+(expect-failure "Out of bounds timestamp" "Delta out of safe bounds" (from-timestamp 6311390400000.0))
+(expect-failure "Out of bounds timestamp" "Delta out of safe bounds" (from-timestamp -6311390400000.0))
 
 ;;; (earliest ...)
 (expect "Test earliest" (time "2022-12-04T14:44:24Z") (earliest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z")))
