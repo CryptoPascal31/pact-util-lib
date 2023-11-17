@@ -24,17 +24,9 @@
 
   (defconst EPOCH:time (time "1970-01-01T00:00:00Z"))
 
-
   (defconst HASKELL-EPOCH:time (time "1858-11-17T00:00:00Z"))
 
   (defconst GENESIS:time (time "2019-10-30T00:01:00Z"))
-
-  (defconst SAFE-DELTA:decimal (- (/ (^ 2.0 62.0) (pow10 6)) 1.0))
-
-  (defconst MIN-SAFE-TIME:time (add-time HASKELL-EPOCH (- SAFE-DELTA)))
-
-  (defconst MAX-SAFE-TIME:time (add-time HASKELL-EPOCH SAFE-DELTA))
-
 
   (defconst BLOCK-TIME 30.0)
 
@@ -50,6 +42,27 @@
   (defun now:time ()
     "Returns the current time"
     (block-time))
+
+  ;; Safe time computation management
+  ;
+  ; (add-time) uses Haskell time library and can overflow
+  ; Haskell computes time from the TAI EPOCH ("1858-11-17T00:00:00Z") is useconds.
+  ;   in signed int64 (min = - 2^63, max = 2 ^63 -1)
+  ;
+  ; To be sure, we never overflowwe limits:
+  ;   - Every usable time to (TAI EPOCH +/-  2^62/1e6 -1)
+  ;   - Every usable offset to (+/-  2^62/1e6 -1)
+  ;
+  ; By enforcing such limits, we can guarantee time functions never overflow.
+  ;
+  ; When a Pact programmer uses (add-time) with user provided inputs, it should
+  ;   better use (add-time-safe) to avoid non-expected behaviour that could yield to
+  ;   a security issue
+  (defconst SAFE-DELTA:decimal (- (/ (^ 2.0 62.0) (pow10 6)) 1.0))
+
+  (defconst MIN-SAFE-TIME:time (add-time HASKELL-EPOCH (- SAFE-DELTA)))
+
+  (defconst MAX-SAFE-TIME:time (add-time HASKELL-EPOCH SAFE-DELTA))
 
   (defun --enforce-safe-time:bool (in:time)
     (enforce (time-between MIN-SAFE-TIME MAX-SAFE-TIME in) "Time out of safe bounds"))
