@@ -497,7 +497,7 @@ Remove and item from the list but raises an error if it does not exist.
    at <interactive>:0:0: (remove-item* ["a" "b" "c" "a" "d"] "e")
 
 
-Shits and Rolls
+Shifts and Rolls
 ----------------
 
 shift-left
