@@ -53,7 +53,7 @@
   ;   - Every usable time to (TAI EPOCH +/-  2^62/1e6 -1)
   ;   - Every usable offset to (+/-  2^62/1e6 -1)
   ;
-  ; By enforcing such limits, we can guarantee time functions never overflow.
+  ; By enforcing such limits, we can guarantee that time functions never overflow.
   ;
   ; When a Pact programmer uses (add-time) with user provided inputs, it should
   ;   better use (add-time-safe) to avoid non-expected behaviour that could yield to
