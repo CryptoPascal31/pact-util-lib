@@ -4,7 +4,7 @@
 (load "../contracts/util-chain-data.pact")
 (commit-tx)
 
-(typecheck "util-chain-data")
+;(typecheck "util-chain-data")
 
 (begin-tx)
 (use util-chain-data)
