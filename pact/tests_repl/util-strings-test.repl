@@ -15,7 +15,7 @@
 (expect "Integer -> Str" "38" (to-string 38))
 (expect "Decimal -> Str" "22.34" (to-string 22.34))
 (expect "List of integer -> Str" "[1, 2, 3, 4]" (to-string [1,2,3,4]))
-(expect "Object -> Str" "{\"a\": 3,\"b\": \"Abcd\",\"c\": 42.001}" (to-string {'a:3, 'b:"Abcd", 'c:42.001}))
+(expect "Object -> Str" "{\"a\":3, \"b\":\"Abcd\", \"c\":42.001}" (to-string {'a:3, 'b:"Abcd", 'c:42.001}))
 
 
 ; decode-ascii
