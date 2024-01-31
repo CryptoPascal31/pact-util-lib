@@ -1,4 +1,4 @@
-PACT = pact
+PACT = python3 tests_repl/pact_wrapper.py --print-failures
 REMOVE_WARNINGS = false
 
 ifeq ($(REMOVE_WARNINGS), true)
