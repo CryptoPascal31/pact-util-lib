@@ -1,6 +1,19 @@
 Deployed contracts
 ==================
 
+Version 0.9
+~~~~~~~~~~~
+  * Remove 0.8.1 Bugfix
+  * Make it fully Pact 5.0 compliant
+  * Redeploy to 
+
+Deployed on:
+  * TBD
+
+Modules hashes:
+  * TBD
+
+
 Version 0.8.1
 ~~~~~~~~~~~~~~
 Bugfix:
