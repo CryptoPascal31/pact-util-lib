@@ -41,4 +41,4 @@ test: test-util-chain-data test-util-lists test-util-strings test-util-math test
 
 
 hashes:
-	$(PACT) print-mod-hashs.repl
+	$(PACT) print-mod-hashs.repl | grep -e "^H:"

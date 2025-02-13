@@ -11,31 +11,31 @@
 (load "contracts/util-zk.pact")
 (commit-tx)
 
-(let* ((get-hash (lambda (x) (compose (describe-module) (at 'hash) x)))
-       (complement-str (lambda (x) (concat (make-list (- 15 (length x)) " "))))
-       (format-hash (lambda (x) (format "{}:{} {}" [x, (complement-str x), (get-hash x)])))
-       (mod-list ["util-chain-data",
-                  "util-lists",
-                  "util-strings",
-                  "util-math",
-                  "util-random",
-                  "util-time",
-                  "util-fungible",
-                  "util-zk"]))
+(defun complement-spaces:string (x:string)
+  (concat (make-list (- 16 (length x)) " ")))
 
-  (print (+ (util-strings.join "\n" (map (format-hash) mod-list))
-            (format "\n-----\nGlobal Hash: {}" [(hash (concat (map (get-hash) mod-list)))])
-          ))
+(defun format-hash:string (item:string hash-value:string)
+  (format "H:{}:{}{}" [item (complement-spaces item) hash-value])
 )
 
+(defun get-hash:string (mod-name:string)
+  (compose (describe-module) (at 'hash) mod-name)
+)
 
-; Global hash can be verified on-chain by:
-;(hash (concat
-;(map (compose (+ "free.util-") (compose (describe-module) (at 'hash))) ["chain-data",
-;                                                                        "lists",
-;                                                                        "strings",
-;                                                                        "math",
-;                                                                        "random",
-;                                                                        "time",
-;                                                                        "fungible",
-;                                                                        "zk"])))
+(defun format-mod-hash:string (mod-name:string)
+  (format-hash mod-name (at 'hash) (describe-module mod-name))
+)
+
+(defconst MOD-LIST  ["util-chain-data",
+                     "util-lists",
+                     "util-strings",
+                     "util-math",
+                     "util-random",
+                     "util-time",
+                     "util-fungible",
+                     "util-zk"])
+
+(defconst HASHES (map (compose (describe-module )(at 'hash)) MOD-LIST))
+
+(print (+ "\n" (util-strings.join "\n" (+ (zip (format-hash) MOD-LIST HASHES)
+                                  [(format-hash "Global" (hash (concat HASHES)))]))))
