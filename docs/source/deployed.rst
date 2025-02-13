@@ -1,17 +1,39 @@
 Deployed contracts
 ==================
 
+**Note on global hash:**
+
+The global hash is a convenient way to verify that all modules are well deployed on a given chain.
+
+It can be verified on-chain using the following pact command:
+
+.. code:: lisp
+
+  (hash (concat
+  (map (compose (+ "free.util-") (compose (describe-module) (at 'hash))) ["chain-data", "lists", "strings", "math", "random", "time", "fungible", "zk"])))
+
+
 Version 0.9
 ~~~~~~~~~~~
-  * Remove 0.8.1 Bugfix
+  * Revert 0.8.1 Bugfix
   * Make it fully Pact 5.0 compliant
-  * Redeploy to 
+  * Redeploy to
 
 Deployed on:
-  * TBD
+  * Testnet Chains 0-19
+  * Mainnet Chains 0-19
 
 Modules hashes:
-  * TBD
+
+* **free.util-chain-data:** y0Vu5XXeZxUErG-X_XlCWmdvrss55Hk09FpuFvGRW1g
+* **free.util-lists:**      hpAwM7nLWHlUpYo8hQeJINjQzpcibpUTlZwCY8Y-ZnM
+* **free.util-strings:**    cXYkON1-qQoFzKhWSahoAebecciWERMP7n47_mztU5Y
+* **free.util-math:**       WWM-hGxsPWJFVcfNcPJJsWJjdiuW61IcETqcq4Jcsh4
+* **free.util-random:**     wKB0nWJ-ti1LLUGR07zlZIs7_0g6PkCalRwK3pmaRmc
+* **free.util-time:**       UmBuxYqUrPyaj2OILuJbOd6QOBLdpRjbfEp1PmvG9N0
+* **free.util-fungible:**   -g9U4ErHpSRJVNDx3yCU9kbjpnTZkoQh_BRaewyNVQY
+* **free.util-zk:**         QgbKlHyArNlm9m0noTuUx7VhuycGtVkwlsZcn_bR6VY
+* **Global:**               PrSm3NllTy7yjijgQHvLrEvEPtO33osTcth8ncTEobg
 
 
 Version 0.8.1
