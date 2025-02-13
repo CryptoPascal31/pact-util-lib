@@ -169,7 +169,7 @@
 
 (expect "Bad proof must be refused" false (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-BAD))
 
-(expect-failure "A corrupted proof should fail" "not on curve" (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-CORRUPTED))
+(expect-failure "A corrupted proof should fail" "outside of elliptic curve" (verify-groth16-proof VERIFY-KEY-A INPUT-DATA-A PROOF-A-CORRUPTED))
 
 (expect-failure "Missing input data" "number of inputs" (verify-groth16-proof VERIFY-KEY-A (drop 1 INPUT-DATA-A) PROOF-A-GOOD))
 
