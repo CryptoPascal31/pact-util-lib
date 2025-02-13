@@ -1,6 +1,17 @@
 ;SPDX-License-Identifier: MIT
 
+; Define free namespace
 (begin-tx)
+(module b GOV
+   (defcap GOV () true)
+   (defconst GUARD_SUCCESS (create-user-guard (success)))
+   (defun success () true)
+)
+(define-namespace 'free GUARD_SUCCESS GUARD_SUCCESS)
+(commit-tx)
+
+(begin-tx)
+(namespace 'free)
 (load "contracts/util-chain-data.pact")
 (load "contracts/util-lists.pact")
 (load "contracts/util-strings.pact")
@@ -12,30 +23,26 @@
 (commit-tx)
 
 (defun complement-spaces:string (x:string)
-  (concat (make-list (- 16 (length x)) " ")))
+  (concat (make-list (- 21 (length x)) " ")))
 
 (defun format-hash:string (item:string hash-value:string)
   (format "H:{}:{}{}" [item (complement-spaces item) hash-value])
-)
-
-(defun get-hash:string (mod-name:string)
-  (compose (describe-module) (at 'hash) mod-name)
 )
 
 (defun format-mod-hash:string (mod-name:string)
   (format-hash mod-name (at 'hash) (describe-module mod-name))
 )
 
-(defconst MOD-LIST  ["util-chain-data",
-                     "util-lists",
-                     "util-strings",
-                     "util-math",
-                     "util-random",
-                     "util-time",
-                     "util-fungible",
-                     "util-zk"])
+(defconst MOD-LIST  (map (+ "free.") ["util-chain-data",
+                                    "util-lists",
+                                    "util-strings",
+                                    "util-math",
+                                    "util-random",
+                                    "util-time",
+                                    "util-fungible",
+                                    "util-zk"]))
 
 (defconst HASHES (map (compose (describe-module )(at 'hash)) MOD-LIST))
 
-(print (+ "\n" (util-strings.join "\n" (+ (zip (format-hash) MOD-LIST HASHES)
-                                  [(format-hash "Global" (hash (concat HASHES)))]))))
+(print (+ "\n" (free.util-strings.join "\n" (+ (zip (format-hash) MOD-LIST HASHES)
+                                               [(format-hash "Global" (hash (concat HASHES)))]))))
