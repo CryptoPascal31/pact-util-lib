@@ -4,7 +4,8 @@
 (load "../contracts/util-chain-data.pact")
 (commit-tx)
 
-(typecheck "util-chain-data")
+; Typecheck currently not supported by Pact 5.0
+;(typecheck "util-chain-data")
 
 (begin-tx)
 (use util-chain-data)
