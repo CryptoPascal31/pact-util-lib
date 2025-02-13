@@ -18,7 +18,7 @@
    \ Documentation: https://pact-util-lib.readthedocs.io \
    \ Github: https://github.com/CryptoPascal31/pact-util-lib "
 
-  (defconst VERSION:string "0.8.1")
+  (defconst VERSION:string "0.9")
 
   (defcap GOV()
     (enforce-keyset "free.util-lib"))
@@ -143,9 +143,7 @@
   (defun join:string (separator:string in:[string])
     "Join a list of string with a separator"
     (if (is-empty in) ""
-        (if (is-singleton in) ; Needed as a workaround
-            (first in)        ; of https://github.com/kadena-io/pact/issues/1316
-            (+ (first in) (concat (map (+ separator) (remove-first in))))))
+      (+ (first in) (concat (map (+ separator) (remove-first in)))))
   )
 
   (defun split:[string] (separator:string in:string)
