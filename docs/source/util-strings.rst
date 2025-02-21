@@ -15,6 +15,11 @@ to-string
 
 Convert any pact type (object, list, decimal, ...) to its string representation.
 
+**Note:** Pact 5.0 includes a new native called `(show)`, that could be called instead
+for almost the same result. However, this function has been kept for compatibility since Pact's `show` is
+not strictly speaking 100% compatible.
+
+
 .. code:: lisp
 
   pact> (to-string 1.05)
