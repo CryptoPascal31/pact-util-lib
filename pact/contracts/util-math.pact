@@ -223,6 +223,19 @@
     "Convert an integer or decimal to decimal"
     (if (= (typeof x) "decimal") x (dec x)))
 
+  ;;; Rounding helpers
+  (defun round* (decimals:integer x:decimal)
+    "Reversed round function"
+    (round x decimals))
+
+  (defun floor* (decimals:integer x:decimal)
+    "Reversed floor function"
+    (floor x decimals))
+
+  (defun ceiling* (decimals:integer x:decimal)
+    "Reversed ceiling function"
+    (ceiling x decimals))
+
   ;;; Log functions
   (defun log10:decimal (x)
     "Returns the log of x base 10, rounded to 12 decimals"

@@ -444,6 +444,39 @@ Return the square of *x*.
   36.0
 
 
+Rounding Helpers
+-----------------
+These helpers are just reversed versions of the native functions and are useful for
+composing or mapping without bloating the code with lambdas.
+
+round*
+~~~~~~
+*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (round* 4 3.14159)
+  3.1416
+
+floor*
+~~~~~~
+*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (floor* 4 3.14159)
+  3.1415
+
+ceiling*
+~~~~~~~~
+*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (ceiling* 4 3.14159)
+  3.1416
+
+
 Divide functions
 ------------------
 
