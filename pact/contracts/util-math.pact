@@ -236,6 +236,18 @@
     "Reversed ceiling function"
     (ceiling x decimals))
 
+  (defun /-r (decimals:integer x:decimal y:decimal)
+    "Rounded division"
+    (round (/ x y) decimals))
+
+  (defun /-f (decimals:integer x:decimal y:decimal)
+    "Floored division"
+    (floor (/ x y) decimals))
+
+  (defun /-c (decimals:integer x:decimal y:decimal)
+    "Ceiled division"
+    (ceiling (/ x y) decimals))
+
   ;;; Log functions
   (defun log10:decimal (x)
     "Returns the log of x base 10, rounded to 12 decimals"

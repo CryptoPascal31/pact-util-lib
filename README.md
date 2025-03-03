@@ -148,6 +148,9 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun round* (decimals:integer x:decimal)``` : Reversed round function
 * ```(defun floor* (decimals:integer x:decimal)``` : Reversed floor function
 * ```(defun ceiling* (decimals:integer x:decimal)``` : Reversed ceiling function
+* ```(defun /-r (decimals:integer x:decimal y:decimal)```: Rounded division
+* ```(defun /-f (decimals:integer x:decimal y:decimal)```: Floored division
+* ```(defun /-c (decimals:integer x:decimal y:decimal)```: Ceiled division
 * ```(defun log10:decimal (x)``` : Returns the log of x base 10, rounded to 12 decimals
 * ```(defun safe-log (x y default)``` : Log of Y base X, but returns default when y <= 0
 * ```(defun safe-ln (x:decimal default:decimal)``` : Natural log of x, but returns default when x <= 0
