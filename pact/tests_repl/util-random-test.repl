@@ -21,30 +21,35 @@
 (begin-tx)
 (use util-random)
 (use util-lists [count])
-(use util-strings [to-string join is-hex-digit char-at])
+(use util-strings [join is-hex-digit char-at])
 (use util-math [sum between])
 
 (use test-utils)
+
+(defun between-cr:string (x:string)
+  (+ "\n" (+ x "\n")))
+
+(defun format-test:string (title:string result:string)
+  (between-cr (+ title result)))
 
 ;Check that the the generator cannot be reinitialized
 (expect-failure "Generator can be initialized onmy one time" "already initialized" (reset-state))
 
 (print (format "Testing util-random: Version:{}\n \
-                \                    Hash:{}" [VERSION, (at 'hash (describe-module 'util-random)) ]))
+               \                     Hash:{}" [VERSION, (at 'hash (describe-module 'util-random)) ]))
 
 ;random-int
-(print "Ten examples of random int:")
-(print (+ "   "(join "\n   " (map (lambda (x) (int-to-str 10 (random-int))) (enumerate 0 9) ))))
-(print "")
+(print (format-test "Ten examples of random int:\n   "
+                    (join "\n   " (map (lambda (x) (int-to-str 10 (random-int))) (enumerate 0 9) ))))
 
 (let* ((random-lst (map (lambda (x) (random-int))  RND-TOTAL-ENUM)))
   (expect "All generated must be distinct" RND-TOTAL-COUNT (length (distinct random-lst)))
 )
 
 ;random-bool
-(print "Ten examples of random bool:")
-(print (+ "   "(join " " (map (lambda (x) (to-string (random-bool))) (enumerate 0 9) ))))
-(print "")
+(print (format-test "Ten examples of random bool: "
+                    (join " " (map (lambda (x) (show (random-bool))) (enumerate 0 9) ))))
+
 
 (let* ((random-lst (map (lambda (x) (random-bool)) RND-TOTAL-ENUM))
        (t-cnt (count random-lst true))
@@ -54,9 +59,8 @@
 )
 
 ;random-int-range
-(print "Twenty examples of random int range 0-5:")
-(print (join " / " (map (lambda (x) (int-to-str 10 (random-int-range 0 5))) (enumerate 0 19) )))
-(print "")
+(print (format-test "Twenty examples of random int range 0-5: "
+                    (join " / " (map (lambda (x) (int-to-str 10 (random-int-range 0 5))) (enumerate 0 19) ))))
 
 (let* ((random-lst (map (lambda (x) (random-int-range 0 19)) RND-TOTAL-ENUM))
        (x-count (map (count random-lst) (enumerate 0 19)))
@@ -66,9 +70,8 @@
 )
 
 ;random-decimal-range
-(print "Twenty examples of random decimal range -10.0 - 10.0 :")
-(print (join " / " (map (lambda (x) (to-string (random-decimal-range -10.0 10.0))) (enumerate 0 19) )))
-(print "")
+(print (format-test "Twenty examples of random decimal range -10.0 - 10.0: "
+                    (join " / " (map (lambda (x) (show (random-decimal-range -10.0 10.0))) (enumerate 0 19) ))))
 
 (let* ((random-lst (map (lambda (x) (random-decimal-range -10.0 10.0)) RND-TOTAL-ENUM))
        (count-between (lambda (x y)  (/ (dec (length (filter (between 0.0 1.0) random-lst))) (dec RND-TOTAL-COUNT)))))
@@ -85,9 +88,8 @@
 
 
 ;random-string
-(print "Ten examples of random strings (size 64):")
-(print (+ "   "(join "\n   " (map (lambda (x) (random-string 64)) (enumerate 0 9) ))))
-(print "")
+(print (format-test "Ten examples of random strings (size 64):\n   "
+                    (join "\n   " (map (lambda (x) (random-string 64)) (enumerate 0 9) ))))
 
 (expect "Length of generated string must be 1" 1 (length (random-string 1)))
 (expect "Length of generated string must be 10" 10 (length (random-string 10)))
@@ -105,15 +107,15 @@
 (let* ((random-lst (map (lambda (x) (random-choice ["A", "B", "C", "D"])) RND-TOTAL-ENUM))
        (x-count (map (count random-lst) ["A", "B", "C", "D"]))
        (x-ratio (map (lambda (x) (/ (dec x) (dec RND-TOTAL-COUNT))) x-count)))
-  (print (+ "Choices ratios:" (to-string x-ratio)))
+  (print (+ "Choices ratios:" (show x-ratio)))
   (expect "All drawn strings must be in range A, B C or D" 1.0 (sum x-ratio))
   (map (lambda (x) (expect-that "Bucket % must be close to 0.25" (between 0.22 0.28) x)) x-ratio)
 )
 
 ;; shuffle
-(print "Ten examples of random shuffle:")
 (let ((in-list  ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"]))
-  (print (+ "   "(join "\n   " (map (to-string) (map (lambda (x)  (shuffle in-list)) (enumerate 0 9) )))))
+  (print (format-test "Ten examples of random shuffle:\n   "
+                      (join "\n   " (map (show) (map (lambda (x)  (shuffle in-list)) (enumerate 0 9) )))))
 )
 
  ; check that it works with an empty list too
@@ -126,9 +128,8 @@
 
 
 ;gen-uuid-rfc-4122-v4
-(print "Ten examples of random uuid:")
-(print (+ "   "(join "\n   " (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 0 9) ))))
-(print "")
+(print (format-test "Ten examples of random uuid:"
+                    (join "\n   " (map (lambda (x) (gen-uuid-rfc-4122-v4)) (enumerate 0 9) ))))
 
 (let ((uuid (gen-uuid-rfc-4122-v4)))
   (expect "UUID Length must me 36" 36 (length uuid))

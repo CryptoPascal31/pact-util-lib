@@ -8,7 +8,7 @@
 
 (use util-lists)
 (print (format "Testing utils-list: Version:{}\n \
-                \                   Hash:{}" [VERSION, (at 'hash (describe-module 'util-lists)) ]))
+               \                    Hash:{}" [VERSION, (at 'hash (describe-module 'util-lists)) ]))
 
 
 ;is-empty

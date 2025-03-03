@@ -8,7 +8,7 @@
 (begin-tx)
 (use util-strings)
 (print (format "Testing util-strings: Version:{}\n \
-                \                     Hash:{}" [VERSION, (at 'hash (describe-module 'util-strings)) ]))
+               \                      Hash:{}" [VERSION, (at 'hash (describe-module 'util-strings)) ]))
 
 ;to-string
 (expect "Str -> Str" "Hello" (to-string "Hello"))

@@ -1,6 +1,6 @@
-PACT = pact -t
+PACT = pact_print
 
-POST = | grep "FAILURE" || true
+POST =
 
 all: test
 
@@ -41,4 +41,4 @@ test: test-util-chain-data test-util-lists test-util-strings test-util-math test
 
 
 hashes:
-	$(PACT) print-mod-hashs.repl | grep -e "^H:"
+	$(PACT) print-mod-hashs.repl

@@ -11,7 +11,7 @@
 (use util-chain-data)
 
 (print (format "Testing util-chain-data: Version:{}\n \
-                \                        Hash:{}" [VERSION, (at 'hash (describe-module 'util-chain-data)) ]))
+               \                         Hash:{}" [VERSION, (at 'hash (describe-module 'util-chain-data)) ]))
 
 (env-chain-data {'chain-id: "2",
                  'block-height: 20,
