@@ -117,6 +117,66 @@ Compute a time from an Unix timestamp.
   "2022-12-05T00:08:53Z"
 
 
+Safe functions
+---------------
+
+Pact native time functions are not safe when they accept externally supplied arguments.
+They can overflow and give weird results (eg A date in the past, while we expect a date in the future).
+
+See:
+  https://github.com/kadena-io/pact-5/issues/84
+
+  https://github.com/kadena-io/pact/issues/1301
+
+That's why these wrappers are necessary to handle corner cases and keep contracts sure.
+I recommend to always and only use these functions instead of native when your module API allows users to supply time or
+delta values.
+
+time-safe
+~~~~~~~~~
+*in* ``string`` *→* ``time``
+
+Equivalent of the ``(time)`` native but ensure that no overflow occurred.
+
+.. code:: lisp
+
+  (time-safe "2025-03-03T17:56:48Z")
+  "2025-03-03T17:56:48Z"
+
+parse-time-safe
+~~~~~~~~~~~~~~~
+*fmt* ``string`` *in* ``string`` *→* ``time``
+
+Equivalent of the ``(parse-time)`` native but ensure that no overflow occurred.
+
+.. code:: lisp
+
+  (parse-time-safe "%F" "2024-11-06")
+  "2024-11-06T00:00:00Z"
+
+add-time-safe
+~~~~~~~~~~~~~
+*in* ``time`` *delta* ``decimal``  *→* ``time``
+
+Equivalent of the ``(add-time)`` native but ensure that no overflow occurred.
+
+.. code:: lisp
+
+  (add-time-safe (time "2022-12-04T14:54:24Z") (hours 2.0))
+  "2022-12-04T16:54:24Z"
+
+diff-time-safe
+~~~~~~~~~~~~~~
+*t1* ``time`` *t2* ``time``  *→* ``decimal``
+
+Equivalent of the ``(diff-time)`` native but ensure that no overflow occurred.
+
+.. code:: lisp
+
+  (diff-time-safe (time "2022-12-04T16:54:24Z") (time "2022-12-04T14:54:24Z"))
+  7200.0
+
+
 Compare function
 ----------------
 

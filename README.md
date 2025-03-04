@@ -160,6 +160,10 @@ Contains some time utilities
 * ```(defun epoch:time ()``` : Returns Unix EPOCH
 * ```(defun genesis:time ()``` : Returns Kadena Genesis time
 * ```(defun now:time ()``` : Returns the current time
+* ```(defun time-safe:time (in:string)``` : Safe version of time native
+* ```(defun parse-time-safe:time (fmt:string in:string)``` : Safe version of the parse-time native
+* ```(defun add-time-safe:time (in:time delta:decimal)``` : Safe version of the add-time native
+* ```(defun diff-time-safe:decimal (x:time y:time)``` : Safe version of the diff-time native
 * ```(defun from-now:time (delta:decimal)``` : Returns the delta time taking now as a reference
 * ```(defun tomorrow:time ()```: Returns current time + 24 hours
 * ```(defun yesterday:time ()```: Returns current time - 24 hours
