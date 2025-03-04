@@ -55,9 +55,12 @@
   ;
   ; By enforcing such limits, we can guarantee that time functions never overflow.
   ;
-  ; When a Pact programmer uses (add-time) with user provided inputs, it should
-  ;   better use (add-time-safe) to avoid non-expected behaviour that could yield to
-  ;   a security issue
+  ; When a Smart contract developer uses (add-time), (diff-time), (time) or (parse-time) with
+  ; user supplied inputs, he should preferably use safe counterparts to avoid non-expected
+  ; behaviour that could yield to a security issue.
+  ;
+  ; For parsing functions: ie (time) and (parse-time), we compare the input string with
+  ; the stringified parsed date. If there is a difference, it means that an overflow probably occured
   (defconst SAFE-DELTA:decimal (- (/ (^ 2.0 62.0) (pow10 6)) 1.0))
 
   (defconst MIN-SAFE-TIME:time (add-time HASKELL-EPOCH (- SAFE-DELTA)))
@@ -70,10 +73,34 @@
   (defun --enforce-safe-delta:bool (in:decimal)
     (enforce (between (- SAFE-DELTA) SAFE-DELTA in) "Delta out of safe bounds"))
 
+  (defun time-safe:time (in:string)
+    "Do a (time) without any risk of overflow"
+    (let ((t (time in)))
+      (enforce (= in (format-time "%Y-%m-%dT%H:%M:%SZ" t)) "Unsafe time conversion")
+      (--enforce-safe-time t)
+      t)
+  )
+
+  (defun parse-time-safe:time (fmt:string in:string)
+    "Do a (parse-time) without any risk of overflow"
+    (let ((t (parse-time fmt in)))
+      (enforce (= in (format-time fmt t)) "Unsafe time conversion")
+      (--enforce-safe-time t)
+      t)
+  )
+
   (defun add-time-safe:time (in:time delta:decimal)
+    "Do a (add-time) without any risk of overflow"
     (--enforce-safe-time in)
     (--enforce-safe-delta delta)
     (add-time in delta)
+  )
+
+  (defun diff-time-safe:decimal (x:time y:time)
+    "Do a (diff-time) without any risk of overflow"
+    (--enforce-safe-time x)
+    (--enforce-safe-time y)
+    (diff-time x y)
   )
 
   (defun tomorrow:time ()
@@ -163,16 +190,16 @@
   ;; Diff time functions
   (defun diff-time-minutes:decimal (time1:time time2:time)
     "Computes difference between TIME1 and TIME2 in minutes"
-    (/ (diff-time time1 time2) 60.0)
+    (/ (diff-time-safe time1 time2) 60.0)
   )
 
   (defun diff-time-hours:decimal (time1:time time2:time)
     "Computes difference between TIME1 and TIME2 in hours"
-    (/ (diff-time time1 time2) 3600.0)
+    (/ (diff-time-safe time1 time2) 3600.0)
   )
 
   (defun diff-time-days:decimal (time1:time time2:time)
     "Computes difference between TIME1 and TIME2 in days"
-    (/ (diff-time time1 time2) 86400.0)
+    (/ (diff-time-safe time1 time2) 86400.0)
   )
 )
