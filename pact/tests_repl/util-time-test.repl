@@ -48,8 +48,8 @@
 ;;; (from-timestamp)
 (expect "from-timestamp must be UNIX EPOCH for ZERO" (epoch) (from-timestamp 0.0))
 (expect "from-timestamp must be accurate for this example" (time "2022-12-05T00:08:53Z") (from-timestamp 1670198933.0))
-(expect-failure "Out of bounds timestamp" "Timestamp out of bounds" (from-timestamp 6311390400000.0))
-(expect-failure "Out of bounds timestamp" "Timestamp out of bounds" (from-timestamp -6311390400000.0))
+(expect-failure "Out of bounds timestamp" "Delta out of safe bounds" (from-timestamp 6311390400000.0))
+(expect-failure "Out of bounds timestamp" "Delta out of safe bounds" (from-timestamp -6311390400000.0))
 
 ;;; (earliest ...)
 (expect "Test earliest" (time "2022-12-04T14:44:24Z") (earliest (time "2022-12-04T14:54:24Z")  (time "2022-12-04T14:44:24Z")))
@@ -144,6 +144,37 @@
 ;;; (diff-time-days)
 (expect "2 days delta" 2.0  (diff-time-days (time "2022-12-04T14:54:24Z")  (time "2022-12-02T14:54:24Z")))
 (expect "Negative 2 days delta" -2.0  (diff-time-days (time "2022-12-04T14:54:24Z")  (time "2022-12-06T14:54:24Z")))
+
+
+;;; Safe time
+(time-safe "2025-03-03T17:56:48Z")
+(expect-failure "Unsafe" "Unsafe" (time-safe "-390419-11-07T19:59:05Z"))
+(expect-failure "Unsafe" "Unsafe" (time-safe "390419-11-07T19:59:05Z"))
+(expect-failure "Unsafe" "out of safe bounds" (time-safe "200100-11-06T19:59:05Z"))
+
+(expect-that "Safe" (= (parse-time "%F" "2024-11-06")) (parse-time-safe "%F" "2024-11-06"))
+(expect-failure "Unsafe"  "Unsafe" (parse-time-safe "%F" "350000-11-06"))
+(expect-failure "Unsafe" "out of safe bounds" (parse-time-safe "%F" "200100-11-06"))
+
+;;; (add-time-safe)
+(expect "Should work" (time "2022-12-04T16:54:24Z") (add-time-safe (time "2022-12-04T14:54:24Z") (hours 2.0)))
+(expect "Should work" (time "2022-12-04T12:54:24Z") (add-time-safe (time "2022-12-04T14:54:24Z") (hours -2.0)))
+
+(expect-failure "Too much in the future" "Delta out of safe bounds" (add-time-safe (time "2022-12-04T14:54:24Z") (days 109500000.0)))
+(expect-failure "Too much in the past" "Delta out of safe bounds" (add-time-safe (time "2022-12-04T14:54:24Z") (days -109500000.0)))
+
+(expect-failure "Too much in the future" "Time out of safe bounds" (add-time-safe (time "300001-12-04T14:54:24Z") (days 2.0)))
+(expect-failure "Too much in the past" "Time out of safe bounds" (add-time-safe (time "-300001-12-04T14:54:24Z") (days -2.0)))
+
+;;; (diff-time-safe)
+(expect "Should work" 7200.0 (diff-time-safe (time "2022-12-04T16:54:24Z") (time "2022-12-04T14:54:24Z")))
+(expect-failure "Too much in the future" "Time out of safe bounds" (diff-time-safe (time "300001-12-04T14:54:24Z") (time "2022-12-04T14:54:24Z")))
+(expect-failure "Too much in the future" "Time out of safe bounds" (diff-time-safe (time "2022-12-04T14:54:24Z") (time "300001-12-04T14:54:24Z") ))
+(expect-failure "Too much in the future" "Time out of safe bounds" (diff-time-safe (time "300001-12-04T14:54:24Z") (time "300001-12-04T14:54:24Z")))
+(expect-failure "Too much in the past" "Time out of safe bounds" (diff-time-safe (time "-300001-12-04T14:54:24Z") (time "2022-12-04T14:54:24Z")))
+(expect-failure "Too much in the past" "Time out of safe bounds" (diff-time-safe (time "2022-12-04T14:54:24Z") (time "-300001-12-04T14:54:24Z") ))
+(expect-failure "Too much in the past" "Time out of safe bounds" (diff-time-safe (time "-300001-12-04T14:54:24Z") (time "-300001-12-04T14:54:24Z")))
+
 
 
 (print "Tests of util-time ended")
