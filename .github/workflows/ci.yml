@@ -16,50 +16,50 @@ jobs:
 
       - name: Install Pact
         run: |
-          wget -nv https://github.com/kadena-io/pact/releases/download/v4.9.0/pact-4.9.0-linux-20.04.zip
-          unzip pact-4.9.0-linux-20.04.zip  pact -d .bin
+          wget -nv https://github.com/kadena-io/pact-5/releases/download/5.0/pact-5.0-linux-x64.tar.gz
+          mkdir -p .bin/
+          tar -xz -C .bin/ -f pact-5.0-linux-x64.tar.gz ./pact
           chmod +x .bin/pact
 
       - name: Print hashes
-        run: .bin/pact pact/print-mod-hashs.repl
+        run: .bin/pact -t pact/print-mod-hashs.repl | grep -e "^H:"
 
       - name: Test util-chain-data
         run: |
-          .bin/pact pact/tests_repl/util-chain-data.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-chain-data.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-lists
         run: |
-          .bin/pact pact/tests_repl/util-lists-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-lists-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-strings
         run: |
-          .bin/pact pact/tests_repl/util-strings-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-strings-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-math
         run: |
-          .bin/pact pact/tests_repl/util-math-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-math-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-random
         run: |
-          .bin/pact pact/tests_repl/util-random-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
-
+          .bin/pact -t pact/tests_repl/util-random-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-time
         run: |
-          .bin/pact pact/tests_repl/util-time-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-time-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-fungible
         run: |
-          .bin/pact pact/tests_repl/util-fungible-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-fungible-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
 
       - name: Test util-zk
         run: |
-          .bin/pact pact/tests_repl/util-zk-test.repl 2>&1 | tee out.txt
-          if [ "$(tail -1 out.txt)"  = "Load successful" ]; then echo "OK"; exit 0; else echo "Fail";exit 1; fi
+          .bin/pact -t pact/tests_repl/util-zk-test.repl 2>&1 | tee out.txt
+          if ! grep -q "FAILURE" out.txt; then echo "OK"; exit 0; else echo "Fail";exit 1; fi

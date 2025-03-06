@@ -1,12 +1,6 @@
-PACT = pact
-REMOVE_WARNINGS = false
+PACT = pact_print
 
-ifeq ($(REMOVE_WARNINGS), true)
-	POST = |grep -v Warning
-else
-	POST =
-endif
-
+POST =
 
 all: test
 

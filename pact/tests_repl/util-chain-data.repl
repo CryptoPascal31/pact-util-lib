@@ -1,16 +1,17 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "4.9")
+(enforce-pact-version "5.0")
 (begin-tx)
 (load "../contracts/util-chain-data.pact")
 (commit-tx)
 
-(typecheck "util-chain-data")
+; Typecheck currently not supported by Pact 5.0
+;(typecheck "util-chain-data")
 
 (begin-tx)
 (use util-chain-data)
 
 (print (format "Testing util-chain-data: Version:{}\n \
-                \                        Hash:{}" [VERSION, (at 'hash (describe-module 'util-chain-data)) ]))
+               \                         Hash:{}" [VERSION, (at 'hash (describe-module 'util-chain-data)) ]))
 
 (env-chain-data {'chain-id: "2",
                  'block-height: 20,

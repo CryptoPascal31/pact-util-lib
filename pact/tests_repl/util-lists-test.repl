@@ -1,5 +1,5 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "4.9")
+(enforce-pact-version "5.0")
 (begin-tx)
 (load "../contracts/util-lists.pact")
 (commit-tx)
@@ -8,7 +8,7 @@
 
 (use util-lists)
 (print (format "Testing utils-list: Version:{}\n \
-                \                   Hash:{}" [VERSION, (at 'hash (describe-module 'util-lists)) ]))
+               \                    Hash:{}" [VERSION, (at 'hash (describe-module 'util-lists)) ]))
 
 
 ;is-empty

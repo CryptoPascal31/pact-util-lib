@@ -444,6 +444,39 @@ Return the square of *x*.
   36.0
 
 
+Rounding Helpers
+-----------------
+These helpers are just reversed versions of the native functions and are useful for
+composing or mapping without bloating the code with lambdas.
+
+round*
+~~~~~~
+*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (round* 4 3.14159)
+  3.1416
+
+floor*
+~~~~~~
+*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (floor* 4 3.14159)
+  3.1415
+
+ceiling*
+~~~~~~~~
+*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+
+.. code:: lisp
+
+  pact> (ceiling* 4 3.14159)
+  3.1416
+
+
 Divide functions
 ------------------
 
@@ -461,6 +494,47 @@ As a result ``safe-/`` never fails (Division by *0.0* is not possible anymore).
 
   pact> (safe-/ 3.0 0.0 0.0)
   0.0
+
+
+In Pact, the native divide ``(/)`` function can produce up to 255 decimals. That's why
+it's almost mandatory to "post-process" the division by rounding, ceiling or flooring.
+
+The three functions below help for doing in a single operation: the division and the post-processing.
+
+/-r
+~~~
+*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+
+Divide and round to a given number of decimals.
+
+.. code:: lisp
+
+  pact> (/-r 4 2.0 3.0)
+  0.6667
+
+/-f
+~~~
+*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+
+Divide and floor to a given number of decimals.
+
+.. code:: lisp
+
+  pact> (/-f 4 2.0 3.0)
+  0.6666
+
+/-c
+~~~
+*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+
+Divide and ceil to a given number of decimals.
+
+.. code:: lisp
+
+  pact> (/-c 4 2.0 3.0)
+  0.6667
+
+
 
 
 

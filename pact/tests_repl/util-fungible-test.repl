@@ -1,5 +1,5 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "4.9")
+(enforce-pact-version "5.0")
 (begin-tx)
 (load "../contracts/util-chain-data.pact")
 (load "../contracts/util-fungible.pact")
@@ -9,7 +9,7 @@
 (use util-fungible)
 
 (print (format "Testing util-fungible: Version:{}\n \
-                \                      Hash:{}" [VERSION, (at 'hash (describe-module 'util-fungible)) ]))
+               \                       Hash:{}" [VERSION, (at 'hash (describe-module 'util-fungible)) ]))
 
 ;enforce-precision
 (expect-failure "Bad precision" "Amount 3.1415 violates the required precision 3" (enforce-precision 3 3.1415))

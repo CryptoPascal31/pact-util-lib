@@ -1,5 +1,5 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "4.9")
+(enforce-pact-version "5.0")
 (begin-tx)
 (load "../contracts/util-lists.pact")
 (load "../contracts/util-math.pact")
@@ -9,7 +9,7 @@
 (use util-math)
 
 (print (format "Testing util-math: Version:{}\n \
-                \                  Hash:{}" [VERSION, (at 'hash (describe-module 'util-math)) ]))
+               \                   Hash:{}" [VERSION, (at 'hash (describe-module 'util-math)) ]))
 
 (expect-that "Pi=3.14" (between 3.14 3.15) PI)
 (expect-that "E=2.71" (between 2.71 2.72) E)
@@ -213,6 +213,28 @@
 (expect "(xEy 1.0 3) => 1000.0)" 1000.0 (xEy 1.0 3))
 (expect "(xEy 2.5 -3) => 0.0025)" 0.0025 (xEy 2.5 -3))
 (expect "(xEy 2.5 -12) => 0.000000000002)" 0.000000000002 (xEy 2.5 -12))
+
+;;round*
+(expect "PI with 1 decimal" 3.1 (round* 1 3.14159))
+(expect "PI with 4 decimals" 3.1416 (round* 4 3.14159))
+
+;;floor*
+(expect "PI with 1 decimal" 3.1 (floor* 1 3.14159))
+(expect "PI with 4 decimals" 3.1415 (floor* 4 3.14159))
+
+;;/-r
+(expect "2.0 divide by 3.0 = 0.666 rouned to two" 0.67 (/-r 2 2.0 3.0))
+(expect "1.0 divide by 3.0 = 0.33 rounded to two" 0.33 (/-r 2 1.0 3.0))
+
+;;/-f
+(expect "2.0 divide by 3.0 = 0.666 floored to two" 0.66 (/-f 2 2.0 3.0))
+
+;;/-c
+(expect "2.0 divide by 3.0 = 0.666 ceiled to two" 0.67 (/-c 2 2.0 3.0))
+(expect "1.0 divide by 3.0 = 0.33 ceiled to two" 0.34 (/-c 2 1.0 3.0))
+
+;;ceiling*
+(expect "PI with 1 decimal" 3.2 (ceiling* 1 3.14159))
 
 ;; (log10 ...)
 (expect "(log10 1.0) => 0.0" 0.0 (log10 1.0))
