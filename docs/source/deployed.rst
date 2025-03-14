@@ -12,12 +12,36 @@ It can be verified on-chain using the following pact command:
   (hash (concat
   (map (compose (+ "free.util-") (compose (describe-module) (at 'hash))) ["chain-data", "lists", "strings", "math", "random", "time", "fungible", "zk"])))
 
+Version 0.10
+~~~~~~~~~~~
+Validated with Pact 5.1
+
+New safe time functions:
+  * ``util-time.time-safe``
+  * ``util-time.parse-time-safe``
+  * ``util-time.add-time-safe``
+  * ``util-time.diff-time-safe``
+
+New rounding maths helper functions:
+  * ``util-math.round*``
+  * ``util-math.floor*``
+  * ``util-math.ceiling*``
+  * ``util-math./-r``
+  * ``util-math./-f``
+  * ``util-math./-c``
+
+Deployed on:
+  Testnet Chains 0-19
+  Still not deployed on Mainnet
+
+Modules hashes:
+TBD
+
 
 Version 0.9
 ~~~~~~~~~~~
   * Revert 0.8.1 Bugfix
   * Make it fully Pact 5.0 compliant
-  * Redeploy to
 
 Deployed on:
   * Testnet Chains 0-19
