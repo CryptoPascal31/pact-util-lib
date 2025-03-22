@@ -22,7 +22,7 @@ New safe time functions:
   * ``util-time.add-time-safe``
   * ``util-time.diff-time-safe``
 
-New rounding maths helper functions:
+New rounding math helpers functions:
   * ``util-math.round*``
   * ``util-math.floor*``
   * ``util-math.ceiling*``
@@ -32,10 +32,19 @@ New rounding maths helper functions:
 
 Deployed on:
   Testnet Chains 0-19
-  Still not deployed on Mainnet
+  Mainnet Chains 0-19
 
 Modules hashes:
-TBD
+  * **free.util-chain-data:** l4q8aCtXuBWeIQvMlvNd9fAIPGAcFQ21XHt7_zgPajs
+  * **free.util-lists:**      L7F53v1WsLnFtYGmRV1iJkThwOQzZDWIbRPugiOy2K0
+  * **free.util-strings:**    FSVALSDcwdasGbvZGstAl3DdjtEtqj-EMK7ayx4ISdg
+  * **free.util-math:**       AMRbbckFyYSxYt2NdalAVmWWq0w5XOCxoTNN_LgUxwA
+  * **free.util-random:**     ZDYrboWZoGy1yX4rCNOW8H5ZyzK69zIiyD1qoOgvF5M
+  * **free.util-time:**       1TcFHt65q6kUqww34sx-LQptg4XOMp3tVOaTLSKbj6k
+  * **free.util-fungible:**   kYQoyccy3hdq8e4Nr_YHNOmNO7QjaKVjyDvYaaNMiK
+  * **free.util-zk:**         U5-z-kSVdcvxYw3XsWLwENAkeQsctxoLfG9hIPdmMvI
+  * **Global:**               QkAO7w4UHlICg18CQubjdMzrj22M4ekuuCZlLJFdtpE
+
 
 
 Version 0.9
