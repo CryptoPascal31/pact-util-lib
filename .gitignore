@@ -3,6 +3,5 @@
 docs/build/*
 deploy/keys/*.yaml
 deploy/*log.json
-deploy/tx*.json
-deploy/tx*.yaml
+deploy/transactions
 deploy/.pact/*
