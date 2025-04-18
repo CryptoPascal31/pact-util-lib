@@ -122,6 +122,22 @@ Chain list of lists:
  pact> (chain [ [1,2], [3,4,5], [6,7,8] ])
  [1 2 3 4 5 6 7 8]
 
+
+same-length
+~~~~~~~~~~~
+*x* ``list`` *y* ``list`` *→* ``bool``
+
+Returns true if two lists have the same length
+
+.. code:: lisp
+
+ pact> (same-length [ [1,2], [3,4])
+ true
+
+ pact> (same-length [ [1,2], [3,4,5])
+ false
+
+
 enumerate-list
 ~~~~~~~~~~~~~~~
 *in* ``list`` *→* ``[object]``

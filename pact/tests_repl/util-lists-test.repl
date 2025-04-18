@@ -37,6 +37,12 @@
 (expect-that "Chained lists with empty first" (= ["c", "d"]) (chain [ [], ["c", "d"]]))
 (expect-that "Chained lists with empty last" (= ["a", "b"]) (chain [ ["a", "b"], []]))
 
+;same-length
+(expect "Two empty lists" true (same-length [] []))
+(expect "One empty + One singleton" false (same-length [] ["a"]))
+(expect "One singleton + One singleton" true (same-length ["b"] ["a"]))
+(expect "One singleton + One of length 3" false (same-length ["b"] ["a", "b", "c"]))
+
 ;enumerate-list
 (expect-that "Enumerated list" (= [{'i:0,'v:"a"}, {'i:1,'v:"b"},{'i:2,'v:"c"}]) (enumerate-list ["a" ,"b", "c"]))
 (expect-that "Enumerated single element list" (= [{'i:0,'v:"a"}]) (enumerate-list ["a"]))

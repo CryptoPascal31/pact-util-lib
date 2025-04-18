@@ -48,6 +48,10 @@
     "Chain list of lists"
     (fold (+) [] in))
 
+  (defun same-length:bool (x:list y:list)
+    "Return true if two lists have the same length"
+    (= (length x) (length y)))
+
   (defschema list-enum
     "Object returned by enumerate-list"
     i:integer
