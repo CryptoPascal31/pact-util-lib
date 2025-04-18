@@ -538,8 +538,8 @@ Divide and ceil to a given number of decimals.
 
 
 
-Average and Median
--------------------
+Average, Mean, and Median functions
+-----------------------------------
 
 avg
 ~~~
@@ -550,6 +550,16 @@ Returns the average of a list.
 
   pact> (avg [3.0 0.0 1.0 2.0])
   1.5
+
+geom-mean
+~~~~~~~~~
+*x* ``[decimal]`` *→* ``decimal``
+Returns the geometric ean of a list.
+
+.. code:: lisp
+
+  pact> (geom-mean [3.0 4.0 1.0 2.0])
+  2.213363839400642962829124371637590229511260986328125
 
 med
 ~~~

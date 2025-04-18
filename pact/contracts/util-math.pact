@@ -119,6 +119,11 @@
     "Divide x/y but returns default if y is 0.0"
     (if (= y 0.0) default (/ x y)))
 
+  (defun geom-mean(x:[decimal])
+    "Return the geometric mean of a list"
+    (enforce-not-empty x)
+    (^ (prod x) (/ 1.0 (dec (length x)))))
+
   (defun avg:decimal (x:[decimal])
     "Returns the average of a list"
     (enforce-not-empty x)

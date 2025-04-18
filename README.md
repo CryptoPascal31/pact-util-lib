@@ -132,6 +132,7 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun prod:decimal (x:[decimal])``` : Returns the product of a list
 * ```(defun square:decimal (x:decimal)``` : Returns the square of x
 * ```(defun safe-/ (x:decimal y:decimal default:decimal)``` : Divide *x*/*y* but returns *default* if *y* is 0.0
+* ```(defun geom-mean:decimal (x:[decimal])``` : Returns the geometric mean of a list
 * ```(defun avg:decimal (x:[decimal])``` : Returns the average of a list
 * ```(defun is-even:bool (x:integer)``` : Returns true if *x* is even
 * ```(defun is-odd:bool (x:integer)``` : Returns true if *x* is odd
