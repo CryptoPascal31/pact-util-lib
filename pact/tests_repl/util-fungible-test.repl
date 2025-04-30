@@ -1,9 +1,11 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "5.0")
+(enforce-pact-version "5.2")
 (begin-tx)
 (load "../contracts/util-chain-data.pact")
 (load "../contracts/util-fungible.pact")
 (commit-tx)
+
+(typecheck "util-fungible")
 
 (begin-tx)
 (use util-fungible)

@@ -1,8 +1,11 @@
 ;SPDX-License-Identifier: MIT
-(enforce-pact-version "5.0")
+(enforce-pact-version "5.2")
 (begin-tx)
 (load "../contracts/util-lists.pact")
 (commit-tx)
+
+; Disable typechecker for now.. because it doesn't support generic lists
+;(typecheck "util-lists")
 
 (begin-tx)
 
