@@ -1,4 +1,4 @@
-PACT = pact_print
+PACT = pact
 
 POST =
 
