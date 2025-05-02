@@ -76,6 +76,23 @@ Return true is *a* <= *x* <= *b*.
   pact> (between -1.0 1.0 1.2)
   false
 
+between*
+~~~~~~~~
+*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
+
+Return true is STRICTLY *a* < *x* < *b*
+
+.. code:: lisp
+
+  pact> (between* -1.0 1.0 0.2)
+  true
+
+  pact> (between* -1.0 1.0 1.2)
+  false
+
+  pact> (between* -1.0 1.0 1.0)
+  false
+
 sign
 ~~~~
  *x* ``decimal`` *→* ``decimal``

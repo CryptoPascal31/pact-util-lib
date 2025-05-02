@@ -180,6 +180,10 @@
     "Returns true is a <= x <= b"
     (and? (<= a) (>= b) x))
 
+  (defun between*:bool (a:decimal b:decimal x:decimal)
+    "Returns true is a < x < b"
+    (and? (< a) (> b) x))
+
   (defun sign:decimal (x:decimal)
     "Returns 1.0 if x is positive, 0.0 if x is null, and -1.0 if x is negative"
     (cond

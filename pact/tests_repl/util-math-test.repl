@@ -134,6 +134,15 @@
 (expect "(between 1.0 2.0 1.5) => true)" true (between 1.0 2.0 1.5))
 (expect "(between 1.0 2.0 0.5) => true)" false (between 1.0 2.0 0.5))
 (expect "(between 1.0 2.0 2.5) => true)" false (between 1.0 2.0 2.5))
+(expect "(between 1.0 2.0 1.0) => true)" true (between 1.0 2.0 1.0))
+(expect "(between 1.0 2.0 1.0) => true)" true (between 1.0 2.0 2.0))
+
+;;; (between* ...)
+(expect "(between* 1.0 2.0 1.5) => true)" true  (between* 1.0 2.0 1.5))
+(expect "(between* 1.0 2.0 0.5) => true)" false (between* 1.0 2.0 0.5))
+(expect "(between* 1.0 2.0 2.5) => true)" false (between* 1.0 2.0 2.5))
+(expect "(between* 1.0 2.0 1.0) => true)" false  (between* 1.0 2.0 1.0))
+(expect "(between* 1.0 2.0 1.0) => true)" false  (between* 1.0 2.0 2.0))
 
 ;;; (sign...)
 (expect "(sign 3.0) => 1.0)" 1.0 (sign 3.0))
