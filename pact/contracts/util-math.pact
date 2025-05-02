@@ -187,6 +187,10 @@
       ((< x 0.0) -1.0)
       0.0))
 
+(defun ramp:decimal (x:decimal)
+    "Returns x if is x is positive, 0.0 otherwise"
+    (if (>= x 0.0) x 0.0))
+
 
   (defun gcd:integer (a:integer b:integer)
     "Returns the greatest common divisor of 2 integers"

@@ -91,6 +91,23 @@ sign
   pact> (sign 0.0)
   0.0
 
+ramp
+~~~~
+ *x* ``decimal`` *→* ``decimal``
+
+Ramp function: return x if x is positive, 0.0 otherwise.
+
+.. code:: lisp
+
+  pact> (ramp 2.0)
+  2.0
+
+  pact> (ramp -2.0)
+  0.0
+
+  pact> (ramp 0.0)
+  0.0
+
 Integers functions
 ------------------
 is-even

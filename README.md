@@ -143,6 +143,7 @@ Most functions of this module only handle ```decimal``` type. ```integer```s are
 * ```(defun med*:decimal (x:[decimal])``` : *(starred version)* Returns the median of a list: if the length of the list is even return the average of the (n/2 -1)th and (n/2)th elements
 * ```(defun between:bool (a:decimal b:decimal x:decimal)``` : Returns true is a <= x <= b
 * ```(defun sign:decimal (x:decimal)``` : Returns 1.0 if *x* is positive, 0.0 if *x* is null, and -1.0 if *x* is negative
+* ```(defun ramp:decimal (x:decimal)``` : Ramp function: returns x if *x* is positive, 0.0 otherwise
 * ```(defun gcd:integer (a:integer b:integer)``` : Returns the greatest common divisor of 2 integers
 * ```(defun lcm:integer (a:integer b:integer)``` : Returns the least common multiple of 2 integers
 * ```(defun pow10:decimal (x:integer)``` : Returns 10^*x*, rounded to 12 decimals
