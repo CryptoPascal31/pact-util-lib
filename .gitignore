@@ -1,5 +1,6 @@
 .pact-history
 .pc-history
+.vscode
 docs/build/*
 deploy/keys/*.yaml
 deploy/*log.json
