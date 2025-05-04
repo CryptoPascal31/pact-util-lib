@@ -5,7 +5,7 @@ publicMeta:
   sender: "{{deployer}}"
   gasLimit: 80000
   gasPrice: 0.00000001
-  ttl: 3600
+  ttl: 343200
 networkId: "{{network}}"
 signers:
   - public: {{gov-key}}
