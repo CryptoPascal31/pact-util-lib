@@ -16,9 +16,9 @@ jobs:
 
       - name: Install Pact
         run: |
-          wget -nv https://github.com/kadena-io/pact-5/releases/download/5.1/pact-5.1-linux-x64.tar.gz
+          wget -nv https://github.com/kadena-io/pact-5/releases/download/5.2/pact-5.2-linux-x64.tar.gz
           mkdir -p .bin/
-          tar -xz -C .bin/ -f pact-5.1-linux-x64.tar.gz ./pact
+          tar -xz -C .bin/ -f pact-5.2-linux-x64.tar.gz ./pact
           chmod +x .bin/pact
 
       - name: Print hashes
