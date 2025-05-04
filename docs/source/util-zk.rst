@@ -70,7 +70,7 @@ ECC Arithmetic
 
 neg-G1
 ~~~~~~
-*in* ``object{point-G1}`` *→* ``object{point-G1}``
+*in* ``object{point-G1}`` **↦** ``object{point-G1}``
 
 Return the negative of a point in G1
 
@@ -98,7 +98,7 @@ serialize proofs in a Pact friendly way.
 
 serialize-proof
 ~~~~~~~~~~~~~~~
-*proof* ``object{groth16-proof}`` *→* ``string``
+*proof* ``object{groth16-proof}`` **↦** ``string``
 
 Serialiaze an object proof to its base64 representation (344 bytes).
 
@@ -114,7 +114,7 @@ Serialiaze an object proof to its base64 representation (344 bytes).
 
 deserialize-proof
 ~~~~~~~~~~~~~~~~~
-*proof-str* ``string``  *→* ``object{groth16-proof}``
+*proof-str* ``string``  **↦** ``object{groth16-proof}``
 
 Deserialize a base64 proof string to its object representation
 
@@ -136,7 +136,7 @@ Proof Verification
 
 verify-groth16-proof
 ~~~~~~~~~~~~~~~~~~~~
-*key* ``object{groth16-verify-key}``  *pub-inputs* ``[integer]``  *proof* ``object{groth16-proof}`` *→* ``bool``
+*key* ``object{groth16-verify-key}``  *pub-inputs* ``[integer]``  *proof* ``object{groth16-proof}`` **↦** ``bool``
 
 Verify a Groth16 proof against a list of public inputs and proof object
 

@@ -33,7 +33,7 @@ Integers
 
 random-int
 ~~~~~~~~~~
-*→* ``integer``
+**↦** ``integer``
 Returns a 256 bit random integer
 
 .. code:: lisp
@@ -46,7 +46,7 @@ Returns a 256 bit random integer
 
 random-int-range
 ~~~~~~~~~~~~~~~~
-*_min* ``integer`` *_max* ``integer`` *→* ``integer``
+*_min* ``integer`` *_max* ``integer`` **↦** ``integer``
 
 Returns a random integer in range [min - max].
 
@@ -67,7 +67,7 @@ Booleans
 
 random-bool
 ~~~~~~~~~~~
-*→* ``bool``
+**↦** ``bool``
 
 Returns a random boolean
 
@@ -88,7 +88,7 @@ Decimals
 
 random-decimal-range
 ~~~~~~~~~~~~~~~~~~~~
-*_min* ``decimal`` *_max* ``decimal`` *→* ``decimal``
+*_min* ``decimal`` *_max* ``decimal`` **↦** ``decimal``
 
 Returns a random decimal in range [min - max].
 
@@ -107,7 +107,7 @@ Lists
 ------
 random-choice
 ~~~~~~~~~~~~~~~~
-*choices-list* ``[<a>]`` *→* ``<a>``
+*choices-list* ``[<a>]`` **↦** ``<a>``
 
  Returns a random element from the non-empty list.
 
@@ -127,7 +127,7 @@ random-choice
 
 shuffle
 ~~~~~~~
-*in* ``[<a>]`` *→* ``[<a>]``
+*in* ``[<a>]`` **↦** ``[<a>]``
 
 Shuffles a list using a sort method with random indexes.
 
@@ -155,7 +155,7 @@ Strings
 
 random-string
 ~~~~~~~~~~~~~
-*len* ``integer`` *→* ``string``
+*len* ``integer`` **↦** ``string``
 
 Returns a random string of length *len*.
 
@@ -170,7 +170,7 @@ Returns a random string of length *len*.
 
 gen-uuid-rfc-4122-v4
 ~~~~~~~~~~~~~~~~~~~~
-*→* ``string``
+**↦** ``string``
 
 Generate an UUID (Universal Unique ID) according to RFC 4122 v4.
 

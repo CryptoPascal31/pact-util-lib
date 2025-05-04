@@ -28,7 +28,7 @@ Accounts / Amounts verification
 
 enforce-precision
 ~~~~~~~~~~~~~~~~~
-*precision* ``integer`` *amount* ``decimal``  *→* ``bool``
+*precision* ``integer`` *amount* ``decimal``  **↦** ``bool``
 
 Enforce that an *amount* satisfies a given *precision*.
 
@@ -57,7 +57,7 @@ Example:
 
 enforce-valid-amount
 ~~~~~~~~~~~~~~~~~~~~~
-*precision* ``integer`` *amount* ``decimal``  *→* ``bool``
+*precision* ``integer`` *amount* ``decimal``  **↦** ``bool``
 
 Enforce that an *amount* is valid for a transfer:
 
@@ -78,7 +78,7 @@ Enforce that an *amount* is valid for a transfer:
 
 enforce-valid-account
 ~~~~~~~~~~~~~~~~~~~~~
-*account* ``string`` *→* ``bool``
+*account* ``string`` **↦** ``bool``
 
 Enforce that an *account* meets the requirements to be used for a fungible.
 
@@ -101,7 +101,7 @@ Enforce that an *account* meets the requirements to be used for a fungible.
 
 enforce-valid-transfer
 ~~~~~~~~~~~~~~~~~~~~~~
-*sender* ``string`` *receiver* ``string`` *precision* ``integer`` *amount* ``decimal`` *→* ``bool``
+*sender* ``string`` *receiver* ``string`` *precision* ``integer`` *amount* ``decimal`` **↦** ``bool``
 
 Enforce that everything is OK for a transfer:
 
@@ -141,7 +141,7 @@ Example:
 
 enforce-valid-transfer-xchain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*sender* ``string`` *receiver* ``string`` *precision* ``integer`` *amount* ``decimal`` *→* ``bool``
+*sender* ``string`` *receiver* ``string`` *precision* ``integer`` *amount* ``decimal`` **↦** ``bool``
 
 Enforce that everything is OK for a X-chain transfer.
 
@@ -180,7 +180,7 @@ Principals verification
 
 enforce-reserved
 ~~~~~~~~~~~~~~~~
-*account* ``string`` *guard* ``guard`` *→* ``bool``
+*account* ``string`` *guard* ``guard`` **↦** ``bool``
 
 Improved version of the ``enforce-reserved`` function from the ``coin`` contract.
 
@@ -218,7 +218,7 @@ accounts creation.
 
 enforce-reserved*
 ~~~~~~~~~~~~~~~~~
-*account* ``string`` *guard* ``guard`` *→* ``bool``
+*account* ``string`` *guard* ``guard`` **↦** ``bool``
 
 Slightly different version of the above function.
 
@@ -251,7 +251,7 @@ Cross-chain helpers
 
 enforce-valid-chain-id
 ~~~~~~~~~~~~~~~~~~~~~~
-*chain-id* ``string`` *→* ``bool``
+*chain-id* ``string`` **↦** ``bool``
 
 Enforce that *chain-id* is valid chain denomination.
 
@@ -269,7 +269,7 @@ Enforce that *chain-id* is valid chain denomination.
 
 enforce-not-same-chain
 ~~~~~~~~~~~~~~~~~~~~~~
-*chain-id* ``string`` *→* ``bool``
+*chain-id* ``string`` **↦** ``bool``
 
 Enforce that the code is not executing on the same chain, as *chain-id*.
 

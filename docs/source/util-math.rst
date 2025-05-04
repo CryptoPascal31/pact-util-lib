@@ -47,7 +47,7 @@ General functions
 
 dec*
 ~~~~
-*x* ``<a[integer,decimal]>``  *→* ``decimal``
+*x* ``<a[integer,decimal]>``  **↦** ``decimal``
 
 Starred version of ``(*dec)``. Convert an integer to a decimal, but does not fail
 if *x* is already a decimal.
@@ -64,7 +64,7 @@ if *x* is already a decimal.
 
 between
 ~~~~~~~
-*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
+*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` **↦** ``bool``
 
 Return true is *a* <= *x* <= *b*.
 
@@ -78,7 +78,7 @@ Return true is *a* <= *x* <= *b*.
 
 between*
 ~~~~~~~~
-*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` *→* ``bool``
+*a* ``decimal`` *b* ``decimal`` *x* ``decimal`` **↦** ``bool``
 
 Return true is STRICTLY *a* < *x* < *b*
 
@@ -95,7 +95,7 @@ Return true is STRICTLY *a* < *x* < *b*
 
 sign
 ~~~~
- *x* ``decimal`` *→* ``decimal``
+ *x* ``decimal`` **↦** ``decimal``
 
 .. code:: lisp
 
@@ -110,7 +110,7 @@ sign
 
 ramp
 ~~~~
- *x* ``decimal`` *→* ``decimal``
+ *x* ``decimal`` **↦** ``decimal``
 
 Ramp function: return x if x is positive, 0.0 otherwise.
 
@@ -129,7 +129,7 @@ Integers functions
 ------------------
 is-even
 ~~~~~~~
-*y* ``integer`` *→* ``bool``
+*y* ``integer`` **↦** ``bool``
 
 Return true if *x* is even.
 
@@ -143,7 +143,7 @@ Return true if *x* is even.
 
 is-odd
 ~~~~~~~
-*y* ``integer`` *→* ``bool``
+*y* ``integer`` **↦** ``bool``
 
 Return true if *x* is odd.
 
@@ -157,7 +157,7 @@ Return true if *x* is odd.
 
 sizeof
 ~~~~~~
-*y* ``integer`` *→* ``integer``
+*y* ``integer`` **↦** ``integer``
 
 Returns the storage size of a positive integer in bytes
 
@@ -177,7 +177,7 @@ Returns the storage size of a positive integer in bytes
 
 ++
 ~~
-*x* ``integer`` *→* ``integer``
+*x* ``integer`` **↦** ``integer``
 
 Increment an integer
 
@@ -188,7 +188,7 @@ Increment an integer
 
 \- \-
 ~~~~~
-*x* ``integer`` *→* ``integer``
+*x* ``integer`` **↦** ``integer``
 
 Decrement an integer
 
@@ -200,7 +200,7 @@ Decrement an integer
 
 gcd
 ~~~
-*a* ``integer`` *b* ``integer`` *→* ``integer``
+*a* ``integer`` *b* ``integer`` **↦** ``integer``
 
 Return the greatest common divisor of *a* and *b*.
 
@@ -226,7 +226,7 @@ Negative numbers are allowed.
 
 lcm
 ~~~
-*a* ``integer`` *b* ``integer`` *→* ``integer``
+*a* ``integer`` *b* ``integer`` **↦** ``integer``
 
 Return the least common multiple of *a* and *b*.
 
@@ -255,7 +255,7 @@ Min/Max functions
 
 min
 ~~~
-*x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` **↦** ``decimal``
 
 Return the min of 2 values.
 
@@ -266,7 +266,7 @@ Return the min of 2 values.
 
 max
 ~~~
-*x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` **↦** ``decimal``
 
 Return the max of 2 values.
 
@@ -278,7 +278,7 @@ Return the max of 2 values.
 
 min3
 ~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` **↦** ``decimal``
 
 Return the min of 3 values.
 
@@ -289,7 +289,7 @@ Return the min of 3 values.
 
 max3
 ~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` **↦** ``decimal``
 
 Return the max of 3 values.
 
@@ -300,7 +300,7 @@ Return the max of 3 values.
 
 min4
 ~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` **↦** ``decimal``
 
 Return the min of 4 values.
 
@@ -311,7 +311,7 @@ Return the min of 4 values.
 
 max4
 ~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` **↦** ``decimal``
 
 Return the max of 4 values.
 
@@ -323,7 +323,7 @@ Return the max of 4 values.
 
 min-list
 ~~~~~~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 
 Return the min of a list.
 
@@ -334,7 +334,7 @@ Return the min of a list.
 
 max-list
 ~~~~~~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 
 Return the max of a list.
 
@@ -345,7 +345,7 @@ Return the max of a list.
 
 amin
 ~~~~
-*x* ``[decimal]`` *→* ``integer``
+*x* ``[decimal]`` **↦** ``integer``
 
 Return the min index of a list.
 
@@ -356,7 +356,7 @@ Return the min index of a list.
 
 amax
 ~~~~
-*x* ``[decimal]`` *→* ``integer``
+*x* ``[decimal]`` **↦** ``integer``
 
 Return the max index of a list.
 
@@ -367,7 +367,7 @@ Return the max index of a list.
 
 clamp
 ~~~~~
-*low-limit* ``decimal`` *up-limit* ``decimal`` *x* ``decimal`` *→* ``decimal``
+*low-limit* ``decimal`` *up-limit* ``decimal`` *x* ``decimal`` **↦** ``decimal``
 
 Clamp *x* between *low-limit* and *up-limit*:
 
@@ -397,7 +397,7 @@ Sum functions
 
 sum3
 ~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` **↦** ``decimal``
 
 Return the sum of 3 values.
 
@@ -409,7 +409,7 @@ Return the sum of 3 values.
 
 sum4
 ~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` **↦** ``decimal``
 
 Return the sum of 4 values.
 
@@ -420,7 +420,7 @@ Return the sum of 4 values.
 
 sum
 ~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 
 Return the sum of a list.
 
@@ -435,7 +435,7 @@ Product functions
 
 prod3
 ~~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` **↦** ``decimal``
 
 Return the product of 3 values.
 
@@ -446,7 +446,7 @@ Return the product of 3 values.
 
 prod4
 ~~~~~
-*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *z* ``decimal`` *zz* ``decimal`` **↦** ``decimal``
 
 Return the product of 4 values.
 
@@ -457,7 +457,7 @@ Return the product of 4 values.
 
 prod
 ~~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 
 Return the product of a list.
 
@@ -468,7 +468,7 @@ Return the product of a list.
 
 square
 ~~~~~~~
-*x* ``decimal`` *→* ``decimal``
+*x* ``decimal`` **↦** ``decimal``
 
 Return the square of *x*.
 
@@ -485,7 +485,7 @@ composing or mapping without bloating the code with lambdas.
 
 round*
 ~~~~~~
-*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+*decimals* ``integer`` *x* ``decimal`` **↦** ``decimal``
 
 .. code:: lisp
 
@@ -494,7 +494,7 @@ round*
 
 floor*
 ~~~~~~
-*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+*decimals* ``integer`` *x* ``decimal`` **↦** ``decimal``
 
 .. code:: lisp
 
@@ -503,7 +503,7 @@ floor*
 
 ceiling*
 ~~~~~~~~
-*decimals* ``integer`` *x* ``decimal`` *→* ``decimal``
+*decimals* ``integer`` *x* ``decimal`` **↦** ``decimal``
 
 .. code:: lisp
 
@@ -516,7 +516,7 @@ Divide functions
 
 safe-/
 ~~~~~~
-*x* ``decimal`` *y* ``decimal`` *default* ``decimal`` *→* ``decimal``
+*x* ``decimal`` *y* ``decimal`` *default* ``decimal`` **↦** ``decimal``
 
 Divide *x* by *y* but returns default if *y* is *0.0*.
 As a result ``safe-/`` never fails (Division by *0.0* is not possible anymore).
@@ -537,7 +537,7 @@ The three functions below help for doing in a single operation: the division and
 
 /-r
 ~~~
-*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` **↦** ``decimal``
 
 Divide and round to a given number of decimals.
 
@@ -548,7 +548,7 @@ Divide and round to a given number of decimals.
 
 /-f
 ~~~
-*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` **↦** ``decimal``
 
 Divide and floor to a given number of decimals.
 
@@ -559,7 +559,7 @@ Divide and floor to a given number of decimals.
 
 /-c
 ~~~
-*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` *→* ``decimal``
+*decimals* ``integer`` *x* ``decimal`` *y* ``decimal`` **↦** ``decimal``
 
 Divide and ceil to a given number of decimals.
 
@@ -577,7 +577,7 @@ Average, Mean, and Median functions
 
 avg
 ~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 Returns the average of a list.
 
 .. code:: lisp
@@ -587,7 +587,7 @@ Returns the average of a list.
 
 geom-mean
 ~~~~~~~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 Returns the geometric ean of a list.
 
 .. code:: lisp
@@ -597,7 +597,7 @@ Returns the geometric ean of a list.
 
 med
 ~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 
 Returns the median of a list: if the length of the list is even return the (n/2 -1)th element.
 
@@ -611,7 +611,7 @@ Returns the median of a list: if the length of the list is even return the (n/2 
 
 med*
 ~~~~
-*x* ``[decimal]`` *→* ``decimal``
+*x* ``[decimal]`` **↦** ``decimal``
 
 Returns the median of a list: if the length of the list is even return the average of the (n/2 -1)th and (n/2)th elements.
 
@@ -629,7 +629,7 @@ Power/Log functions
 
 pow10
 ~~~~~
-*x* ``integer`` *→* ``decimal``
+*x* ``integer`` **↦** ``decimal``
 
 Return 10^x, rounded to 12 decimals (rounding is important when *x* is negative).
 
@@ -643,7 +643,7 @@ Return 10^x, rounded to 12 decimals (rounding is important when *x* is negative)
 
 xEy
 ~~~
-*x* ``decimal`` *y* ``integer`` *→* ``decimal``
+*x* ``decimal`` *y* ``integer`` **↦** ``decimal``
 
 Return x.10^y, rounded to 12 decimals.
 
@@ -656,7 +656,7 @@ Return x.10^y, rounded to 12 decimals.
 
 log10
 ~~~~~
-*x* ``<a[integer,decimal]>`` *→* ``decimal``
+*x* ``<a[integer,decimal]>`` **↦** ``decimal``
 
 Return the log of x base 10, rounded to 12 decimals.
 
@@ -670,7 +670,7 @@ Return the log of x base 10, rounded to 12 decimals.
 
 safe-log
 ~~~~~~~~
-*x* ``<a[integer,decimal]>`` *y* ``<a[integer,decimal]>``  *default* ``<a[integer,decimal]>``  *→* ``<a[integer,decimal]>``
+*x* ``<a[integer,decimal]>`` *y* ``<a[integer,decimal]>``  *default* ``<a[integer,decimal]>``  **↦** ``<a[integer,decimal]>``
 
 Log of *y* base *x*, but returns default when *y* is negative.
 As a result ``safe-log`` never fails (Log of negative numbers not possible anymore).
@@ -685,7 +685,7 @@ As a result ``safe-log`` never fails (Log of negative numbers not possible anymo
 
 safe-ln
 ~~~~~~~~
-*x* ``decimal`` *default* ``decimal``  *→* ``decimal``
+*x* ``decimal`` *default* ``decimal``  **↦** ``decimal``
 
 Natural log of *x*, but returns default when *x* <= *0.0*.
 As a result ``safe-ln`` never fails (Log of negative numbers is not possible anymore).
@@ -700,7 +700,7 @@ As a result ``safe-ln`` never fails (Log of negative numbers is not possible any
 
 safe-log10
 ~~~~~~~~~~
-*x* ``<a[integer,decimal]>`` *default* ``decimal``  *→* ``decimal``
+*x* ``<a[integer,decimal]>`` *default* ``decimal``  **↦** ``decimal``
 
 Returns the log of *x* base 10, rounded to 12 decimals but returns default when *x* is negative.
 As a result ``safe-log10`` never fails (Log of negative numbers is not possible anymore)

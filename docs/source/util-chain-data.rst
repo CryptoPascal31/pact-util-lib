@@ -15,7 +15,7 @@ General functions
 
 chain-id
 ~~~~~~~~
-*→* ``string``
+**↦** ``string``
 
 Retrieve the chain-id.
 
@@ -27,7 +27,7 @@ Retrieve the chain-id.
 
 block-height
 ~~~~~~~~~~~~
-*→* ``integer``
+**↦** ``integer``
 
 Retrieve the block-height.
 
@@ -39,7 +39,7 @@ Retrieve the block-height.
 
 block-time
 ~~~~~~~~~~~
-*→* ``time``
+**↦** ``time``
 
 Retrieve the block-time.
 
@@ -50,7 +50,7 @@ Retrieve the block-time.
 
 prev-block-hash
 ~~~~~~~~~~~~~~~
-*→* ``string``
+**↦** ``string``
 
 Retrieve the prev-block-hash.
 
@@ -62,7 +62,7 @@ Retrieve the prev-block-hash.
 
 sender
 ~~~~~~
-*→* ``string``
+**↦** ``string``
 
 Retrieve the transaction sender.
 
@@ -74,7 +74,7 @@ Retrieve the transaction sender.
 
 gas-limit
 ~~~~~~~~~
-*→* ``integer``
+**↦** ``integer``
 
 Return the gas-limit from transactions Meta.
 
@@ -85,7 +85,7 @@ Return the gas-limit from transactions Meta.
 
 gas-price
 ~~~~~~~~~
-*→* ``decimal``
+**↦** ``decimal``
 
 Return the gas-price from transactions Meta.
 
@@ -96,7 +96,7 @@ Return the gas-price from transactions Meta.
 
 total-gas-limit
 ~~~~~~~~~~~~~~~
-*→* ``decimal``
+**↦** ``decimal``
 
 Return the total gas spendable for the transaction.
 

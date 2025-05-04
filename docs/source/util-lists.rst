@@ -9,7 +9,7 @@ General functions
 
 enforce-not-empty
 ~~~~~~~~~~~~~~~~~
-*in* ``list`` *→* ``bool``
+*in* ``list`` **↦** ``bool``
 
 Verify and enforces that a list is not empty.
 
@@ -25,7 +25,7 @@ Verify and enforces that a list is not empty.
 
 is-empty
 ~~~~~~~~
-*in* ``list`` *→* ``bool``
+*in* ``list`` **↦** ``bool``
 
 Return true if the list is empty.
 
@@ -40,7 +40,7 @@ Return true if the list is empty.
 
 is-singleton
 ~~~~~~~~~~~~
-*in* ``list`` *→* ``bool``
+*in* ``list`` **↦** ``bool``
 
 Return true if the list has exactly 1 element.
 
@@ -55,7 +55,7 @@ Return true if the list has exactly 1 element.
 
 is-pair
 ~~~~~~~
-*in* ``list`` *→* ``bool``
+*in* ``list`` **↦** ``bool``
 
 Return true if the list has exactly 2 elements.
 
@@ -70,7 +70,7 @@ Return true if the list has exactly 2 elements.
 
 is-not-empty
 ~~~~~~~~~~~~
-*in* ``list`` *→* ``bool``
+*in* ``list`` **↦** ``bool``
 
 Return true if the list is not empty.
 
@@ -85,7 +85,7 @@ Return true if the list is not empty.
 
 enforce-list-bounds
 ~~~~~~~~~~~~~~~~~~~~~
-*in* ``list`` *idx* ``integer`` *→* ``bool``
+*in* ``list`` *idx* ``integer`` **↦** ``bool``
 
 Verify and ENFORCES that *idx* is in list bounds.
  | *idx* must be >= 0 and <= length *in*
@@ -112,7 +112,7 @@ Verify and ENFORCES that *idx* is in list bounds.
 
 chain
 ~~~~~~
-*in* ``list`` *→* ``list``
+*in* ``list`` **↦** ``list``
 
 Chain list of lists:
  | All lists are chained to build a new unique list.
@@ -125,7 +125,7 @@ Chain list of lists:
 
 same-length
 ~~~~~~~~~~~
-*x* ``list`` *y* ``list`` *→* ``bool``
+*x* ``list`` *y* ``list`` **↦** ``bool``
 
 Returns true if two lists have the same length
 
@@ -140,7 +140,7 @@ Returns true if two lists have the same length
 
 enumerate-list
 ~~~~~~~~~~~~~~~
-*in* ``list`` *→* ``[object]``
+*in* ``list`` **↦** ``[object]``
 
 Return a list of objects ``{'i:idx, 'v:value}`` where *'i* is the index, and *'v* the value.
 
@@ -152,7 +152,7 @@ Return a list of objects ``{'i:idx, 'v:value}`` where *'i* is the index, and *'v
 
 contains*
 ~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``bool``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``bool``
 
 Starred version of contains for list => arguments inverted.
 
@@ -169,7 +169,7 @@ Useful for mapping and filtering
 
 first
 ~~~~~
-*in* ``[<a>]`` *→* ``<a>``
+*in* ``[<a>]`` **↦** ``<a>``
 
 Return the first item of a list.
 
@@ -180,7 +180,7 @@ Return the first item of a list.
 
 last
 ~~~~~
-*in* ``[<a>]`` *→* ``<a>``
+*in* ``[<a>]`` **↦** ``<a>``
 
 Return the last item of a list.
 
@@ -191,7 +191,7 @@ Return the last item of a list.
 
 at*
 ~~~
-*in* ``[<a>]`` *idx* ``integer`` *default* ``<a>`` *→* ``<a>``
+*in* ``[<a>]`` *idx* ``integer`` *default* ``<a>`` **↦** ``<a>``
 
 *Starred version of the standard Pact function* ``(at )``
 
@@ -211,7 +211,7 @@ Search Functions
 
 search
 ~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[integer]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[integer]``
 
 Search an *item* into the list and returns a list of indexes.
 
@@ -228,7 +228,7 @@ Search an *item* into the list and returns a list of indexes.
 
 count
 ~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``integer``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``integer``
 
 Returns the number of occurrences of an *item*.
 
@@ -248,7 +248,7 @@ Creation and extension functions
 
 make-list-like
 ~~~~~~~~~~~~~~~
-*in* ``[]``  *value* ``<a>`` *→* ``[<a>]``
+*in* ``[]``  *value* ``<a>`` **↦** ``[<a>]``
 
 Creates a new list whose size is the same as *in*, by repeating *value*.
 
@@ -262,7 +262,7 @@ This is just a simple improvement of the native ``(make-list)``.
 
 extend
 ~~~~~~
-*in* ``[<a>]`` *new-length* ``integer`` *value* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *new-length* ``integer`` *value* ``<a>`` **↦** ``[<a>]``
 
 Extend a list to *new-length* by repeating *value*.
 
@@ -273,7 +273,7 @@ Extend a list to *new-length* by repeating *value*.
 
 extend-like
 ~~~~~~~~~~~~
-*in* ``[<a>]`` *target* ``[]`` *value* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *target* ``[]`` *value* ``<a>`` **↦** ``[<a>]``
 
 Extends a list to the same length as *target*, by repeating *value*.
 
@@ -288,7 +288,7 @@ Insertion functions
 
 insert-first
 ~~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Insert an item at the left of the list.
 
@@ -300,7 +300,7 @@ Insert an item at the left of the list.
 
 append-last
 ~~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Append an item at the end of the list.
 
@@ -311,7 +311,7 @@ Append an item at the end of the list.
 
 insert-at
 ~~~~~~~~~~~~
-*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>`` **↦** ``[<a>]``
 
 Insert an item at position *idx*.
 
@@ -328,7 +328,7 @@ Insert an item at position *idx*.
 
 insert-at*
 ~~~~~~~~~~~~
-*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>``  *default* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>``  *default* ``<a>`` **↦** ``[<a>]``
 
 Starred version of ``(insert-at   )``. When the list is too short, don't fail (like ``(insert-at   )``).
 But add as many *default* elements to match the needed size.
@@ -346,7 +346,7 @@ Replacement functions
 
 replace-first
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Replace the first item of the list.
 
@@ -358,7 +358,7 @@ Replace the first item of the list.
 
 replace-last
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Replace the last item of the list.
 
@@ -370,7 +370,7 @@ Replace the last item of the list.
 
 replace-at
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>`` **↦** ``[<a>]``
 
 Replace the item at position *idx*.
 
@@ -385,7 +385,7 @@ Replace the item at position *idx*.
 
 replace-at*
 ~~~~~~~~~~~~
-*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>``  *default* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *idx* ``integer`` *item* ``<a>``  *default* ``<a>`` **↦** ``[<a>]``
 
 Starred version of ``(replace-at   )``. When the list is too short, don't fail (like ``(replace-at   )``).
 But add as many *default* elements to match the needed size.
@@ -400,7 +400,7 @@ But add as many *default* elements to match the needed size.
 
 replace-item
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *old-item* ``<a>`` *new-item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *old-item* ``<a>`` *new-item* ``<a>`` **↦** ``[<a>]``
 
 Replace each occurrence of *old-item* by *new-item*.
 
@@ -418,7 +418,7 @@ Replace each occurrence of *old-item* by *new-item*.
 
 replace-item*
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *old-item* ``<a>`` *new-item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *old-item* ``<a>`` *new-item* ``<a>`` **↦** ``[<a>]``
 
 Replace each occurrence of *old-item* by *new-item* but raises an error if *old-item* does not exist.
 
@@ -440,7 +440,7 @@ Removal functions
 
 remove-first
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *→* ``[<a>]``
+*in* ``[<a>]`` **↦** ``[<a>]``
 
 Remove first element from the list.
 
@@ -451,7 +451,7 @@ Remove first element from the list.
 
 remove-last
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *→* ``[<a>]``
+*in* ``[<a>]`` **↦** ``[<a>]``
 
 Remove last element from the list.
 
@@ -462,7 +462,7 @@ Remove last element from the list.
 
 remove-at
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *idx* ``integer`` *→* ``[<a>]``
+*in* ``[<a>]`` *idx* ``integer`` **↦** ``[<a>]``
 
 Remove element at position *idx*.
 
@@ -479,7 +479,7 @@ Remove element at position *idx*.
 
 remove-item
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Remove an item from a list.
 
@@ -496,7 +496,7 @@ Remove an item from a list.
 
 remove-item*
 ~~~~~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Remove and item from the list but raises an error if it does not exist.
 
@@ -518,7 +518,7 @@ Shifts and Rolls
 
 shift-left
 ~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Shift a list to the left, and append an element.
 
@@ -534,7 +534,7 @@ The leftmost (first) element is trashed
 
 shift-right
 ~~~~~~~~~~~
-*in* ``[<a>]`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *item* ``<a>`` **↦** ``[<a>]``
 
 Shift a list to the right, and insert an element at the first position.
 
@@ -550,7 +550,7 @@ The rightmost (last) element is trashed.
 
 roll-left
 ~~~~~~~~~~~
-*in* ``[<a>]`` *→* ``[<a>]``
+*in* ``[<a>]`` **↦** ``[<a>]``
 
 Roll a list from right to left.
 
@@ -564,7 +564,7 @@ Roll a list from right to left.
 
 roll-right
 ~~~~~~~~~~~
-*in* ``[<a>]`` *→* ``[<a>]``
+*in* ``[<a>]`` **↦** ``[<a>]``
 
 Roll a list from left to right.
 
@@ -579,7 +579,7 @@ Roll a list from left to right.
 
 fifo-push
 ~~~~~~~~~~
-*in* ``[<a>]`` *fifo-size* ``integer`` *item* ``<a>`` *→* ``[<a>]``
+*in* ``[<a>]`` *fifo-size* ``integer`` *item* ``<a>`` **↦** ``[<a>]``
 
 This function push an element into a defined size (by *fifo-size*) FIFO.
 

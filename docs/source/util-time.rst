@@ -13,7 +13,7 @@ General functions
 
 epoch
 ~~~~~
-*→* ``time``
+**↦** ``time``
 
 Return Unix EPOCH.
 
@@ -25,7 +25,7 @@ Return Unix EPOCH.
 
 genesis
 ~~~~~~~~
-*→* ``time``
+**↦** ``time``
 
 Return Kadena Genesis time.
 
@@ -37,7 +37,7 @@ Return Kadena Genesis time.
 
 now
 ~~~
-*→* ``time``
+**↦** ``time``
 
 Return the current time.
 
@@ -49,7 +49,7 @@ Return the current time.
 
 tomorrow
 ~~~~~~~~~
-*→* ``time``
+**↦** ``time``
 
 Return the current time + 24 hours.
 
@@ -61,7 +61,7 @@ Return the current time + 24 hours.
 
 yesterday
 ~~~~~~~~~
-*→* ``time``
+**↦** ``time``
 
 Return the current time - 24 hours.
 
@@ -73,7 +73,7 @@ Return the current time - 24 hours.
 
 from-now
 ~~~~~~~~
-*delta* ``decimal`` *→* ``time``
+*delta* ``decimal`` **↦** ``time``
 
 Returns the *delta* time taking *now* as a reference.
 
@@ -85,7 +85,7 @@ Returns the *delta* time taking *now* as a reference.
 
 today
 ~~~~~
-*→* ``string``
+**↦** ``string``
 
 Return the current day.
 
@@ -96,7 +96,7 @@ Return the current day.
 
 to-timestamp
 ~~~~~~~~~~~~
-*in* ``time`` *→* ``decimal``
+*in* ``time`` **↦** ``decimal``
 
 Compute an Unix timestamp of the input date.
 
@@ -107,7 +107,7 @@ Compute an Unix timestamp of the input date.
 
 from-timestamp
 ~~~~~~~~~~~~~~
-*timestamp* ``decimal`` *→* ``time``
+*timestamp* ``decimal`` **↦** ``time``
 
 Compute a time from an Unix timestamp.
 
@@ -134,7 +134,7 @@ delta values.
 
 time-safe
 ~~~~~~~~~
-*in* ``string`` *→* ``time``
+*in* ``string`` **↦** ``time``
 
 Equivalent of the ``(time)`` native but ensure that no overflow occurred.
 
@@ -145,7 +145,7 @@ Equivalent of the ``(time)`` native but ensure that no overflow occurred.
 
 parse-time-safe
 ~~~~~~~~~~~~~~~
-*fmt* ``string`` *in* ``string`` *→* ``time``
+*fmt* ``string`` *in* ``string`` **↦** ``time``
 
 Equivalent of the ``(parse-time)`` native but ensure that no overflow occurred.
 
@@ -156,7 +156,7 @@ Equivalent of the ``(parse-time)`` native but ensure that no overflow occurred.
 
 add-time-safe
 ~~~~~~~~~~~~~
-*in* ``time`` *delta* ``decimal``  *→* ``time``
+*in* ``time`` *delta* ``decimal``  **↦** ``time``
 
 Equivalent of the ``(add-time)`` native but ensure that no overflow occurred.
 
@@ -167,7 +167,7 @@ Equivalent of the ``(add-time)`` native but ensure that no overflow occurred.
 
 diff-time-safe
 ~~~~~~~~~~~~~~
-*t1* ``time`` *t2* ``time``  *→* ``decimal``
+*t1* ``time`` *t2* ``time``  **↦** ``decimal``
 
 Equivalent of the ``(diff-time)`` native but ensure that no overflow occurred.
 
@@ -182,7 +182,7 @@ Compare function
 
 earliest
 ~~~~~~~~
-*time1* ``time`` *time2* ``time`` *→* ``time``
+*time1* ``time`` *time2* ``time`` **↦** ``time``
 
 Return the earliest time between *time1* and *time2*.
 
@@ -196,7 +196,7 @@ This function is equivalent to a ``min`` between two times.
 
 latest
 ~~~~~~~
-*time1* ``time`` *time2* ``time`` *→* ``time``
+*time1* ``time`` *time2* ``time`` **↦** ``time``
 
 Return the earliest time between *time1* and *time2*.
 
@@ -209,7 +209,7 @@ This function is equivalent to a ``max`` between two times.
 
 time-between
 ~~~~~~~~~~~~
-*time1* ``time`` *time2* ``time`` *in* ``time`` *→* ``bool``
+*time1* ``time`` *time2* ``time`` *in* ``time`` **↦** ``bool``
 
 Return true if *in* is between *time1* and *time2*.
 
@@ -234,7 +234,7 @@ The order of *time1* and *time2* doesn't matter.
 
 is-past
 ~~~~~~~
-*in* ``time`` *→* ``bool``
+*in* ``time`` **↦** ``bool``
 
 Return true if *in* is in the past (before now).
 
@@ -250,7 +250,7 @@ Return true if *in* is in the past (before now).
 
 is-future
 ~~~~~~~~~
-*in* ``time`` *→* ``bool``
+*in* ``time`` **↦** ``bool``
 
 Return true if *in* is in the future (after now).
 
@@ -266,7 +266,7 @@ Return true if *in* is in the future (after now).
 
 is-today
 ~~~~~~~~
-*in* ``time`` *→* ``bool``
+*in* ``time`` **↦** ``bool``
 
 Return true if *in* is in the current day.
 
@@ -287,7 +287,7 @@ Block height estimation functions
 est-height-at-time
 ~~~~~~~~~~~~~~~~~~
 
-*target-time* ``time`` *→* ``integer``
+*target-time* ``time`` **↦** ``integer``
 
 Estimates the block height at a *target-time*.
 
@@ -312,7 +312,7 @@ If the computed result is a negative block height (before Genesis), 0 is returne
 est-time-at-height
 ~~~~~~~~~~~~~~~~~~
 
-*target-height* ``integer`` *→* ``time``
+*target-height* ``integer`` **↦** ``time``
 
 Estimates the time at a *target-block*.
 
@@ -335,7 +335,7 @@ Time difference functions
 diff-time-minutes
 ~~~~~~~~~~~~~~~~~~
 
-time1 ``time`` time2 ``time`` *→* ``decimal``
+time1 ``time`` time2 ``time`` **↦** ``decimal``
 
 Compute difference between *time1* and *time2* in minutes.
 
@@ -349,7 +349,7 @@ Compute difference between *time1* and *time2* in minutes.
 diff-time-hours
 ~~~~~~~~~~~~~~~~~~
 
-time1 ``time`` time2 ``time`` *→* ``decimal``
+time1 ``time`` time2 ``time`` **↦** ``decimal``
 
 Compute difference between *time1* and *time2* in hours.
 
@@ -362,7 +362,7 @@ Compute difference between *time1* and *time2* in hours.
 diff-time-days
 ~~~~~~~~~~~~~~~~~~
 
-time1 ``time`` time2 ``time`` *→* ``decimal``
+time1 ``time`` time2 ``time`` **↦** ``decimal``
 
 Compute difference between *time1* and *time2* in days.
 
