@@ -9,7 +9,11 @@ publicMeta:
 networkId: "{{network}}"
 signers:
   - public: {{gov-key}}
-  - public: "{{deployer-key}}"
+    caps:
+      - name: free.util-math.GOV
+        args: []
+
+  - public: {{deployer-key}}
     caps:
       - name: "coin.GAS"
         args: []
