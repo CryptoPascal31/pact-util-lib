@@ -46,7 +46,7 @@
 
   (defun chain:list (in:list)
     "Chain list of lists"
-    (fold (+) [] in))
+    (fold + [] in))
 
   (defun same-length:bool (x:list y:list)
     "Return true if two lists have the same length"
@@ -94,7 +94,7 @@
     (if (contains item in)
         (let ((indexes (enumerate 0 (length in)))
               (match (lambda (v i) (if (= item v) i -1))))
-          (remove-item (zip (match) in indexes) -1))
+          (remove-item (zip match in indexes) -1))
         [])
   )
 

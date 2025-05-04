@@ -119,7 +119,7 @@
           (assign-order (lambda (x i) {'order:i, 'val:x })))
       (map (at 'val)
            (sort ['order]
-                 (zip (assign-order) in (map (hash) indexes)))))
+                 (zip assign-order in (map (hash) indexes)))))
   )
 
   (defun gen-uuid-rfc-4122-v4:string ()

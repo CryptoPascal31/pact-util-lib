@@ -42,7 +42,7 @@
   (defun min-list:decimal (x:[decimal])
     "Returns the min of a list"
     (enforce-not-empty x)
-    (fold (min) (first x) (remove-first x))
+    (fold min (first x) (remove-first x))
   )
 
   (defun amin:integer (in:[decimal])
@@ -50,7 +50,7 @@
     (enforce-not-empty in)
     (let ((in-enum (enumerate-list in))
           (cmp (lambda (x y) (if (< (at 'v x) (at 'v y)) x y))))
-      (at 'i (fold (cmp) (first in-enum) (remove-first in-enum))))
+      (at 'i (fold cmp (first in-enum) (remove-first in-enum))))
   )
 
   (defun max:decimal (x:decimal y:decimal)
@@ -68,7 +68,7 @@
   (defun max-list:decimal (x:[decimal])
     "Returns the max of a list"
     (enforce-not-empty x)
-    (fold (max) (first x) (remove-first x))
+    (fold max (first x) (remove-first x))
   )
 
   (defun amax:integer (in:[decimal])
@@ -76,7 +76,7 @@
     (enforce-not-empty in)
     (let ((in-enum (enumerate-list in))
           (cmp (lambda (x y) (if (> (at 'v x) (at 'v y)) x y))))
-      (at 'i (fold (cmp) (first in-enum) (remove-first in-enum))))
+      (at 'i (fold cmp (first in-enum) (remove-first in-enum))))
   )
 
   (defun clamp:decimal (low-limit:decimal up-limit:decimal x:decimal)
@@ -97,7 +97,7 @@
 
   (defun sum:decimal (x:[decimal])
     "Returns the sum of a list"
-    (fold (+) 0.0 x))
+    (fold + 0.0 x))
 
   (defun prod3:decimal (x:decimal y:decimal z:decimal)
     "Returns the product of 3 values"
@@ -109,7 +109,7 @@
 
   (defun prod:decimal (x:[decimal])
     "Returns the product of a list"
-    (fold (*) 1.0 x))
+    (fold * 1.0 x))
 
   (defun square:decimal (x:decimal)
     "Returns the square of x"
@@ -213,7 +213,7 @@
                 (gcd-inner (lambda (x i) (if (= (at 'b x) 0)
                                              x
                                              {'a: (at 'b x), 'b: (mod (at 'a x) (at 'b x))})))
-                (gcd-result (fold (gcd-inner) {'a:a*, 'b:b*} (enumerate 1 max-iterations))))
+                (gcd-result (fold gcd-inner {'a:a*, 'b:b*} (enumerate 1 max-iterations))))
             (enforce (= (at 'b gcd-result) 0) "Euclidean algorithm not finished")
             (at 'a gcd-result))))
   )
