@@ -35,6 +35,7 @@ Contains functions to handle Pact lists.
 * ```(defun is-singleton:bool (x:list)``` : Returns true if the list is a singleton
 * ```(defun is-pair:bool (x:list)``` : Returns true if the list is a pair
 * ```(defun is-not-empty:bool (x:list)``` : Returns true if the list is not empty
+* ```(defun is-length:bool (target:integer x:list)``` : Returns true if the list has the targetted length
 * ```(defun enforce-list-bounds:bool (x:list idx:integer)``` : Verify and enforce that *idx* is in list bounds
 * ```(defun chain:list (in:list)``` : Chain list of lists
 * ```(defun same-length:bool (x:list y:list)```: Return true if two lists have the same length

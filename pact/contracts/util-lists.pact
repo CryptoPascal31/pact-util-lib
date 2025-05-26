@@ -40,6 +40,10 @@
     "Return true if the list is a pair"
     (= 2 (length x)))
 
+(defun is-length:bool (target:integer x:list)
+    "Returns true if the list has the targetted length"
+    (= target (length x)))
+
   (defun enforce-list-bounds:bool (x:list idx:integer)
     "Verify and ENFORCES that idx is in list bounds"
     (enforce (and? (<= 0) (> (length x)) idx) "Index out of bounds"))

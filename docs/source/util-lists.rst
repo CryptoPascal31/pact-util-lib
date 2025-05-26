@@ -67,6 +67,19 @@ Return true if the list has exactly 2 elements.
   pact> (is-pair ["a" "b"])
   true
 
+is-length
+~~~~~~~~~
+*target* ``integer`` *in* ``list`` **↦** ``bool``
+
+Return true if the list has exactly *target* elements.
+
+.. code:: lisp
+
+  pact> (is-length 2 ["a"])
+  false
+
+  pact> (is-length 2 ["a" "b"])
+  true
 
 is-not-empty
 ~~~~~~~~~~~~
