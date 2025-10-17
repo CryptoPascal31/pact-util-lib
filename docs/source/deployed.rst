@@ -12,6 +12,41 @@ It can be verified on-chain using the following pact command:
   (hash (concat
   (map (compose (+ "free.util-") (compose (describe-module) (at 'hash))) ["chain-data", "lists", "strings", "math", "random", "time", "fungible", "zk"])))
 
+Version 0.11
+~~~~~~~~~~~~~
+Validated with Pact 5.3
+
+New math functions:
+  * ``util-math.geom-mean*``
+  * ``util-math.between*``
+  * ``util-math.ramp``
+
+
+New list functions:
+  * ``util-lists.same-length``
+  * ``util-lists.has-length``
+
+Partially restored type-checker.
+
+This new version prepares the deployment of Bro-Finance.
+
+Improve Pact 5 compatibility.
+
+Deployed on:
+  Testnet Chains 0-19
+  Mainnet Chains 0-19
+
+Modules hashes:
+  * **free.util-chain-data:** sCIpziOuN4WzZR-qDW4jrPq3PDBW4XmqxRFMKjSh0_8
+  * **free.util-lists:**      kbe2YhcFBvn1yImC0E-hnZHK4BiZ3U1SpJ0R-6IqRaE
+  * **free.util-strings:**    BBR0L9gEMYSuRSlKNRLT7lOYqKQyZZVSsqs5oEIlaTY
+  * **free.util-math:**       yF1LV_WmcLPyyNBJyeKqkLwzwXpDhhPrBmYSDzlE7eg
+  * **free.util-random:**     UqWtw-PO1t_TcnqYdikVxVDkzrf3tLm8eGsQbpg4ITQ
+  * **free.util-time:**       H-q5YWrqHsA6a6IGvn7InY8J38Hh-aSXiT-qHwOoOg0
+  * **free.util-fungible:**   x0VMlqElQTaLRto3dWH88qn6FbOTI9H2wkM0B-6maIU
+  * **free.util-zk:**         QicSVm2RsvH2hAlqT3x8k_Tz2rUyfWxdvCSYfQfkQFA
+  * **Global:**               X609o6S6269BjQHpLJlY4fNVEgpZUXAflNm5ng4Q6Tw
+
 Version 0.10
 ~~~~~~~~~~~
 Validated with Pact 5.1
