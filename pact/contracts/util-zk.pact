@@ -19,7 +19,7 @@
   ;  - https://github.com/kadena-io/pact/blob/master/tests/pact/pairing.repl
   ;  - https://github.com/iden3/snarkjs/blob/master/templates/verifier_groth16.sol.ejs
 
-  (defconst VERSION:string "0.10")
+  (defconst VERSION:string "0.11")
 
   (use util-strings [split-chunks])
   (use util-lists [remove-first first])
