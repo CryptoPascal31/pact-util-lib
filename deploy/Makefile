@@ -17,9 +17,9 @@ TEMP_PACT_FILES = $(foreach suffix,$(SUFFIXES),.pact/util-${suffix}.pact)
 
 KDA_TOOL = kda
 
-TESTNET_NODE = api.testnet.chainweb.com
+TESTNET_NODE = api.testnet.chainweb-community.org
 
-MAINNET_NODE = api.chainweb.com
+MAINNET_NODE = api.chainweb-community.org
 
 TESTNET_DATA = testnet.yaml
 
